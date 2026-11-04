@@ -21,7 +21,7 @@ export function buildQueue(cards: Card[], state: LearningState, options: QueueOp
   if (options.set === 'assessment') {
     candidates = candidates.filter((card) => card.level === 'advanced' && card.kind !== 'summary')
   } else if (options.set === 'link') {
-    candidates = candidates.filter((card) => card.level === 'link' && card.kind === 'summary')
+    candidates = candidates.filter((card) => card.level === 'link')
   } else if (options.set === 'advanced') {
     candidates = candidates.filter((card) => card.level === 'advanced')
   } else if (options.mode !== 'rescue') {
@@ -34,6 +34,14 @@ export function buildQueue(cards: Card[], state: LearningState, options: QueueOp
       return review && review.status !== 'stable' && review.dueAt !== null && new Date(review.dueAt).getTime() <= now
     })
     candidates.sort((a, b) => rescueScore(state, b.id) - rescueScore(state, a.id))
+    // Keep the highest-priority card first, then alternate cases where possible.
+    const remaining = [...candidates]
+    candidates = []
+    while (remaining.length) {
+      const previousCourse = candidates.at(-1)?.courseId
+      const otherCourse = remaining.findIndex((card) => card.courseId !== previousCourse)
+      candidates.push(remaining.splice(otherCourse < 0 ? 0 : otherCourse, 1)[0])
+    }
   }
 
   return candidates.map((card) => card.id)

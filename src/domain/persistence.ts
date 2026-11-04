@@ -10,11 +10,13 @@ export interface StorageLike {
   removeItem(key: string): void
 }
 
+const timestampSchema = z.string().refine((value) => Number.isFinite(Date.parse(value)), '无效时间')
+
 const reviewSchema = z.object({
   cardId: z.string(),
   goodStreak: z.number().int().nonnegative(),
   status: z.enum(['new', 'learning', 'stable']),
-  dueAt: z.string().nullable(),
+  dueAt: timestampSchema.nullable(),
   lastRating: z.enum(['again', 'fuzzy', 'good']).optional(),
   lapseCount: z.number().int().nonnegative(),
 })
@@ -27,8 +29,8 @@ const attemptSchema = z.object({
   chapterId: z.string(),
   mode: z.enum(['course', 'mixed', 'rescue']),
   rating: z.enum(['again', 'fuzzy', 'good']),
-  revealedAt: z.string(),
-  ratedAt: z.string(),
+  revealedAt: timestampSchema,
+  ratedAt: timestampSchema,
   responseMs: z.number().nonnegative(),
   before: reviewSchema,
   after: reviewSchema,
@@ -38,8 +40,8 @@ const attemptSchema = z.object({
 
 const sessionSchema = z.object({
   id: z.string(),
-  startedAt: z.string(),
-  endedAt: z.string().optional(),
+  startedAt: timestampSchema,
+  endedAt: timestampSchema.optional(),
   mode: z.enum(['course', 'mixed', 'rescue']),
   courseId: z.string().optional(),
   chapterId: z.string().optional(),
@@ -47,14 +49,15 @@ const sessionSchema = z.object({
 })
 
 const runSchema = z.object({
+  cardSet: z.enum(['core', 'assessment', 'link', 'advanced']).optional(),
   sessionId: z.string(),
   mode: z.enum(['course', 'mixed', 'rescue']),
   courseId: z.string().optional(),
   chapterId: z.string().optional(),
   queue: z.array(z.string()),
   reentries: z.record(z.string(), z.number().int().nonnegative()),
-  startedAt: z.string(),
-  endedAt: z.string().optional(),
+  startedAt: timestampSchema,
+  endedAt: timestampSchema.optional(),
 })
 
 const stateSchema = z.object({

@@ -17,3 +17,18 @@ describe('bundled course content', () => {
     expect(courseContent.status).toBe('verified')
   })
 })
+
+describe('training entry points', () => {
+  it('makes every published card reachable in core, advanced or linked training', async () => {
+    const { buildQueue } = await import('../src/domain/progress')
+    const { createInitialState } = await import('../src/domain/scheduler')
+    const state = createInitialState(courseContent.contentVersion)
+    const cards = courseContent.courses.flatMap((course) => course.cards)
+    for (const course of courseContent.courses) {
+      const reachable = new Set(['core', 'advanced', 'link'].flatMap((set) => buildQueue(cards, state, {
+        mode: 'course', courseId: course.id, set: set as 'core' | 'advanced' | 'link', now: '2026-11-04T08:00:00.000Z',
+      })))
+      expect(course.cards.filter((card) => !reachable.has(card.id)).map((card) => card.id)).toEqual([])
+    }
+  })
+})

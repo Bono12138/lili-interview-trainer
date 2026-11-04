@@ -57,3 +57,12 @@ describe('backup UI', () => {
     expect(storage.getItem('lili-interview-trainer:v1')).toBe('{broken')
   })
 })
+
+describe('storage failures', () => {
+  it('keeps the app usable and warns when saving fails', () => {
+    const storage = { ...memoryStorage(), setItem: () => { throw new Error('Quota exceeded') } }
+    render(<App content={courseContent} storage={storage} />)
+    expect(screen.getByRole('alert')).toHaveTextContent('未能保存')
+    expect(screen.getByRole('button', { name: '导出学习备份' })).toBeEnabled()
+  })
+})

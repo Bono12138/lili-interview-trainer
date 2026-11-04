@@ -52,59 +52,61 @@ function swipe(fromX: number, fromY: number, toX: number, toY: number) {
 }
 
 describe('touch gestures', () => {
-  it('reveals on swipe down but ignores left and right before reveal', async () => {
+  it.each([['left', 'again', 200, 60], ['right', 'good', 60, 220]])('rates %s without requiring reveal', async (_direction, rating, fromX, toX) => {
     const { storage } = await startStudy()
-    swipe(200, 200, 80, 200)
-    swipe(200, 200, 320, 200)
-    expect(screen.queryByText('第一张答案')).not.toBeInTheDocument()
-    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
-    swipe(200, 160, 200, 300)
-    expect(screen.getByText('第一张答案')).toBeInTheDocument()
-    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
-  })
-
-  it.each([
-    ['left', 'again', 200, 200, 60, 200],
-    ['right', 'good', 60, 200, 220, 200],
-    ['down', 'fuzzy', 200, 150, 200, 310],
-  ])('rates %s with the same domain result as buttons', async (_direction, rating, fromX, fromY, toX, toY) => {
-    const { user, storage } = await startStudy()
-    await user.click(screen.getByRole('button', { name: '显示答案' }))
-    swipe(fromX, fromY, toX, toY)
+    swipe(fromX as number, 200, toX as number, 205)
     expect(screen.getByText('第二张题面')).toBeInTheDocument()
     expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts[0].rating).toBe(rating)
   })
 
-  it('does not rate small taps or diagonal scrolling', async () => {
+  it.each([false, true])('leaves vertical scrolling alone (revealed=%s)', async (revealed) => {
     const { user, storage } = await startStudy()
-    await user.click(screen.getByRole('button', { name: '显示答案' }))
-    swipe(200, 200, 215, 220)
-    expect(screen.getByText('第一张题面')).toBeInTheDocument()
+    if (revealed) await user.click(screen.getByRole('button', { name: '显示答案' }))
+    swipe(200, 160, 200, 310)
+    swipe(200, 310, 200, 160)
+    expect(screen.queryByText('第一张答案') !== null).toBe(revealed)
     expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
   })
-})
 
-
-describe('mobile browser edge cases', () => {
-  it('completes a gesture when the browser fires touchcancel after touchmove', async () => {
-    const { user, storage } = await startStudy()
-    await user.click(screen.getByRole('button', { name: '显示答案' }))
+  it('waits for finger release and never rates a cancelled gesture', async () => {
+    const { storage } = await startStudy()
     const card = screen.getByRole('article')
     fireEvent.touchStart(card, { touches: [{ clientX: 200, clientY: 200 }] })
-    fireEvent.touchMove(card, { touches: [{ clientX: 65, clientY: 205 }], changedTouches: [{ clientX: 65, clientY: 205 }] })
+    fireEvent.touchMove(card, { touches: [{ clientX: 65, clientY: 205 }] })
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
     fireEvent.touchCancel(card, { changedTouches: [] })
-    expect(screen.getByText('第二张题面')).toBeInTheDocument()
-    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts[0].rating).toBe('again')
+    fireEvent.touchEnd(card, { changedTouches: [{ clientX: 65, clientY: 205 }] })
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
+    swipe(200, 200, 60, 200)
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(1)
   })
 
-  it('shows disabled rating controls before reveal and enables them afterwards', async () => {
-    const { user } = await startStudy()
-    expect(screen.getByRole('button', { name: '不会' })).toBeDisabled()
-    expect(screen.getByRole('button', { name: '模糊' })).toBeDisabled()
-    expect(screen.getByRole('button', { name: '会' })).toBeDisabled()
-    await user.click(screen.getByRole('button', { name: '显示答案' }))
-    expect(screen.getByRole('button', { name: '不会' })).toBeEnabled()
-    expect(screen.getByRole('button', { name: '模糊' })).toBeEnabled()
-    expect(screen.getByRole('button', { name: '会' })).toBeEnabled()
+  it('locks a vertical scroll even when the finger later moves horizontally', async () => {
+    const { storage } = await startStudy()
+    const card = screen.getByRole('article')
+    fireEvent.touchStart(card, { touches: [{ clientX: 200, clientY: 200 }] })
+    fireEvent.touchMove(card, { touches: [{ clientX: 200, clientY: 230 }] })
+    fireEvent.touchEnd(card, { changedTouches: [{ clientX: 60, clientY: 235 }] })
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
+  })
+
+  it('ignores taps, diagonals, multitouch and gestures starting on a button', async () => {
+    const { storage } = await startStudy()
+    swipe(200, 200, 215, 220)
+    swipe(200, 200, 120, 290)
+    const card = screen.getByRole('article')
+    fireEvent.touchStart(card, { touches: [{ clientX: 200, clientY: 200 }, { clientX: 220, clientY: 200 }] })
+    fireEvent.touchEnd(card, { changedTouches: [{ clientX: 60, clientY: 200 }] })
+    const button = screen.getByRole('button', { name: '显示答案' })
+    fireEvent.touchStart(button, { touches: [{ clientX: 200, clientY: 200 }] })
+    fireEvent.touchEnd(button, { changedTouches: [{ clientX: 60, clientY: 200 }] })
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
+  })
+
+  it.each(['不会', '模糊', '会'])('enables direct %s buttons before reveal', async (label) => {
+    const { user, storage } = await startStudy()
+    await user.click(screen.getByRole('button', { name: label }))
+    expect(screen.getByText('第二张题面')).toBeInTheDocument()
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(1)
   })
 })

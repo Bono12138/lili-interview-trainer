@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import App from './App'
@@ -44,20 +44,15 @@ async function startCore(user: ReturnType<typeof userEvent.setup>, storage = mem
 }
 
 describe('study interaction', () => {
-  it('reveals with Space or ArrowDown and never rates before reveal', async () => {
+  it('reveals without rating and supports direct keyboard ratings', async () => {
     const user = userEvent.setup()
     const { storage } = await startCore(user)
-    expect(screen.getByText('第一张核心卡')).toBeInTheDocument()
-    expect(screen.queryByText('第一张答案')).not.toBeInTheDocument()
-
-    await user.keyboard('{ArrowLeft}{ArrowRight}')
-    expect(screen.getByText('第一张核心卡')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: '会' })).toBeDisabled()
-
     await user.keyboard('{Space}')
     expect(screen.getByText('第一张答案')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: '不会' })).toBeInTheDocument()
     expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
+    await user.keyboard('{ArrowRight}')
+    await user.keyboard('{ArrowLeft}')
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts.map((a: {rating: string}) => a.rating)).toEqual(['good', 'again'])
   })
 
   it('rates again by touch, moves to another card and reenters the weak card', async () => {
@@ -82,7 +77,6 @@ describe('study interaction', () => {
     expect(screen.getByText('第一张答案')).toBeInTheDocument()
     expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
 
-    await user.keyboard('{ArrowDown}')
     await user.keyboard('{ArrowDown}')
     expect(screen.getByText('第二张核心卡')).toBeInTheDocument()
     expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts[0].rating).toBe('fuzzy')
@@ -158,5 +152,100 @@ describe('chapter check feedback', () => {
     expect(screen.getByText('本轮完成')).toBeInTheDocument()
     expect(screen.getByText('换问法检查卡')).toBeInTheDocument()
     expect(screen.getByText(/需要重点巩固/)).toBeInTheDocument()
+  })
+})
+
+describe('navigation regressions', () => {
+  it('returns to the actual case map and resumes the same session from home', async () => {
+    const user = userEvent.setup()
+    const { storage } = await startCore(user)
+    await user.click(screen.getByRole('button', { name: '会' }))
+    const session = JSON.parse(storage.getItem(STORAGE_KEY)!).activeRun.sessionId
+    await user.click(screen.getByRole('button', { name: /返回案件地图/ }))
+    expect(screen.getByRole('button', { name: '核心学习' })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: '今日' }))
+    await user.click(screen.getByRole('button', { name: /继续学习/ }))
+    expect(screen.getByText('第二张核心卡')).toBeInTheDocument()
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).activeRun.sessionId).toBe(session)
+  })
+
+  it('allows undo after the last card and preserves summary checklist/timer', async () => {
+    const user = userEvent.setup()
+    const { storage } = await startCore(user)
+    await user.click(screen.getByRole('button', { name: /返回案件地图/ }))
+    await user.click(screen.getByRole('button', { name: '串联表达' }))
+    await user.click(screen.getByRole('button', { name: '显示核对点' }))
+    for (const label of ['事实完整', '证据清楚', '结果准确']) await user.click(screen.getByLabelText(label))
+    await user.click(screen.getByRole('button', { name: '核对通过并完成' }))
+    await user.click(screen.getByRole('button', { name: /撤销评分/ }))
+    expect(screen.getByLabelText('事实完整')).toBeChecked()
+    expect(screen.getByRole('button', { name: '核对通过并完成' })).toBeEnabled()
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
+    await user.click(screen.getByRole('button', { name: '核对通过并完成' }))
+    await user.click(screen.getByRole('button', { name: '再来一轮' }))
+    expect(screen.getByText('90 秒整案陈述')).toBeInTheDocument()
+  })
+
+  it('does not hijack Space on a focused navigation button or held rating key', async () => {
+    const user = userEvent.setup()
+    const { storage } = await startCore(user)
+    const back = screen.getByRole('button', { name: /返回案件地图/ })
+    back.focus()
+    await user.keyboard(' ')
+    expect(screen.getByRole('button', { name: '核心学习' })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: '核心学习' }))
+    fireEvent.keyDown(window, { key: 'ArrowRight', repeat: true })
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
+  })
+
+  it.each(['混合复习', '错卡急救'])('%s includes cards in other courses', async (mode) => {
+    const user = userEvent.setup()
+    const storage = memoryStorage()
+    const extra = { ...content.courses[0], id: 'labor-arbitration', title: '劳动案', cards: [{ ...cards[0], id: 'other-1', courseId: 'labor-arbitration', prompt: '另一案题面' }] }
+    render(<App content={{ ...content, courses: [...content.courses, extra] }} storage={storage} />)
+    await user.click(screen.getByRole('button', { name: '案件课程' }))
+    await user.click(screen.getByRole('button', { name: /劳动案/ }))
+    await user.click(screen.getByRole('button', { name: '核心学习' }))
+    await user.click(screen.getByRole('button', { name: '不会' }))
+    await user.click(screen.getByRole('button', { name: mode }))
+    expect(screen.getByText('另一案题面')).toBeInTheDocument()
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).activeRun.courseId).toBeUndefined()
+  })
+})
+
+describe('summary safety', () => {
+  it('never scores a summary by arrows or swipes, and pauses when navigating away', () => {
+    vi.useFakeTimers()
+    const storage = memoryStorage()
+    render(<App content={content} storage={storage} />)
+    fireEvent.click(screen.getByRole('button', { name: '案件课程' }))
+    fireEvent.click(screen.getByRole('button', { name: /返还原物纠纷/ }))
+    fireEvent.click(screen.getByRole('button', { name: '串联表达' }))
+    fireEvent.keyDown(window, { key: 'ArrowRight' })
+    const card = screen.getByRole('article')
+    fireEvent.touchStart(card, { touches: [{ clientX: 200, clientY: 200 }] })
+    fireEvent.touchEnd(card, { touches: [], changedTouches: [{ clientX: 60, clientY: 200 }] })
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
+    fireEvent.click(screen.getByRole('button', { name: '开始计时' }))
+    act(() => vi.advanceTimersByTime(2000))
+    fireEvent.click(screen.getByRole('button', { name: '成长记录' }))
+    expect(vi.getTimerCount()).toBe(0)
+    act(() => vi.advanceTimersByTime(5000))
+    fireEvent.click(screen.getByRole('button', { name: '今日' }))
+    fireEvent.click(screen.getByRole('button', { name: /继续学习/ }))
+    expect(screen.getByRole('button', { name: '开始计时' })).toBeInTheDocument()
+    vi.useRealTimers()
+  })
+})
+
+describe('completion navigation', () => {
+  it('returns home from completion and shows the full library from view-all', async () => {
+    const user = userEvent.setup()
+    await startCore(user)
+    await user.keyboard('{ArrowRight}{ArrowRight}')
+    await user.click(within(screen.getByText('本轮完成').closest('section')!).getByRole('button', { name: '返回今日首页' }))
+    expect(screen.getByRole('heading', { name: '今天，再向前一步。' })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /查看全部/ }))
+    expect(screen.getByRole('heading', { name: '案件课程' })).toBeInTheDocument()
   })
 })

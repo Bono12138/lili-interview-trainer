@@ -85,6 +85,7 @@ export interface StudySession {
 }
 
 export interface ActiveRun {
+  cardSet?: 'core' | 'assessment' | 'link' | 'advanced'
   sessionId: string
   mode: TrainingMode
   courseId?: string

@@ -111,3 +111,12 @@ describe('chapter performance', () => {
     expect(result.find((chapter) => chapter.id === 'legal-issues')).toMatchObject({ attempts: 0, percent: 0 })
   })
 })
+
+describe('cross-course mixed practice', () => {
+  it('interleaves due courses instead of presenting whole courses in a block', () => {
+    const state = createInitialState('v1')
+    const dueCards = ['a1', 'a2', 'b1', 'b2'].map((id) => ({ ...cards[0], id, courseId: id.startsWith('a') ? 'a' : 'b' }))
+    for (const card of dueCards) state.progress[card.id] = { ...progress('learning', 'fuzzy'), cardId: card.id }
+    expect(buildQueue(dueCards, state, { mode: 'mixed', now })).toEqual(['a1', 'b1', 'a2', 'b2'])
+  })
+})

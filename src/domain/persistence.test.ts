@@ -33,3 +33,17 @@ describe('local persistence and backup', () => {
     expect(() => parseBackup(JSON.stringify({ schemaVersion: 99 }))).toThrow('不支持')
   })
 })
+
+describe('backup compatibility', () => {
+  it('preserves the training set through export and reload', () => {
+    const state = createInitialState('v1')
+    state.activeRun = { sessionId: 's1', mode: 'course', cardSet: 'link', queue: ['summary'], reentries: {}, startedAt: '2026-11-04T08:00:00.000Z' }
+    expect(parseBackup(exportBackup(state, '2026-11-04T09:00:00.000Z')).activeRun?.cardSet).toBe('link')
+  })
+
+  it('rejects invalid timestamps before a malformed backup can break the UI', () => {
+    const state = createInitialState('v1')
+    state.progress['card-1'] = { cardId: 'card-1', goodStreak: 1, status: 'learning', dueAt: 'not-a-date', lapseCount: 0 }
+    expect(() => parseBackup(JSON.stringify(state))).toThrow('损坏')
+  })
+})

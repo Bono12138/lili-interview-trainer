@@ -94,12 +94,16 @@ Then 显示对应答案和三档评分
 And 不自动记录任何自评
 ```
 
-### 场景 2：防止误评
+### 场景 2：直接自评与手势安全（2026-11-04 用户修订）
 
 ```text
-Given 答案尚未显示
-When 用户按 ArrowLeft 或 ArrowRight
-Then 卡片状态和进度均不改变
+Given 普通卡答案尚未显示
+When 用户点击任一评分按钮或按 ArrowLeft／ArrowRight
+Then 直接记录相应评分并进入下一张
+And Space／首次 ArrowDown 仍只显示答案
+And 纵向滚动、取消、多指、斜滑不产生评分
+And 横滑必须正常松手后才评分
+And 串联卡仍需人工核对
 ```
 
 ### 场景 3：不会后重现
@@ -203,4 +207,4 @@ And 不向外部服务发送案件内容或学习记录
 
 ## 7. 当前骨架测试
 
-`src/App.test.tsx` 只验证工具链能渲染占位页，不代表任何业务功能已完成。开始第一个业务切片时，应先新增对应失败测试。
+`src/App.test.tsx`、`src/App.gesture.test.tsx` 与 `src/App.backup.test.tsx` 覆盖学习、手势、导航、计时、撤销、恢复和备份。浏览器还需验证原生触摸、实际滚动和响应式布局，不能只依赖 jsdom 事件。

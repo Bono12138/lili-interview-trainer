@@ -30,7 +30,7 @@ export default function App({ content = courseContent, storage = window.localSto
   const [selectedChapterId, setSelectedChapterId] = useState('case-map')
   const [revealed, setRevealed] = useState(false)
   const [revealedAt, setRevealedAt] = useState<string>('')
-  const [undoSnapshot, setUndoSnapshot] = useState<LearningState | null>(null)
+  const [undoSnapshot, setUndoSnapshot] = useState<{ state: LearningState; revealedAt: string; elapsed: number; checkedPoints: number[] } | null>(null)
   const [notice, setNotice] = useState('')
   const [elapsed, setElapsed] = useState(0)
   const [timerRunning, setTimerRunning] = useState(false)
@@ -42,9 +42,28 @@ export default function App({ content = courseContent, storage = window.localSto
   const currentCard = state?.activeRun?.queue[0] ? cardById.get(state.activeRun.queue[0]) : undefined
   const currentCourse = content.courses.find((course) => course.id === currentCard?.courseId)
 
+  const [saveError, setSaveError] = useState('')
   useEffect(() => {
-    if (state) saveLearningState(storage, state)
+    if (!state) return
+    try {
+      saveLearningState(storage, state)
+      setSaveError('')
+    } catch {
+      setSaveError('学习记录未能保存到浏览器，请立即导出备份，避免刷新后丢失。')
+    }
   }, [state, storage])
+
+  useEffect(() => {
+    window.scrollTo?.(0, 0)
+  }, [view])
+
+  useEffect(() => {
+    if (view === 'study' && currentCard) document.querySelector('.study-topbar')?.scrollIntoView?.({ block: 'start' })
+  }, [currentCard, view])
+
+  useEffect(() => {
+    if (view !== 'study') setTimerRunning(false)
+  }, [view])
 
   useEffect(() => {
     if (!timerRunning) return
@@ -68,8 +87,8 @@ export default function App({ content = courseContent, storage = window.localSto
   }, [currentCard, now, revealed])
 
   const rate = useCallback((rating: Rating, checklistPassed?: boolean) => {
-    if (!state || !currentCard || !revealed) return
-    setUndoSnapshot(state)
+    if (!state || !currentCard || (currentCard.kind === 'summary' && !revealed)) return
+    setUndoSnapshot({ state, revealedAt, elapsed, checkedPoints: [...checkedPoints] })
     const next = rateCard(state, currentCard, {
       rating,
       revealedAt: revealedAt || now().toISOString(),
@@ -83,11 +102,15 @@ export default function App({ content = courseContent, storage = window.localSto
     setTimerRunning(false)
     setCheckedPoints([])
     setNotice(rating === 'good' ? '已记录为「会」' : `已记录，队列稍后重现`)
-  }, [checkedPoints.length, currentCard, elapsed, now, revealed, revealedAt, state])
+  }, [checkedPoints, currentCard, elapsed, now, revealed, revealedAt, state])
 
   const undo = useCallback(() => {
     if (!undoSnapshot) return
-    setState(undoSnapshot)
+    setState(undoSnapshot.state)
+    setRevealedAt(undoSnapshot.revealedAt)
+    setElapsed(undoSnapshot.elapsed)
+    setCheckedPoints(undoSnapshot.checkedPoints)
+    setTimerRunning(false)
     setUndoSnapshot(null)
     setRevealed(true)
     setNotice('已撤销最近一次评分')
@@ -95,22 +118,24 @@ export default function App({ content = courseContent, storage = window.localSto
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
-      const target = event.target as HTMLElement | null
+      const target = event.target instanceof HTMLElement ? event.target : null
       if (target?.matches('input, textarea, select, [contenteditable="true"]')) return
+      if (view !== 'study') return
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'z') {
         event.preventDefault()
         if (!event.repeat) undo()
         return
       }
-      if (view !== 'study' || !currentCard || event.repeat) return
+      if (!currentCard || event.repeat || event.metaKey || event.ctrlKey || event.altKey) return
+      if ((event.code === 'Space' || event.key === ' ') && target?.closest('button, summary, a')) return
       if (event.code === 'Space' || event.key === ' ' || event.key === 'Space' || event.key === 'ArrowDown') {
         event.preventDefault()
         if (!revealed) reveal()
         else if (event.key === 'ArrowDown' && currentCard.kind !== 'summary') rate('fuzzy')
-      } else if (revealed && currentCard.kind !== 'summary' && event.key === 'ArrowLeft') {
+      } else if (currentCard.kind !== 'summary' && event.key === 'ArrowLeft') {
         event.preventDefault()
         rate('again')
-      } else if (revealed && currentCard.kind !== 'summary' && event.key === 'ArrowRight') {
+      } else if (currentCard.kind !== 'summary' && event.key === 'ArrowRight') {
         event.preventDefault()
         rate('good')
       }
@@ -125,7 +150,7 @@ export default function App({ content = courseContent, storage = window.localSto
     setView('course')
   }
 
-  function startRun(mode: TrainingMode, set: CardSet = 'core', courseId = selectedCourse?.id, chapterId?: string) {
+  function startRun(mode: TrainingMode, set: CardSet = 'core', courseId?: string, chapterId?: string) {
     if (!state) return
     const startedAt = now().toISOString()
     const queue = buildQueue(cards, state, {
@@ -144,7 +169,7 @@ export default function App({ content = courseContent, storage = window.localSto
       queue,
       startedAt,
     })
-    setState(next)
+    setState({ ...next, activeRun: next.activeRun ? { ...next.activeRun, cardSet: set } : null })
     setUndoSnapshot(null)
     resetCardInteraction()
     setView('study')
@@ -231,8 +256,12 @@ export default function App({ content = courseContent, storage = window.localSto
       </aside>
 
       <main className="main-content">
+        {saveError && <p role="alert" className="save-error">{saveError}</p>}
         {content.status === 'demo' && <div className="content-banner">当前含演示课程，仅用于流程训练；正式案件表述请以核验材料为准。</div>}
-        {view === 'dashboard' && <Dashboard content={content} state={state} now={now().toISOString()} onCourse={openCourse} onStart={() => startRun('course', 'core', selectedCourse?.id)} onMixed={() => startRun('mixed')} onRescue={() => startRun('rescue')} />}
+        {view === 'dashboard' && <Dashboard content={content} state={state} now={now().toISOString()} onCourse={openCourse} onLibrary={() => setView('courses')} onStart={() => {
+          if (state.activeRun && !state.activeRun.endedAt && state.activeRun.queue.length) setView('study')
+          else startRun('course', 'core', state.preferences.lastCourseId)
+        }} onMixed={() => startRun('mixed')} onRescue={() => startRun('rescue')} />}
         {view === 'courses' && <CourseLibrary content={content} state={state} onCourse={openCourse} />}
         {view === 'course' && selectedCourse && <>
           <label className="advanced-toggle"><input type="checkbox" checked={state.preferences.includeAdvanced} onChange={(event) => setState({ ...state, preferences: { ...state.preferences, includeAdvanced: event.target.checked } })} />包含进阶卡</label>
@@ -250,14 +279,22 @@ export default function App({ content = courseContent, storage = window.localSto
             elapsed={elapsed}
             timerRunning={timerRunning}
             checkedPoints={checkedPoints}
-            onBack={goDashboard}
+            onBack={() => {
+              if (state.activeRun?.mode === 'course' && (currentCourse || state.activeRun.courseId)) {
+                setSelectedCourseId(currentCourse?.id ?? state.activeRun.courseId!)
+                setSelectedChapterId(currentCard?.chapterId ?? state.activeRun.chapterId ?? 'case-map')
+                setView('course')
+              } else goDashboard()
+              resetCardInteraction()
+            }}
             onReveal={reveal}
             onRate={rate}
+            onHome={goDashboard}
             onUndo={undo}
             onTimer={() => setTimerRunning((value) => !value)}
             onResetTimer={() => { setTimerRunning(false); setElapsed(0) }}
             onCheck={(index) => setCheckedPoints((points) => points.includes(index) ? points.filter((point) => point !== index) : [...points, index])}
-            onRetry={() => startRun(state.activeRun?.mode ?? 'course', 'core', state.activeRun?.courseId, state.activeRun?.chapterId)}
+            onRetry={() => startRun(state.activeRun?.mode ?? 'course', state.activeRun?.cardSet ?? 'core', state.activeRun?.courseId, state.activeRun?.chapterId)}
           />
         )}
         {view === 'growth' && <GrowthView content={content} state={state} />}
@@ -266,7 +303,7 @@ export default function App({ content = courseContent, storage = window.localSto
   )
 }
 
-function Dashboard({ content, state, now, onCourse, onStart, onMixed, onRescue }: { content: CourseContent; state: LearningState; now: string; onCourse: (course: Course) => void; onStart: () => void; onMixed: () => void; onRescue: () => void }) {
+function Dashboard({ content, state, now, onCourse, onStart, onMixed, onRescue, onLibrary }: { content: CourseContent; state: LearningState; now: string; onCourse: (course: Course) => void; onStart: () => void; onMixed: () => void; onRescue: () => void; onLibrary: () => void }) {
   const cards = content.courses.flatMap((course) => course.cards)
   const stats = getDashboardStats(cards, state, now)
   const readiness = getReadiness(cards, state)
@@ -297,7 +334,7 @@ function Dashboard({ content, state, now, onCourse, onStart, onMixed, onRescue }
             <p>{recentCourse.description}</p>
             <div className="progress-label"><span>核心卡进度</span><strong>{learned} / {recentCore.length}</strong></div>
             <div className="progress-track"><span style={{ width: `${recentCore.length ? learned / recentCore.length * 100 : 0}%` }} /></div>
-            <div className="button-row"><button className="primary-button" onClick={onStart}>从核心卡开始</button><button className="secondary-button" onClick={() => onCourse(recentCourse)}>查看案件地图</button></div>
+            <div className="button-row"><button className="primary-button" onClick={onStart}>{state.activeRun && !state.activeRun.endedAt ? '继续本轮学习' : '从核心卡开始'}</button><button className="secondary-button" onClick={() => onCourse(recentCourse)}>查看案件地图</button></div>
           </section>
           <section className="panel">
             <div className="section-heading"><div><p className="eyebrow">训练模式</p><h2>按今天的状态选择</h2></div></div>
@@ -307,7 +344,7 @@ function Dashboard({ content, state, now, onCourse, onStart, onMixed, onRescue }
             </div>
           </section>
           <section className="panel">
-            <div className="section-heading"><h2>案件掌握</h2><button className="text-button" onClick={() => onCourse(recentCourse)}>查看全部 →</button></div>
+            <div className="section-heading"><h2>案件掌握</h2><button className="text-button" onClick={onLibrary}>查看全部 →</button></div>
             <div className="course-compact-list">
               {content.courses.slice(0, 5).map((course) => <CourseCompact key={course.id} course={course} state={state} onClick={() => onCourse(course)} />)}
             </div>
@@ -365,58 +402,65 @@ function CourseDetail({ course, state, chapterId, onChapter, onBack, onStart }: 
   </>
 }
 
-function StudyView({ state, cards, card, course, revealed, notice, canUndo, elapsed, timerRunning, checkedPoints, onBack, onReveal, onRate, onUndo, onTimer, onResetTimer, onCheck, onRetry }: {
+function StudyView({ state, cards, card, course, revealed, notice, canUndo, elapsed, timerRunning, checkedPoints, onBack, onReveal, onRate, onUndo, onTimer, onResetTimer, onCheck, onRetry, onHome }: {
   state: LearningState; cards: Card[]; card?: Card; course?: Course; revealed: boolean; notice: string; canUndo: boolean; elapsed: number; timerRunning: boolean; checkedPoints: number[]
-  onBack: () => void; onReveal: () => void; onRate: (rating: Rating, checklistPassed?: boolean) => void; onUndo: () => void; onTimer: () => void; onResetTimer: () => void; onCheck: (index: number) => void; onRetry: () => void
+  onHome: () => void; onBack: () => void; onReveal: () => void; onRate: (rating: Rating, checklistPassed?: boolean) => void; onUndo: () => void; onTimer: () => void; onResetTimer: () => void; onCheck: (index: number) => void; onRetry: () => void
 }) {
-  const touchStart = useRef<{ clientX: number; clientY: number } | null>(null)
-  const touchCurrent = useRef<{ clientX: number; clientY: number } | null>(null)
+  const gesture = useRef<{ x: number; y: number; direction?: 'horizontal' | 'vertical'; cardId: string } | null>(null)
+  const articleRef = useRef<HTMLElement>(null)
 
-  function handleTouchEnd(changedTouches: ArrayLike<{ clientX: number; clientY: number }>) {
-    const start = touchStart.current
-    const touch = changedTouches[0] ?? touchCurrent.current
-    touchStart.current = null
-    touchCurrent.current = null
-    if (!start || !touch || !card) return
-    const dx = touch.clientX - start.clientX
-    const dy = touch.clientY - start.clientY
-    if (Math.max(Math.abs(dx), Math.abs(dy)) < 60) return
-    if (Math.abs(dx) > Math.abs(dy)) {
-      if (revealed && card.kind !== 'summary') onRate(dx < 0 ? 'again' : 'good')
-    } else if (dy > 0) {
-      if (!revealed) onReveal()
-      else if (card.kind !== 'summary') onRate('fuzzy')
+  // A native, non-passive listener only prevents horizontal swipes. Vertical
+  // movement remains browser scrolling; cancellation never records an answer.
+  useEffect(() => {
+    const article = articleRef.current
+    if (!article) return
+    const move = (event: TouchEvent) => {
+      const start = gesture.current
+      if (!start) return
+      if (event.touches.length !== 1) { gesture.current = null; return }
+      const dx = Math.abs(event.touches[0].clientX - start.x)
+      const dy = Math.abs(event.touches[0].clientY - start.y)
+      if (!start.direction && Math.max(dx, dy) >= 10) start.direction = dx > dy * 1.5 ? 'horizontal' : 'vertical'
+      if (start.direction === 'horizontal' && event.cancelable) event.preventDefault()
     }
-  }
+    article.addEventListener('touchmove', move, { passive: false })
+    return () => { article.removeEventListener('touchmove', move); gesture.current = null }
+  }, [card?.id, state.attempts.length])
 
   if (!card || !state.activeRun || state.activeRun.endedAt) {
     const empty = !state.activeRun || state.activeRun.queue.length === 0 && state.sessions.at(-1)?.attemptIds.length === 0
     const sessionId = state.activeRun?.sessionId
     const weakCards = [...new Set(state.attempts.filter((attempt) => attempt.sessionId === sessionId && (attempt.rating !== 'good' || attempt.checklistPassed === false)).map((attempt) => attempt.cardId))]
-    return <section className="completion-card"><span className="completion-mark">✓</span><p className="eyebrow">{empty ? '当前没有到期卡片' : '本轮完成'}</p><h1>{empty ? '稍作休息，或选择其他训练' : '认真完成的每一步，都算数'}</h1><p>{empty ? '混合复习只安排到期卡；错卡急救只安排尚未稳定的薄弱卡。' : '学习记录已保存在本机，可返回首页查看进度。'}</p>{weakCards.length > 0 && <div className="weak-card-summary"><strong>需要重点巩固</strong>{weakCards.map((cardId) => <p key={cardId}>{cards.find((item) => item.id === cardId)?.prompt ?? cardId}</p>)}</div>}<div className="button-row centered"><button className="primary-button" onClick={onBack}>返回今日首页</button>{!empty && <button className="secondary-button" onClick={onRetry}>再来一轮</button>}</div></section>
+    return <section className="completion-card"><span className="completion-mark">✓</span><p className="eyebrow">{empty ? '当前没有到期卡片' : '本轮完成'}</p><h1>{empty ? '稍作休息，或选择其他训练' : '认真完成的每一步，都算数'}</h1><p>{empty ? '混合复习只安排到期卡；错卡急救只安排尚未稳定的薄弱卡。' : '学习记录已保存在本机，可返回首页查看进度。'}</p>{weakCards.length > 0 && <div className="weak-card-summary"><strong>需要重点巩固</strong>{weakCards.map((cardId) => <p key={cardId}>{cards.find((item) => item.id === cardId)?.prompt ?? cardId}</p>)}</div>}<div className="button-row centered"><button className="primary-button" onClick={onHome}>返回今日首页</button>{canUndo && <button className="secondary-button" onClick={onUndo}>撤销评分 ⌘Z</button>}{!empty && <button className="secondary-button" onClick={onRetry}>再来一轮</button>}</div></section>
   }
   const chapter = course?.chapters.find((item) => item.id === card.chapterId)
   const checklist = card.checklist ?? []
   const allChecked = checklist.length > 0 && checkedPoints.length === checklist.length
   return <div className={`study-shell${revealed ? ' revealed' : ''}`}>
-    <div className="study-topbar"><button className="back-button" onClick={onBack}>← 返回案件地图</button><div><span>{modeLabels[state.activeRun.mode]}</span><button className="text-button" disabled={!canUndo} onClick={onUndo}>撤销评分 ⌘Z</button></div></div>
+    <div className="study-topbar"><button className="back-button" onClick={onBack}>← {state.activeRun.mode === 'course' ? '返回案件地图' : '返回今日首页'}</button><div><span>{modeLabels[state.activeRun.mode]}</span><button className="text-button" disabled={!canUndo} onClick={onUndo}>撤销评分 ⌘Z</button></div></div>
     <div className="study-context"><span>{course?.title}</span><span>›</span><span>{chapter?.title}</span><span>›</span><span>{kindLabels[card.kind]}</span></div>
-    <p className="gesture-hint">手势版 2：左滑不会 · 右滑会 · 下滑模糊</p>
+    <p className="gesture-hint">左滑不会 · 右滑会 · 上下滑动浏览内容</p>
     <article
       className="study-card"
+      ref={articleRef}
       onTouchStart={(event) => {
-        const point = { clientX: event.touches[0].clientX, clientY: event.touches[0].clientY }
-        touchStart.current = point
-        touchCurrent.current = point
+        const target = event.target as HTMLElement
+        if (event.touches.length !== 1 || card.kind === 'summary' || target.closest('button, input, label, summary, a, details')) {
+          gesture.current = null
+          return
+        }
+        gesture.current = { x: event.touches[0].clientX, y: event.touches[0].clientY, cardId: card.id }
       }}
-      onTouchMove={(event) => {
-        const point = { clientX: event.touches[0].clientX, clientY: event.touches[0].clientY }
-        touchCurrent.current = point
-        const start = touchStart.current
-        if (start && Math.max(Math.abs(point.clientX - start.clientX), Math.abs(point.clientY - start.clientY)) >= 60) handleTouchEnd([point])
+      onTouchEnd={(event) => {
+        const start = gesture.current
+        gesture.current = null
+        const touch = event.changedTouches[0]
+        if (!start || !touch || event.touches.length || start.cardId !== card.id || start.direction === 'vertical') return
+        const dx = touch.clientX - start.x
+        const dy = touch.clientY - start.y
+        if (Math.abs(dx) >= 60 && Math.abs(dx) > Math.abs(dy) * 1.5) onRate(dx < 0 ? 'again' : 'good')
       }}
-      onTouchEnd={(event) => handleTouchEnd(event.changedTouches)}
-      onTouchCancel={() => handleTouchEnd([])}
+      onTouchCancel={() => { gesture.current = null }}
     >
       <div className="study-card-meta"><span className={`level-badge ${card.level}`}>{card.level === 'core' ? '核心卡' : card.level === 'advanced' ? '进阶检查' : '串联卡'}</span>{card.redLine && <span className="redline-badge">红线纠错</span>}<span>剩余 {state.activeRun.queue.length} 张</span></div>
       <h1>{card.prompt}</h1>
@@ -429,7 +473,7 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
       </div>}
     </article>
     {card.kind === 'summary' && <section className="timer-panel"><div><span>目标 {card.estimatedSeconds} 秒</span><strong>{String(Math.floor(elapsed / 60)).padStart(2, '0')}:{String(elapsed % 60).padStart(2, '0')}</strong></div><div className="button-row"><button className="secondary-button" onClick={onTimer}>{timerRunning ? '暂停计时' : '开始计时'}</button><button className="text-button" onClick={onResetTimer}>重置计时</button></div></section>}
-    {card.kind === 'summary' ? <div className={`rating-area${revealed ? '' : ' pending'}`}><p>{revealed ? '逐项核对，不用短答案匹配代替口头表达。' : '先显示核对点，再完成人工评价。'}</p><div className="rating-grid summary-ratings"><button className="rating-again" disabled={!revealed} onClick={() => onRate('again', false)}>未通过，稍后重现</button><button className="rating-good" disabled={!revealed || !allChecked} onClick={() => onRate('good', true)}>核对通过并完成</button></div></div> : <div className={`rating-area${revealed ? '' : ' pending'}`}><p>{revealed ? '3 秒内能完整说出，才按「会」。' : '先显示答案；评分按钮目前不可用。'}</p><div className="rating-grid"><button aria-label="不会" disabled={!revealed} className="rating-again" onClick={() => onRate('again')}><strong>不会</strong><small>← 约 3 张后重现</small></button><button aria-label="模糊" disabled={!revealed} className="rating-fuzzy" onClick={() => onRate('fuzzy')}><strong>模糊</strong><small>↓ 约 10 张后重现</small></button><button aria-label="会" disabled={!revealed} className="rating-good" onClick={() => onRate('good')}><strong>会</strong><small>→ 进入间隔复习</small></button></div></div>}
+    {card.kind === 'summary' ? <div className={`rating-area${revealed ? '' : ' pending'}`}><p>{revealed ? '逐项核对，不用短答案匹配代替口头表达。' : '先显示核对点，再完成人工评价。'}</p><div className="rating-grid summary-ratings"><button className="rating-again" disabled={!revealed} onClick={() => onRate('again', false)}>未通过，稍后重现</button><button className="rating-good" disabled={!revealed || !allChecked} onClick={() => onRate('good', true)}>核对通过并完成</button></div></div> : <div className={`rating-area${revealed ? '' : ' pending'}`}><p>{revealed ? '3 秒内能完整说出，才按「会」。' : '可直接自评，也可先查看答案。'}</p><div className="rating-grid"><button aria-label="不会" className="rating-again" onClick={() => onRate('again')}><strong>不会</strong><small>← 约 3 张后重现</small></button><button aria-label="模糊" className="rating-fuzzy" onClick={() => onRate('fuzzy')}><strong>模糊</strong><small>↓ 约 10 张后重现</small></button><button aria-label="会" className="rating-good" onClick={() => onRate('good')}><strong>会</strong><small>→ 进入间隔复习</small></button></div></div>}
     {notice && <p className="study-notice" role="status">{notice}</p>}
   </div>
 }
