@@ -32,3 +32,24 @@ describe('training entry points', () => {
     }
   })
 })
+
+describe('achievable formal readiness', () => {
+  it('can reach 100 percent after successfully completing all available formal training', async () => {
+    const { getReadiness } = await import('../src/domain/progress')
+    const { createInitialState, createRun, rateCard } = await import('../src/domain/scheduler')
+    const cards = courseContent.courses.flatMap((course) => course.cards)
+    let state = createInitialState(courseContent.contentVersion)
+    const now = '2026-11-04T12:00:00.000Z'
+    for (const card of cards) {
+      for (let i = 0; i < 2; i++) {
+        state = createRun(state, { sessionId: `${card.id}-${i}`, mode: 'course', queue: [card.id], startedAt: now })
+        state = rateCard(state, card, { rating: 'good', revealedAt: now, ratedAt: now, ...(card.kind === 'summary' ? { checklistPassed: true } : {}) })
+      }
+    }
+    const result = getReadiness(cards, state)
+    expect(result.status).toBe('ready')
+    expect(result.percent).toBe(100)
+    expect(result.checks.every((check) => check.passed)).toBe(true)
+    expect(result.next).toBeUndefined()
+  })
+})

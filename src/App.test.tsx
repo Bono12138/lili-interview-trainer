@@ -249,3 +249,48 @@ describe('completion navigation', () => {
     expect(screen.getByRole('heading', { name: '案件课程' })).toBeInTheDocument()
   })
 })
+
+describe('motivating and actionable progress', () => {
+  it('tracks distinct daily practice, rewards mistakes honestly and restores rewards on undo', async () => {
+    const user = userEvent.setup()
+    const { storage } = await startCore(user)
+    expect(screen.getByRole('progressbar', { name: '本轮进度' })).toHaveAttribute('aria-valuenow', '0')
+    await user.click(screen.getByRole('button', { name: '不会' }))
+    expect(screen.getByRole('status')).toHaveTextContent('+5 练习值')
+    expect(screen.getByRole('progressbar', { name: '本轮进度' })).toHaveAttribute('aria-valuenow', '1')
+    await user.click(screen.getByRole('button', { name: /撤销评分/ }))
+    await user.click(screen.getByRole('button', { name: '今日' }))
+    expect(screen.getByRole('progressbar', { name: '今日练习目标' })).toHaveAttribute('aria-valuenow', '0')
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
+  })
+  it('shows readiness above the course list and starts the suggested exact practice', async () => {
+    const user = userEvent.setup()
+    render(<App content={content} storage={memoryStorage()} />)
+    expect(screen.getByRole('progressbar', { name: '训练准备进度' })).toHaveAttribute('aria-valuenow', '0')
+    expect(screen.getByRole('button', { name: '继续核心回忆' })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: '继续核心回忆' }))
+    expect(screen.getByText('第一张核心卡')).toBeInTheDocument()
+  })
+  it('exposes data tools using a compact mobile toggle without duplicating export controls', async () => {
+    const user = userEvent.setup()
+    render(<App content={content} storage={memoryStorage()} />)
+    const toggle = screen.getByRole('button', { name: '学习数据与备份' })
+    expect(toggle).toHaveAttribute('aria-expanded', 'false')
+    await user.click(toggle)
+    expect(toggle).toHaveAttribute('aria-expanded', 'true')
+    expect(screen.getAllByRole('button', { name: '导出学习备份' })).toHaveLength(1)
+  })
+})
+
+describe('compact navigation state', () => {
+  it('closes the backup menu on navigation and identifies the current training mode', async () => {
+    const user = userEvent.setup()
+    render(<App content={content} storage={memoryStorage()} />)
+    await user.click(screen.getByRole('button', { name: '学习数据与备份' }))
+    await user.click(screen.getByRole('button', { name: '案件课程' }))
+    expect(screen.getByRole('button', { name: '学习数据与备份' })).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.getByRole('button', { name: '案件课程' })).toHaveAttribute('aria-current', 'page')
+    await user.click(screen.getByRole('button', { name: '混合复习' }))
+    expect(screen.getByRole('button', { name: '混合复习' })).toHaveAttribute('aria-current', 'page')
+  })
+})

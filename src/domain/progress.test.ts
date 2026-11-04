@@ -120,3 +120,38 @@ describe('cross-course mixed practice', () => {
     expect(buildQueue(dueCards, state, { mode: 'mixed', now })).toEqual(['a1', 'b1', 'a2', 'b2'])
   })
 })
+
+describe('actionable readiness progress', () => {
+  it('shows exact partial coverage and the next unlearned card location', () => {
+    const state = createInitialState('v1')
+    const second = { ...cards[0], id: 'core-2' }
+    state.progress['core-1'] = progress('learning', 'good')
+    const result = getReadiness([cards[0], second, cards[1]], state)
+    expect(result.checks.find((c) => c.id === 'core')).toMatchObject({ completed: 1, total: 2, passed: false })
+    expect(result.percent).toBeGreaterThan(0)
+    expect(result.percent).toBeLessThan(100)
+    expect(result.next).toMatchObject({ set: 'core', courseId: 'labor-arbitration', chapterId: 'case-map' })
+  })
+  it('uses the latest check result instead of keeping an old success after failure', () => {
+    const state = createInitialState('v1')
+    const before = progress('learning')
+    state.attempts = ['good', 'again'].map((rating, i) => ({ attemptId: `${i}`, sessionId: 's1', cardId: 'advanced-1', courseId: 'labor-arbitration', chapterId: 'case-map', mode: 'course' as const, rating: rating as 'good' | 'again', revealedAt: now, ratedAt: now, responseMs: 0, before, after: before }))
+    expect(getReadiness(cards.slice(0, 2), state).checks.find((c) => c.id === 'chapters')).toMatchObject({ completed: 0, total: 1, passed: false })
+  })
+  it('does not show 100 percent when a large almost-complete course still has one missing card', () => {
+    const large = Array.from({ length: 1000 }, (_, i) => ({ ...cards[0], id: `large-${i}` }))
+    const state = createInitialState('v1')
+    for (const card of large.slice(0, -1)) state.progress[card.id] = { ...progress('learning', 'good'), cardId: card.id }
+    expect(getReadiness(large, state).percent).toBeLessThan(100)
+    expect(getReadiness(large, createInitialState('v1')).percent).toBe(0)
+  })
+})
+
+describe('readiness follows the learning path', () => {
+  it('recommends a chapter check after covering that chapter, before more core in other chapters', () => {
+    const state = createInitialState('v1')
+    const later = { ...cards[0], id: 'later', chapterId: 'legal-issues' }
+    state.progress['core-1'] = progress('learning', 'good')
+    expect(getReadiness([cards[0], cards[1], later], state).next).toMatchObject({ set: 'assessment', chapterId: 'case-map' })
+  })
+})

@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Achievements, DailyPractice, ProgressTrack, ReadinessPanel } from './LearningProgress'
+import { getPracticeSummary, localDateKey, type PracticeSummary } from './domain/motivation'
+import type { ReadinessAction } from './domain/progress'
 import { courseContent } from './content'
 import { buildQueue, getChapterPerformance, getDashboardStats, getReadiness, isRescueCard } from './domain/progress'
 import { exportBackup, loadLearningState, parseBackup, saveLearningState, STORAGE_KEY, type StorageLike } from './domain/persistence'
@@ -36,11 +39,15 @@ export default function App({ content = courseContent, storage = window.localSto
   const [timerRunning, setTimerRunning] = useState(false)
   const [checkedPoints, setCheckedPoints] = useState<number[]>([])
   const [importError, setImportError] = useState('')
+  const [mobileDataOpen, setMobileDataOpen] = useState(false)
   const importRef = useRef<HTMLInputElement>(null)
 
   const selectedCourse = content.courses.find((course) => course.id === selectedCourseId) ?? content.courses[0]
   const currentCard = state?.activeRun?.queue[0] ? cardById.get(state.activeRun.queue[0]) : undefined
   const currentCourse = content.courses.find((course) => course.id === currentCard?.courseId)
+
+  const todayKey = localDateKey(now())
+  const practice = useMemo(() => state ? getPracticeSummary(cards, state, new Date(`${todayKey}T12:00:00`)) : null, [cards, state, todayKey])
 
   const [saveError, setSaveError] = useState('')
   useEffect(() => {
@@ -55,6 +62,7 @@ export default function App({ content = courseContent, storage = window.localSto
 
   useEffect(() => {
     window.scrollTo?.(0, 0)
+    setMobileDataOpen(false)
   }, [view])
 
   useEffect(() => {
@@ -101,8 +109,13 @@ export default function App({ content = courseContent, storage = window.localSto
     setElapsed(0)
     setTimerRunning(false)
     setCheckedPoints([])
-    setNotice(rating === 'good' ? '已记录为「会」' : `已记录为「${rating === 'again' ? '不会' : '模糊'}」，队列稍后重现`)
-  }, [checkedPoints, currentCard, elapsed, now, revealed, revealedAt, state])
+    const beforePractice = getPracticeSummary(cards, state, now())
+    const afterPractice = getPracticeSummary(cards, next, now())
+    const reward = afterPractice.totalXP - beforePractice.totalXP
+    const goal = !beforePractice.goalReached && afterPractice.goalReached
+    const feedback = rating === 'good' ? '已记录为「会」' : `已记录为「${rating === 'again' ? '不会' : '模糊'}」，队列稍后重现`
+    setNotice(`${feedback}${reward > 0 ? ` · +${reward} 练习值` : ''}${goal ? ' · 今日目标达成！' : ` · 今日 ${afterPractice.todayCards}/${afterPractice.dailyGoal} 张`}`)
+  }, [cards, checkedPoints, currentCard, elapsed, now, revealed, revealedAt, state])
 
   const undo = useCallback(() => {
     if (!undoSnapshot) return
@@ -230,20 +243,21 @@ export default function App({ content = courseContent, storage = window.localSto
   }
 
   return (
-    <div className="app-layout">
+    <div className={`app-layout${view === 'study' ? ' is-studying' : ''}`}>
       <aside className="sidebar">
         <button className="brand" onClick={goDashboard} aria-label="返回今日首页">
           <span className="brand-mark">黎</span>
           <span><strong>李黎</strong><small>面试训练器</small></span>
         </button>
+        <button className="mobile-data-toggle" aria-label="学习数据与备份" aria-expanded={mobileDataOpen} aria-controls="learning-data-tools" onClick={() => setMobileDataOpen((open) => !open)}>备份</button>
         <nav className="main-nav" aria-label="主导航">
-          <button aria-label="今日" className={view === 'dashboard' ? 'active' : ''} onClick={goDashboard}><span>⌂</span>今日</button>
-          <button aria-label="案件课程" className={view === 'courses' || view === 'course' ? 'active' : ''} onClick={() => setView('courses')}><span>▤</span>案件课程</button>
-          <button aria-label="混合复习" onClick={() => startRun('mixed')}><span>⤨</span>混合复习</button>
-          <button aria-label="错卡急救" onClick={() => startRun('rescue')}><span>!</span>错卡急救</button>
-          <button aria-label="成长记录" className={view === 'growth' ? 'active' : ''} onClick={() => setView('growth')}><span>↗</span>成长记录</button>
+          <button aria-label="今日" aria-current={view === 'dashboard' ? 'page' : undefined} className={view === 'dashboard' ? 'active' : ''} onClick={goDashboard}><span>⌂</span>今日</button>
+          <button aria-label="案件课程" aria-current={view === 'courses' || view === 'course' || view === 'study' && state.activeRun?.mode === 'course' ? 'page' : undefined} className={view === 'courses' || view === 'course' || view === 'study' && state.activeRun?.mode === 'course' ? 'active' : ''} onClick={() => setView('courses')}><span>▤</span>案件课程</button>
+          <button aria-label="混合复习" aria-current={view === 'study' && state.activeRun?.mode === 'mixed' ? 'page' : undefined} className={view === 'study' && state.activeRun?.mode === 'mixed' ? 'active' : ''} onClick={() => startRun('mixed')}><span>⤨</span>混合复习</button>
+          <button aria-label="错卡急救" aria-current={view === 'study' && state.activeRun?.mode === 'rescue' ? 'page' : undefined} className={view === 'study' && state.activeRun?.mode === 'rescue' ? 'active' : ''} onClick={() => startRun('rescue')}><span>!</span>错卡急救</button>
+          <button aria-label="成长记录" aria-current={view === 'growth' ? 'page' : undefined} className={view === 'growth' ? 'active' : ''} onClick={() => setView('growth')}><span>↗</span>成长记录</button>
         </nav>
-        <div className="sidebar-bottom">
+        <div id="learning-data-tools" className="sidebar-bottom" data-mobile-open={mobileDataOpen}>
           <div className="local-status"><span className="status-dot" />数据仅保存在本机</div>
           <button className="text-button" onClick={downloadBackup}>导出学习备份</button>
           <button className="text-button" onClick={() => importRef.current?.click()}>导入 JSON 备份</button>
@@ -262,7 +276,7 @@ export default function App({ content = courseContent, storage = window.localSto
         {view === 'dashboard' && <Dashboard content={content} state={state} now={now().toISOString()} onCourse={openCourse} onLibrary={() => setView('courses')} onStart={() => {
           if (state.activeRun && !state.activeRun.endedAt && state.activeRun.queue.length) setView('study')
           else startRun('course', 'core', state.preferences.lastCourseId)
-        }} onMixed={() => startRun('mixed')} onRescue={() => startRun('rescue')} />}
+        }} onMixed={() => startRun('mixed')} onRescue={() => startRun('rescue')} practice={practice!} onPractice={(action) => startRun(action.mode, action.set, action.courseId, action.chapterId)} />}
         {view === 'courses' && <CourseLibrary content={content} state={state} onCourse={openCourse} />}
         {view === 'course' && selectedCourse && <>
           <label className="advanced-toggle"><input type="checkbox" checked={state.preferences.includeAdvanced} onChange={(event) => setState({ ...state, preferences: { ...state.preferences, includeAdvanced: event.target.checked } })} />包含进阶卡</label>
@@ -271,6 +285,7 @@ export default function App({ content = courseContent, storage = window.localSto
         {view === 'study' && (
           <StudyView
             state={state}
+            practice={practice!}
             cards={cards}
             card={currentCard}
             course={currentCourse}
@@ -298,13 +313,13 @@ export default function App({ content = courseContent, storage = window.localSto
             onRetry={() => startRun(state.activeRun?.mode ?? 'course', state.activeRun?.cardSet ?? 'core', state.activeRun?.courseId, state.activeRun?.chapterId)}
           />
         )}
-        {view === 'growth' && <GrowthView content={content} state={state} />}
+        {view === 'growth' && <GrowthView content={content} state={state} practice={practice!} onPractice={(action) => startRun(action.mode, action.set, action.courseId, action.chapterId)} />}
       </main>
     </div>
   )
 }
 
-function Dashboard({ content, state, now, onCourse, onStart, onMixed, onRescue, onLibrary }: { content: CourseContent; state: LearningState; now: string; onCourse: (course: Course) => void; onStart: () => void; onMixed: () => void; onRescue: () => void; onLibrary: () => void }) {
+function Dashboard({ content, state, now, onCourse, onStart, onMixed, onRescue, onLibrary, practice, onPractice }: { practice: PracticeSummary; onPractice: (action: ReadinessAction) => void; content: CourseContent; state: LearningState; now: string; onCourse: (course: Course) => void; onStart: () => void; onMixed: () => void; onRescue: () => void; onLibrary: () => void }) {
   const cards = content.courses.flatMap((course) => course.cards)
   const stats = getDashboardStats(cards, state, now)
   const readiness = getReadiness(cards, state)
@@ -322,6 +337,7 @@ function Dashboard({ content, state, now, onCourse, onStart, onMixed, onRescue, 
         <div><p className="eyebrow">{date}</p><h1>今天，再向前一步。</h1><p>把案件讲清楚，把每一个不确定变成确定。</p></div>
         <button className="primary-button" onClick={onStart}>继续学习 <span>→</span></button>
       </header>
+      <div className="practice-overview"><DailyPractice practice={practice} onStart={onStart} /><ReadinessPanel readiness={readiness} onPractice={onPractice} /></div>
       <section className="metric-grid" aria-label="学习概览">
         <Metric label="今日待复习" value={stats.due} suffix="张" accent />
         <Metric label="学习中" value={stats.learning} suffix="张" />
@@ -357,12 +373,7 @@ function Dashboard({ content, state, now, onCourse, onStart, onMixed, onRescue, 
           </section>
         </div>
         <aside className="dashboard-side-column">
-          <section className="panel readiness-card">
-            <p className="eyebrow">面试准备度</p>
-            <div className="readiness-ring"><span>{readiness.label}</span></div>
-            <h3>{readiness.status === 'unassessed' ? '从第一张卡开始' : readiness.label}</h3>
-            <p>{readiness.disclaimer}</p>
-          </section>
+          <Achievements practice={practice} />
           <section className="panel tip-card"><span>小提示</span><h3>完整说出，才算真的会。</h3><p>3 秒内能完整说出，才按「会」。模糊并不可耻，它是下一步的路标。</p></section>
         </aside>
       </div>
@@ -403,8 +414,8 @@ function CourseDetail({ course, state, chapterId, onChapter, onBack, onStart }: 
   </>
 }
 
-function StudyView({ state, cards, card, course, revealed, notice, canUndo, elapsed, timerRunning, checkedPoints, onBack, onReveal, onRate, onUndo, onTimer, onResetTimer, onCheck, onRetry, onHome }: {
-  state: LearningState; cards: Card[]; card?: Card; course?: Course; revealed: boolean; notice: string; canUndo: boolean; elapsed: number; timerRunning: boolean; checkedPoints: number[]
+function StudyView({ state, practice, cards, card, course, revealed, notice, canUndo, elapsed, timerRunning, checkedPoints, onBack, onReveal, onRate, onUndo, onTimer, onResetTimer, onCheck, onRetry, onHome }: {
+  practice: PracticeSummary; state: LearningState; cards: Card[]; card?: Card; course?: Course; revealed: boolean; notice: string; canUndo: boolean; elapsed: number; timerRunning: boolean; checkedPoints: number[]
   onHome: () => void; onBack: () => void; onReveal: () => void; onRate: (rating: Rating, checklistPassed?: boolean) => void; onUndo: () => void; onTimer: () => void; onResetTimer: () => void; onCheck: (index: number) => void; onRetry: () => void
 }) {
   const gesture = useRef<{ x: number; y: number; direction?: 'horizontal' | 'down' | 'vertical'; cardId: string } | null>(null)
@@ -460,7 +471,7 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
     const empty = !state.activeRun || state.activeRun.queue.length === 0 && state.sessions.at(-1)?.attemptIds.length === 0
     const sessionId = state.activeRun?.sessionId
     const weakCards = [...new Set(state.attempts.filter((attempt) => attempt.sessionId === sessionId && (attempt.rating !== 'good' || attempt.checklistPassed === false)).map((attempt) => attempt.cardId))]
-    return <section className="completion-card"><span className="completion-mark">✓</span><p className="eyebrow">{empty ? '当前没有到期卡片' : '本轮完成'}</p><h1>{empty ? '稍作休息，或选择其他训练' : '认真完成的每一步，都算数'}</h1><p>{empty ? '混合复习只安排到期卡；错卡急救只安排尚未稳定的薄弱卡。' : '学习记录已保存在本机，可返回首页查看进度。'}</p>{weakCards.length > 0 && <div className="weak-card-summary"><strong>需要重点巩固</strong>{weakCards.map((cardId) => <p key={cardId}>{cards.find((item) => item.id === cardId)?.prompt ?? cardId}</p>)}</div>}<div className="button-row centered"><button className="primary-button" onClick={onHome}>返回今日首页</button>{canUndo && <button className="secondary-button" onClick={onUndo}>撤销评分 ⌘Z</button>}{!empty && <button className="secondary-button" onClick={onRetry}>再来一轮</button>}</div></section>
+    return <section className="completion-card"><span className="completion-mark">✓</span><p className="eyebrow">{empty ? '当前没有到期卡片' : '本轮完成'}</p><h1>{empty ? '稍作休息，或选择其他训练' : '认真完成的每一步，都算数'}</h1><p>{empty ? '混合复习只安排到期卡；错卡急救只安排尚未稳定的薄弱卡。' : '学习记录已保存在本机，可返回首页查看进度。'}</p>{weakCards.length > 0 && <div className="weak-card-summary"><strong>需要重点巩固</strong>{weakCards.map((cardId) => <p key={cardId}>{cards.find((item) => item.id === cardId)?.prompt ?? cardId}</p>)}</div>}<div className="completion-practice"><strong>今日已练 {practice.todayCards} / {practice.dailyGoal} 张</strong><span>{practice.goalReached ? '今日目标达成 ✓' : `再练 ${Math.max(0, practice.dailyGoal - practice.todayCards)} 张不同卡就达成目标`}</span><ProgressTrack label="今日练习目标" value={practice.todayCards} max={practice.dailyGoal} /><p>累计 {practice.totalXP} 练习值 · 连续学习 {practice.streak} 天</p></div><div className="button-row centered"><button className="primary-button" onClick={onHome}>返回今日首页</button>{canUndo && <button className="secondary-button" onClick={onUndo}>撤销评分 ⌘Z</button>}{!empty && <button className="secondary-button" onClick={onRetry}>再来一轮</button>}</div></section>
   }
   const chapter = course?.chapters.find((item) => item.id === card.chapterId)
   const checklist = card.checklist ?? []
@@ -468,6 +479,7 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
   return <div className={`study-shell${revealed ? ' revealed' : ''}`}>
     <div className="study-topbar"><button className="back-button" onClick={onBack}>← {state.activeRun.mode === 'course' ? '返回案件地图' : '返回今日首页'}</button><div><span>{modeLabels[state.activeRun.mode]}</span><button className="text-button" disabled={!canUndo} onClick={onUndo}>撤销评分 ⌘Z</button></div></div>
     <div className="study-context"><span>{course?.title}</span><span>›</span><span>{chapter?.title}</span><span>›</span><span>{kindLabels[card.kind]}</span></div>
+    <div className="session-progress"><div><span>本轮已评 <strong>{state.sessions.find((session) => session.id === state.activeRun!.sessionId)?.attemptIds.length ?? 0}</strong> 次</span><span>今日 {practice.todayCards}/{practice.dailyGoal} 张 · Lv.{practice.level}</span></div><ProgressTrack label="本轮进度" value={state.sessions.find((session) => session.id === state.activeRun!.sessionId)?.attemptIds.length ?? 0} max={(state.sessions.find((session) => session.id === state.activeRun!.sessionId)?.attemptIds.length ?? 0) + state.activeRun.queue.length} /></div>
     <p className="gesture-hint">{card.kind === 'summary' ? '在答案区域内滚动核对，逐项完成陈述' : '左滑不会 · 右滑会 · 下滑模糊；答案内可滚动'}</p>
     <div className="study-deck">
     <article
@@ -478,7 +490,7 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
       ref={articleRef}
       onTouchStart={(event) => {
         const target = event.target as HTMLElement
-        if (event.touches.length !== 1 || card.kind === 'summary' || target.closest('button, input, label, summary, a, details, .answer-content')) {
+        if (event.touches.length !== 1 || card.kind === 'summary' || target.closest('button, input, label, summary, a, details, .answer-content') || (() => { const prompt = target.closest('h1'); return prompt ? prompt.scrollHeight > prompt.clientHeight : false })()) {
           gesture.current = null
           resetSwipeVisual()
           return
@@ -508,7 +520,7 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
       <div className="swipe-preview swipe-good" aria-hidden="true"><strong>会</strong><span className="swipe-continue">继续右滑</span><span className="swipe-release">松手标记</span></div>
       <div className="swipe-preview swipe-fuzzy" aria-hidden="true"><strong>模糊</strong><span className="swipe-continue">继续下滑</span><span className="swipe-release">松手标记</span></div>
       <div className="study-card-meta"><span className={`level-badge ${card.level}`}>{card.level === 'core' ? '核心卡' : card.level === 'advanced' ? '进阶检查' : '串联卡'}</span>{card.redLine && <span className="redline-badge">红线纠错</span>}<span>剩余 {state.activeRun.queue.length} 张</span></div>
-      <h1>{card.prompt}</h1>
+      <h1 className="study-prompt">{card.prompt}</h1>
       {!revealed ? <div className="answer-placeholder"><span>先在心里完整回答</span><button className="reveal-button" aria-label={card.kind === 'summary' ? '显示核对点' : '显示答案'} onClick={onReveal}>{card.kind === 'summary' ? '显示核对点' : '显示答案'}<small>Space / ↓</small></button></div> : <div className="answer-content" role="region" aria-label="答案与材料，可在区域内滚动" tabIndex={0}>
         {card.answer && <><p className="answer-label">参考答案</p><p className="answer-text">{card.answer}</p></>}
         {card.answerPoints && <ul>{card.answerPoints.map((point) => <li key={point}>{point}</li>)}</ul>}
@@ -524,9 +536,9 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
   </div>
 }
 
-function GrowthView({ content, state }: { content: CourseContent; state: LearningState }) {
+function GrowthView({ content, state, practice, onPractice }: { content: CourseContent; state: LearningState; practice: PracticeSummary; onPractice: (action: ReadinessAction) => void }) {
   const cards = content.courses.flatMap((course) => course.cards)
   const readiness = getReadiness(cards, state)
   const recent = [...state.attempts].reverse().slice(0, 12)
-  return <><header className="page-header"><div><p className="eyebrow">真实记录 · 可解释反馈</p><h1>成长记录</h1><p>关注从模糊到稳定的变化，而不是刷卡数量。</p></div></header><div className="growth-grid"><section className="panel"><div className="section-heading"><h2>准备度核对</h2><span className="soft-badge">{readiness.label}</span></div>{readiness.checks.map((check) => <div className="readiness-check" key={check.id}><span className={check.passed ? 'check-pass' : 'check-pending'}>{check.passed ? '✓' : '○'}</span>{check.label}</div>)}<p className="disclaimer">{readiness.disclaimer}</p></section><section className="panel"><h2>最近学习</h2>{recent.length === 0 ? <p className="empty-copy">完成第一次评分后，这里会留下可回查的学习轨迹。</p> : <div className="attempt-list">{recent.map((attempt) => <div key={attempt.attemptId}><span className={`attempt-rating ${attempt.rating}`}>{attempt.rating === 'good' ? '会' : attempt.rating === 'fuzzy' ? '模糊' : '不会'}</span><span><strong>{cards.find((card) => card.id === attempt.cardId)?.prompt ?? attempt.cardId}</strong><small>{new Intl.DateTimeFormat('zh-CN', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(attempt.ratedAt))} · {Math.round(attempt.responseMs / 1000)} 秒</small></span></div>)}</div>}</section></div></>
+  return <><header className="page-header"><div><h1>看得见的进步</h1><p>从第一次开口，到把整案讲清楚。</p></div></header><div className="practice-overview"><DailyPractice practice={practice} /><ReadinessPanel readiness={readiness} onPractice={onPractice} /></div><div className="growth-grid"><Achievements practice={practice} /><section className="panel"><h2>最近学习</h2>{recent.length === 0 ? <p className="empty-copy">完成第一次评分后，这里会留下可回查的学习轨迹。</p> : <div className="attempt-list">{recent.map((attempt) => <div key={attempt.attemptId}><span className={`attempt-rating ${attempt.rating}`}>{attempt.rating === 'good' ? '会' : attempt.rating === 'fuzzy' ? '模糊' : '不会'}</span><span><strong>{cards.find((card) => card.id === attempt.cardId)?.prompt ?? attempt.cardId}</strong><small>{new Intl.DateTimeFormat('zh-CN', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(attempt.ratedAt))} · {Math.round(attempt.responseMs / 1000)} 秒</small></span></div>)}</div>}</section></div></>
 }
