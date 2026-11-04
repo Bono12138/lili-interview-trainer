@@ -369,6 +369,24 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
   state: LearningState; cards: Card[]; card?: Card; course?: Course; revealed: boolean; notice: string; canUndo: boolean; elapsed: number; timerRunning: boolean; checkedPoints: number[]
   onBack: () => void; onReveal: () => void; onRate: (rating: Rating, checklistPassed?: boolean) => void; onUndo: () => void; onTimer: () => void; onResetTimer: () => void; onCheck: (index: number) => void; onRetry: () => void
 }) {
+  const touchStart = useRef<{ x: number; y: number } | null>(null)
+
+  function handleTouchEnd(changedTouches: ArrayLike<{ clientX: number; clientY: number }>) {
+    const start = touchStart.current
+    const touch = changedTouches[0]
+    touchStart.current = null
+    if (!start || !touch || !card) return
+    const dx = touch.clientX - start.x
+    const dy = touch.clientY - start.y
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 60) return
+    if (Math.abs(dx) > Math.abs(dy)) {
+      if (revealed && card.kind !== 'summary') onRate(dx < 0 ? 'again' : 'good')
+    } else if (dy > 0) {
+      if (!revealed) onReveal()
+      else if (card.kind !== 'summary') onRate('fuzzy')
+    }
+  }
+
   if (!card || !state.activeRun || state.activeRun.endedAt) {
     const empty = !state.activeRun || state.activeRun.queue.length === 0 && state.sessions.at(-1)?.attemptIds.length === 0
     const sessionId = state.activeRun?.sessionId
@@ -378,10 +396,11 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
   const chapter = course?.chapters.find((item) => item.id === card.chapterId)
   const checklist = card.checklist ?? []
   const allChecked = checklist.length > 0 && checkedPoints.length === checklist.length
-  return <div className="study-shell">
+  return <div className={`study-shell${revealed ? ' revealed' : ''}`}>
     <div className="study-topbar"><button className="back-button" onClick={onBack}>← 返回案件地图</button><div><span>{modeLabels[state.activeRun.mode]}</span><button className="text-button" disabled={!canUndo} onClick={onUndo}>撤销评分 ⌘Z</button></div></div>
     <div className="study-context"><span>{course?.title}</span><span>›</span><span>{chapter?.title}</span><span>›</span><span>{kindLabels[card.kind]}</span></div>
-    <article className="study-card">
+    <p className="gesture-hint">滑动卡片：左滑不会 · 右滑会 · 下滑模糊</p>
+    <article className="study-card" onTouchStart={(event) => { touchStart.current = { x: event.touches[0].clientX, y: event.touches[0].clientY } }} onTouchEnd={(event) => handleTouchEnd(event.changedTouches)}>
       <div className="study-card-meta"><span className={`level-badge ${card.level}`}>{card.level === 'core' ? '核心卡' : card.level === 'advanced' ? '进阶检查' : '串联卡'}</span>{card.redLine && <span className="redline-badge">红线纠错</span>}<span>剩余 {state.activeRun.queue.length} 张</span></div>
       <h1>{card.prompt}</h1>
       {!revealed ? <div className="answer-placeholder"><span>先在心里完整回答</span><button className="reveal-button" aria-label={card.kind === 'summary' ? '显示核对点' : '显示答案'} onClick={onReveal}>{card.kind === 'summary' ? '显示核对点' : '显示答案'}<small>Space / ↓</small></button></div> : <div className="answer-content">
