@@ -39,9 +39,10 @@ npm run build          # 类型检查＋生产构建
 ## 接手开发前必读
 
 1. `AGENTS.md`：协作约束与 TDD 工作方式。
-2. `docs/SPEC.md`：产品范围、交互、复习算法、成长记录和验收标准。
-3. `docs/CONTENT_SPEC.md`：课程内容结构、数据契约和编辑规则。
-4. `docs/TDD_PLAN.md`：测试分层、实施顺序和关键验收场景。
+2. `docs/PROJECT_STATE.md`：项目背景、需求决策、当前交付状态、数据规则和更新流程。
+3. `docs/SPEC.md`：产品范围、交互、复习算法、成长记录和验收标准。
+4. `docs/CONTENT_SPEC.md`：课程内容结构、数据契约和编辑规则。
+5. `docs/TDD_PLAN.md`：测试分层、实施顺序和关键验收场景。
 
 ## 目录
 
