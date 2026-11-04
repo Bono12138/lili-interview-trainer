@@ -1,0 +1,63 @@
+# 李黎面试训练器
+
+面向李黎实习面试的 Mac 本地训练应用。以十个实习案件为课程，结合原子记忆卡、章节检查、间隔重复、案件串联和成长记录。
+
+> 当前状态：第一版已完成。十门正式课程共 371 张卡，支持逐案、混合、错卡训练，章节检查、串联计时、撤销、本地恢复、成长记录及 JSON 导入导出。
+
+## 技术栈
+
+- React + TypeScript + Vite
+- Vitest + Testing Library
+- 本地持久化，无后端、无账号、无公网依赖
+
+## 快速开始
+
+```bash
+npm install
+npm run dev -- --host 127.0.0.1 --port 7100
+```
+
+Vite 脚本会转发命令行中的 host、port 等参数。
+
+## 常用命令
+
+```bash
+npm run dev            # 本地开发
+npm test               # 单元／集成测试，单次运行
+npm run test:watch     # TDD 监听模式
+npm run test:coverage  # 覆盖率
+npm run typecheck      # TypeScript 检查
+npm run build          # 类型检查＋生产构建
+```
+
+## 接手开发前必读
+
+1. `AGENTS.md`：协作约束与 TDD 工作方式。
+2. `docs/SPEC.md`：产品范围、交互、复习算法、成长记录和验收标准。
+3. `docs/CONTENT_SPEC.md`：课程内容结构、数据契约和编辑规则。
+4. `docs/TDD_PLAN.md`：测试分层、实施顺序和关键验收场景。
+
+## 目录
+
+```text
+.
+├── docs/                 # 产品与测试规格
+├── src/
+│   ├── domain/           # 内容校验、调度、进度与持久化纯函数及测试
+│   ├── content/          # 正式课程导入
+│   ├── test/             # 测试初始化
+│   ├── App.tsx           # 学习、课程、首页与成长记录界面
+│   ├── App.test.tsx      # 键盘、触摸、恢复与计时集成测试
+│   └── main.tsx
+├── content/              # 十门正式课程 JSON、清单与内容验收测试
+├── index.html
+├── package.json
+└── vite.config.ts
+```
+
+## 重要边界
+
+- 正式卡片只从已核验实习材料整理；内容升级保持卡片 ID 稳定，不清空既有进度。
+- 不开发机考／笔试题库，不做政治题刷题模块。
+- 不追求预测考官原题；系统评分只是学习反馈，不是官方合格预测。
+- 第一版不做原生 DMG、账号、云同步、公网部署或 AI 自动出题。

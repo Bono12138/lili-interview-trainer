@@ -1,0 +1,239 @@
+{
+  "id": "labor-arbitration",
+  "title": "劳动争议仲裁",
+  "description": "围绕刘家文与深圳市超网科技有限公司社保差额补偿争议，训练仲裁请求、协议效力、受案范围、证据及本人辅助工作。",
+  "riskNote": "仲裁驳回申请人的全部请求，不代表社保补缴义务消失；公司已付款及款项组成属于公司答辩主张，不得全部说成仲裁委认定事实。",
+  "chapters": [
+    { "id": "case-map", "title": "案件地图" },
+    { "id": "evidence-contribution", "title": "证据与本人工作" },
+    { "id": "legal-issues", "title": "法律争点" },
+    { "id": "review-comparison", "title": "复盘与关联案件" },
+    { "id": "interview-performance", "title": "面试表达与压力追问" }
+  ],
+  "cards": [
+    {
+      "id": "labor.map.001", "courseId": "labor-arbitration", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案申请人与被申请人分别是谁？",
+      "answer": "申请人是刘家文，被申请人是深圳市超网科技有限公司。",
+      "tags": ["当事人"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第1页" }], "estimatedSeconds": 15
+    },
+    {
+      "id": "labor.map.002", "courseId": "labor-arbitration", "chapterId": "case-map", "level": "core", "kind": "cloze",
+      "prompt": "刘家文于____入职，担任____，双方于____解除劳动关系。",
+      "answerPoints": ["2015年3月2日", "高级设计师", "2025年11月22日"],
+      "tags": ["劳动关系", "时间线"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第1—2页，相关案情" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "labor.map.003", "courseId": "labor-arbitration", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "协商解除时形成了哪三份关键文件？",
+      "answerPoints": ["《解除劳动关系协议书》", "《离职结算单》", "《承诺书》"],
+      "tags": ["离职文件", "证据"], "sourceRefs": [{ "label": "劳动争议案件简要", "path": "实习材料/网超/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "labor.map.004", "courseId": "labor-arbitration", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "刘家文的仲裁请求是什么？",
+      "answer": "要求公司根据解除协议支付2015年3月2日至2025年11月22日期间社保差额补偿147492.60元。",
+      "tags": ["仲裁请求", "金额"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第1—2页，仲裁请求及相关案情" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.map.005", "courseId": "labor-arbitration", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "公司关于150383.15元离职结算款的核心抗辩是什么？",
+      "answer": "公司主张该款已经支付，其中包含社保差额及公积金补偿，员工不应再次请求147492.60元。",
+      "tags": ["公司抗辩", "离职结算款"], "sourceRefs": [{ "label": "劳动仲裁答辩书", "path": "实习材料/网超/超网劳动仲裁案件答辩书.pdf", "locator": "第1页，已履行补偿义务部分" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.map.006", "courseId": "labor-arbitration", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案的仲裁结果是什么？",
+      "answer": "仲裁委驳回刘家文的全部仲裁请求，裁决为终局裁决。",
+      "tags": ["case-result", "裁决"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第3页，裁决结果" }], "estimatedSeconds": 15
+    },
+    {
+      "id": "labor.map.007", "courseId": "labor-arbitration", "chapterId": "case-map", "level": "core", "kind": "cloze",
+      "prompt": "员工于____申请仲裁，仲裁委于____作出裁决。",
+      "answerPoints": ["2025年12月15日", "2026年2月5日"],
+      "tags": ["程序", "日期"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第1页及第4页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "labor.map.008", "courseId": "labor-arbitration", "chapterId": "case-map", "level": "advanced", "kind": "qa",
+      "prompt": "本案案号和承办机构是什么？",
+      "answer": "案号为深劳人仲案〔2025〕21705号，由深圳市劳动人事争议仲裁委员会办理。",
+      "tags": ["案号", "机构"], "sourceRefs": [{ "label": "劳动争议案件简要", "path": "实习材料/网超/已打印/案件简要.pdf", "locator": "第1页，案件基本信息" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "labor.map.009", "courseId": "labor-arbitration", "chapterId": "case-map", "level": "advanced", "kind": "comparison",
+      "prompt": "终局裁决后，劳动者与用人单位的救济路径有何不同？",
+      "answer": "劳动者可在收到裁决书后15日内起诉；用人单位有法定事由时，可在30日内向深圳中院申请撤销。",
+      "tags": ["终局裁决", "救济"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第3—4页，救济告知" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "labor.evidence.001", "courseId": "labor-arbitration", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "劳动合同及入职材料用于证明什么？",
+      "answer": "用于证明双方劳动关系、入职时间、岗位及书面劳动合同签订情况。",
+      "tags": ["劳动合同", "证明目的"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第1页，相关案情" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "labor.evidence.002", "courseId": "labor-arbitration", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "《解除劳动关系协议书》在本案中的双重作用是什么？",
+      "answer": "它既是员工请求付款的依据，也是公司论证现金替代社保缴纳条款无效的审查对象。",
+      "tags": ["解除协议", "协议效力"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第2—3页，本委认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.evidence.003", "courseId": "labor-arbitration", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "《离职结算单》用于支持公司的哪项主张？",
+      "answer": "用于证明公司主张已支付150383.15元综合结算款，且结算范围包括五险一金相关项目。",
+      "tags": ["离职结算单", "公司抗辩"], "sourceRefs": [{ "label": "劳动仲裁答辩书", "path": "实习材料/网超/超网劳动仲裁案件答辩书.pdf", "locator": "第1页，支付事实" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.evidence.004", "courseId": "labor-arbitration", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "《承诺书》用于支持公司的哪项主张？",
+      "answer": "公司据此主张员工确认收到147492.60元，作为在职期间社保差额及公积金补偿。",
+      "tags": ["承诺书", "公司抗辩"], "sourceRefs": [{ "label": "劳动仲裁答辩书", "path": "实习材料/网超/超网劳动仲裁案件答辩书.pdf", "locator": "第1页，支付事实" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "labor.evidence.005", "courseId": "labor-arbitration", "chapterId": "evidence-contribution", "level": "advanced", "kind": "correction",
+      "prompt": "“仲裁委认定150383.15元已包含全部社保补偿”严谨吗？",
+      "answer": "不严谨。已付款及款项组成主要是公司答辩主张；裁决书支持请求的核心是受案范围与条款效力。",
+      "tags": ["事实归属", "裁判理由"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第2—3页，本委认为" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "labor.work.001", "courseId": "labor-arbitration", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在事实梳理中做了什么？",
+      "answer": "与客户核对入职、岗位、薪酬社保、协商解除及付款过程，整理关键时间节点和争议经过。",
+      "tags": ["own-work", "事实梳理"], "sourceRefs": [{ "label": "劳动争议案件简要", "path": "实习材料/网超/已打印/案件简要.pdf", "locator": "第2页，主要工作第1项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.work.002", "courseId": "labor-arbitration", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎整理了哪些证据并形成什么成果？",
+      "answer": "整理劳动合同、解除协议、结算单、承诺书、工资表、转账凭证等，核对金额与签署情况并制作证据目录。",
+      "tags": ["own-work", "证据目录"], "sourceRefs": [{ "label": "劳动争议案件简要", "path": "实习材料/网超/已打印/案件简要.pdf", "locator": "第2页，主要工作第2项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "labor.work.003", "courseId": "labor-arbitration", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在法律检索和文书方面做了什么？",
+      "answer": "检索社保义务、仲裁受案范围及离职协议效力，起草并修订仲裁答辩书，归纳答辩和举证要点。",
+      "tags": ["own-work", "答辩书"], "sourceRefs": [{ "label": "劳动争议案件简要", "path": "实习材料/网超/已打印/案件简要.pdf", "locator": "第2页，主要工作第3项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.work.004", "courseId": "labor-arbitration", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎承担了哪些程序性事务？",
+      "answer": "准备主体及授权材料，办理打印装订、网上立案、文书寄送和送达查询，跟进开庭及裁决送达。",
+      "tags": ["own-work", "程序事务"], "sourceRefs": [{ "label": "李黎工作说明", "path": "实习材料/网超/情况说明-李黎.docx", "locator": "第2段" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.work.005", "courseId": "labor-arbitration", "chapterId": "evidence-contribution", "level": "core", "kind": "correction",
+      "prompt": "“本案由曹莎律师主办，李黎独立出庭”符合材料吗？",
+      "answer": "不符合。材料载明蓝清华律师主办、曹莎未亲自参与；李黎是实习人员并参与辅助工作。",
+      "redLine": true, "tags": ["own-work", "团队边界"], "sourceRefs": [{ "label": "李黎工作说明", "path": "实习材料/网超/情况说明-李黎.docx", "locator": "第2段" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.law.001", "courseId": "labor-arbitration", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "仲裁委为何认为社保差额争议不属于劳动仲裁直接受理范围？",
+      "answer": "请求实质指向社保费用补缴或差额填补，属于社保征缴和行政监管职责，应通过社保行政途径处理。",
+      "tags": ["受案范围", "社保征缴"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第2页，本委认为" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "labor.law.002", "courseId": "labor-arbitration", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "《社会保险法》第六十三条在本案中说明什么？",
+      "answer": "用人单位未按时足额缴费时，由社会保险费征收机构责令限期缴纳或补足，说明补缴属于行政征缴职责。",
+      "tags": ["社保法63条", "受案范围"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第2页，本委认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.law.003", "courseId": "labor-arbitration", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "现金补偿替代社保缴纳的约定为何无效？",
+      "answer": "依法缴纳社保是单位和个人的强制性法定义务，不能通过民事协议排除或变更。",
+      "tags": ["协议效力", "强制性规定"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第2—3页，本委认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.law.004", "courseId": "labor-arbitration", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "劳动争议司法解释（一）第三十五条的适用前提是什么？",
+      "answer": "解除或终止劳动合同相关协议须不违反强制性规定，且不存在欺诈、胁迫或乘人之危，才应认定有效。",
+      "tags": ["司法解释", "协议效力"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第2页，本委认为" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "labor.law.005", "courseId": "labor-arbitration", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "裁决书如何引用劳动争议司法解释（二）第十九条？",
+      "answer": "裁决书参照其关于不缴社保约定或承诺无效的精神，论证现金替代补缴的条款无效。",
+      "tags": ["司法解释", "协议效力"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第3页，本委认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.law.006", "courseId": "labor-arbitration", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "仲裁委驳回请求的两个独立核心理由是什么？",
+      "answerPoints": ["请求实质属于社保行政争议，不属于劳动仲裁直接受案范围", "现金替代社保缴纳的协议条款违反强制性规定而无效"],
+      "tags": ["裁判理由", "核心"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第3页，本委认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.law.007", "courseId": "labor-arbitration", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“驳回员工请求，所以公司无需再处理社保问题”错在哪里？",
+      "answer": "裁决否定的是本案现金补偿请求及替代条款，并未免除法定社保缴纳或补缴义务。",
+      "redLine": true, "tags": ["结果混淆", "社保义务"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第2—3页，本委认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.law.008", "courseId": "labor-arbitration", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "公司答辩中的“已付款”与“条款无效”是什么关系？",
+      "answer": "是两层不同抗辩：条款无效回应请求权基础，已付款回应是否仍负有另行给付义务。",
+      "tags": ["答辩结构", "比较"], "sourceRefs": [{ "label": "劳动仲裁答辩书", "path": "实习材料/网超/超网劳动仲裁案件答辩书.pdf", "locator": "第1—2页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.law.009", "courseId": "labor-arbitration", "chapterId": "legal-issues", "level": "advanced", "kind": "correction",
+      "prompt": "“仲裁委已判令员工返还已收补偿”正确吗？",
+      "answer": "不正确。答辩书仅称公司保留要求返还的权利，裁决主文只有驳回全部仲裁请求。",
+      "tags": ["裁判范围", "事实归属"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第3页，裁决结果" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.review.001", "courseId": "labor-arbitration", "chapterId": "review-comparison", "level": "core", "kind": "comparison",
+      "prompt": "社保补缴请求与现金补偿请求应如何区分？",
+      "answer": "前者指向法定征缴和行政处理，后者形式上依协议主张给付；本案仲裁委认为后者实质仍在规避补缴义务。",
+      "tags": ["请求区分", "受案范围"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第2—3页，本委认为" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "labor.review.002", "courseId": "labor-arbitration", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "离职文件审查为什么不能只看总金额？",
+      "answer": "还要核对款项性质、组成、支付凭证及各文件表述，避免把综合补偿与另行应付款混同。",
+      "tags": ["证据策略", "离职结算"], "sourceRefs": [{ "label": "劳动仲裁答辩书", "path": "实习材料/网超/超网劳动仲裁案件答辩书.pdf", "locator": "第1页，支付事实" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.review.003", "courseId": "labor-arbitration", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "本案答辩结构给文书写作什么启示？",
+      "answer": "可同时准备请求权基础、履行事实和受案路径三条防线，但面试时要区分己方主张与裁决采纳理由。",
+      "tags": ["文书复盘", "答辩结构"], "sourceRefs": [{ "label": "劳动仲裁答辩书", "path": "实习材料/网超/超网劳动仲裁案件答辩书.pdf", "locator": "第1—2页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "labor.review.004", "courseId": "labor-arbitration", "chapterId": "review-comparison", "level": "core", "kind": "qa",
+      "prompt": "本案给客户合规管理的主要提醒是什么？",
+      "answer": "不能以离职现金结算替代法定社保缴纳；应依法处理缴费问题，并清楚区分结算款项性质。",
+      "tags": ["合规", "复盘"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第2—3页，本委认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "labor.interview.001", "courseId": "labor-arbitration", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用20秒概括本案及仲裁结果。",
+      "checklist": ["说出员工依据解除协议请求社保差额补偿", "说出请求金额147492.60元", "点出受案范围和条款无效两项理由", "准确说出驳回全部请求及终局裁决"],
+      "tags": ["20秒", "案件概括"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第1—3页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "labor.interview.002", "courseId": "labor-arbitration", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用90秒完整陈述本案，并说明公司抗辩与裁决理由的区别。",
+      "checklist": ["交代劳动关系和协商解除时间线", "说明仲裁请求及金额", "概括公司关于条款无效和已经付款的抗辩", "说明仲裁委关于受案范围和条款效力的理由", "准确交代裁决结果", "说出一项本人真实辅助工作"],
+      "tags": ["90秒", "整案表达"], "sourceRefs": [{ "label": "劳动争议案件简要", "path": "实习材料/网超/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 90
+    },
+    {
+      "id": "labor.interview.003", "courseId": "labor-arbitration", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：双方自愿签了协议，为什么员工仍不能要钱？",
+      "answer": "自愿签署不等于内容有效；现金替代社保缴纳违反强制性法定义务，且请求实质属于社保行政处理范围。",
+      "followUps": [{ "prompt": "所有离职补偿协议都无效吗？", "answer": "不是。一般离职协议须满足合法且无欺诈、胁迫等前提；本案问题特定于以现金替代社保缴纳。" }],
+      "tags": ["压力追问", "协议效力"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第2—3页，本委认为" }], "estimatedSeconds": 40
+    },
+    {
+      "id": "labor.interview.004", "courseId": "labor-arbitration", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：你在本案中实际做了什么？",
+      "answer": "我参与会见和会议纪要，整理证据、研究案例，起草修订答辩材料，并办理立案、寄送等辅助事务。",
+      "followUps": [{ "prompt": "谁是主办律师，曹莎是否亲自参与？", "answer": "蓝清华律师主办；材料明确曹莎律师未亲自参与，我是实习人员并承担辅助工作。" }],
+      "tags": ["压力追问", "own-work"], "sourceRefs": [{ "label": "李黎工作说明", "path": "实习材料/网超/情况说明-李黎.docx", "locator": "第2段" }], "estimatedSeconds": 40
+    },
+    {
+      "id": "labor.interview.005", "courseId": "labor-arbitration", "chapterId": "interview-performance", "level": "link", "kind": "correction",
+      "prompt": "“我方胜诉说明员工已领取的补偿应退回”错在哪里？",
+      "answerPoints": ["裁决仅驳回员工的仲裁请求", "公司保留返还主张不等于仲裁委支持返还", "社保法定义务并未因裁决消失"],
+      "redLine": true, "tags": ["红线", "裁判范围"], "sourceRefs": [{ "label": "仲裁裁决书", "path": "实习材料/网超/已打印/裁决书-脱敏.pdf", "locator": "第2—3页，本委认为及裁决结果" }], "estimatedSeconds": 30
+    }
+  ]
+}

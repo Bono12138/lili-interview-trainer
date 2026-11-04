@@ -1,0 +1,221 @@
+{
+  "id": "equity-design",
+  "title": "股权设计非诉项目",
+  "description": "围绕回童时项目股权架构、员工持股平台、核心团队激励及配套文件，训练非诉方案设计、文件一致性和本人工作表达。",
+  "riskNote": "本项目是非诉专项服务，没有案号或裁判结果；方案处于文件交付和落地跟踪阶段，不得说成全部主体已设立、登记或签约完成。最终激励方案正文与示例表存在比例一致性问题，应会识别和提请复核，不得自行选择一组数字掩盖矛盾。",
+  "chapters": [
+    { "id": "case-map", "title": "案件地图" },
+    { "id": "evidence-contribution", "title": "证据与本人工作" },
+    { "id": "legal-issues", "title": "法律争点" },
+    { "id": "review-comparison", "title": "复盘与关联案件" },
+    { "id": "interview-performance", "title": "面试表达与压力追问" }
+  ],
+  "cards": [
+    {
+      "id": "equity.map.001", "courseId": "equity-design", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "回童时项目的委托目标是什么？",
+      "answer": "为项目及关联公司设计整体股权架构和核心团队股权激励方案，并出具配套实施文件。",
+      "tags": ["项目目标", "非诉"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "equity.map.002", "courseId": "equity-design", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "整体股权架构包含哪四类主体层级？",
+      "answerPoints": ["顶层控股公司", "科技业务公司及IP管理公司", "员工有限合伙持股平台"],
+      "tags": ["股权架构", "主体层级"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "equity.map.003", "courseId": "equity-design", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "架构设计需要兼顾哪些商业目标？",
+      "answer": "兼顾实际控制权、风险隔离、融资安排、业务协同及品牌和IP资产管理。",
+      "tags": ["控制权", "风险隔离"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.map.004", "courseId": "equity-design", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "核心团队如何持有科技公司权益？",
+      "answer": "核心团队通过有限合伙平台间接持有科技公司权益，而不是全部直接登记为公司股东。",
+      "tags": ["间接持股", "有限合伙"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "equity.map.005", "courseId": "equity-design", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本项目已经形成哪些主要成果？",
+      "answer": "已形成股权设计全景、激励方案及实施细则，并形成章程、股东协议、合伙协议、一致行动及代持等配套文件。",
+      "tags": ["case-result", "交付成果"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第1页，办理阶段和结果" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.map.006", "courseId": "equity-design", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "项目目前处于什么阶段？",
+      "answer": "处于方案设计、实施文件交付及落地跟踪完善阶段。",
+      "tags": ["项目阶段", "落地跟踪"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第1页，办理阶段和结果" }], "estimatedSeconds": 15
+    },
+    {
+      "id": "equity.map.007", "courseId": "equity-design", "chapterId": "case-map", "level": "core", "kind": "correction",
+      "prompt": "“本项目没有判决书，所以材料不完整”应如何回应？",
+      "answer": "这是非诉专项法律服务，本就不涉及诉讼案号、立案、庭审或裁判文书，应以方案和交付文件展示工作。",
+      "tags": ["非诉边界", "材料说明"], "sourceRefs": [{ "label": "股权设计材料情况说明", "path": "实习材料/童回时/材料情况说明-最终版.docx", "locator": "第1段" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.evidence.001", "courseId": "equity-design", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "定稿文件清单中的文件可分为哪几类？",
+      "answerPoints": ["方案与沟通文件", "各主体章程及股东协议", "合伙、激励、一致行动和代持等实施文件"],
+      "tags": ["文件清单", "交付体系"], "sourceRefs": [{ "label": "定稿文件清单", "path": "实习材料/童回时/定稿/文件清单.pdf", "locator": "第1页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.evidence.002", "courseId": "equity-design", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "为什么股权设计不能只有一张架构图？",
+      "answer": "架构图只展示关系，还需章程、股东协议、合伙协议和激励细则落实表决、收益、退出及执行机制。",
+      "tags": ["方案落地", "配套文件"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.evidence.003", "courseId": "equity-design", "chapterId": "evidence-contribution", "level": "core", "kind": "cloze",
+      "prompt": "最终方案中，有限合伙持有科技公司____股权，科技公司注册资本为____元。",
+      "answerPoints": ["10%", "200万元"],
+      "tags": ["持股平台", "比例"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "开头及表格1" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "equity.evidence.004", "courseId": "equity-design", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "最终方案中B、C、D及预留部分的有限合伙内部份额是多少？",
+      "answer": "B为35%，C为15%，D为15%，A或未来预留为35%。",
+      "tags": ["激励份额", "比例"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "开头及表格1" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.evidence.005", "courseId": "equity-design", "chapterId": "evidence-contribution", "level": "advanced", "kind": "qa",
+      "prompt": "B、C、D的内部份额分别对应科技公司多少间接权益？",
+      "answer": "分别对应3.5%、1.5%和1.5%；计算基础是平台持有科技公司10%。",
+      "tags": ["间接权益", "计算"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "表格1" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.evidence.006", "courseId": "equity-design", "chapterId": "evidence-contribution", "level": "advanced", "kind": "correction",
+      "prompt": "“两个版本的出资额相同，可直接混用”正确吗？",
+      "answer": "不正确。最终版合计出资20万元，较早版本为40万元，引用前必须确认版本，不能混用。",
+      "redLine": true, "tags": ["版本管理", "出资金额"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "表格1" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "equity.work.001", "courseId": "equity-design", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在需求梳理中做了什么？",
+      "answer": "参与客户及团队沟通，整理商业模式、主体关系、创始人控制权、合作人持股和员工激励需求。",
+      "tags": ["own-work", "需求梳理"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第2页，主要工作第1项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.work.002", "courseId": "equity-design", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在股权架构设计中做了什么？",
+      "answer": "比较控股、业务、IP和持股平台的持股、表决、收益及风险隔离机制，制作全景图和沟通方案。",
+      "tags": ["own-work", "架构设计"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第2页，主要工作第2项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "equity.work.003", "courseId": "equity-design", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在激励方案设计中做了什么？",
+      "answer": "参与设计对象、份额、出资、成熟期、绩效、分红、预留池和退出回购，并根据沟通反复修订。",
+      "tags": ["own-work", "激励设计"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第2页，主要工作第3项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "equity.work.004", "courseId": "equity-design", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在配套文件交付中做了什么？",
+      "answer": "起草、审阅和修订章程及各类协议，核对主体、持股比例、权利义务和退出条款的一致性。",
+      "tags": ["own-work", "文件起草"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第2页，主要工作第4项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.law.001", "courseId": "equity-design", "chapterId": "legal-issues", "level": "core", "kind": "comparison",
+      "prompt": "员工持股平台中GP与LP的功能如何区分？",
+      "answer": "GP侧重执行事务和统一表决，LP主要享有相应经济权益，避免核心员工直接干预公司表决。",
+      "tags": ["GP与LP", "控制权"], "sourceRefs": [{ "label": "科技公司股东协议", "path": "实习材料/童回时/定稿/童回时科技公司之股东协议.pdf", "locator": "第1—2页，第1.1.3条" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.law.002", "courseId": "equity-design", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "最终方案的成熟机制采用什么基本结构？",
+      "answer": "采用“1年悬崖成熟＋此后2年逐月线性成熟”的结构，将权益与服务期限绑定。",
+      "tags": ["分期成熟", "服务期限"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "第二部分" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.law.003", "courseId": "equity-design", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "激励对象的年度分红与什么挂钩？",
+      "answer": "按已成熟的股权比例享受年度分红，分红方案由控股公司提议并经科技公司股东会批准。",
+      "tags": ["分红", "成熟权益"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "第四部分第1项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.law.004", "courseId": "equity-design", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "绩效考核如何与股权权益联动？",
+      "answer": "核心指标连续两个季度或年度完成率低于80%时，方案设置成熟暂停、取消年度分红等限制。",
+      "tags": ["绩效考核", "权益限制"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "表格3" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.law.005", "courseId": "equity-design", "chapterId": "legal-issues", "level": "advanced", "kind": "comparison",
+      "prompt": "主动辞职与退休等情形的退出回购定价有何不同？",
+      "answer": "主动辞职按原始出资价；退休、丧失劳动能力或身故按最近一轮融资估值对应价格的80%。",
+      "tags": ["退出回购", "比较"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "表格4" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "equity.law.006", "courseId": "equity-design", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "短期超额利润分享与长期股权奖励如何区分？",
+      "answer": "短期以超额部分的20%设团队奖金池；长期奖励与三年绩效目标及有限合伙份额转让挂钩。",
+      "tags": ["短期激励", "长期激励"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "第五部分" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "equity.law.007", "courseId": "equity-design", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "股东协议如何强化实际控制权？",
+      "answer": "通过一致行动、GP统一行使平台表决权、特别事项高比例表决及核心事项需实际控制人同意等安排。",
+      "tags": ["控制权", "股东协议"], "sourceRefs": [{ "label": "科技公司股东协议", "path": "实习材料/童回时/定稿/童回时科技公司之股东协议.pdf", "locator": "第1—2页，第一条" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "equity.law.008", "courseId": "equity-design", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "股东协议与公司章程为什么必须同步校核？",
+      "answer": "两者共同影响治理和执行，主体、表决、转让、分红等条款冲突会增加落地和争议风险。",
+      "tags": ["文件一致性", "公司治理"], "sourceRefs": [{ "label": "科技公司股东协议", "path": "实习材料/童回时/定稿/童回时科技公司之股东协议.pdf", "locator": "第7页，第8.3条" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.review.001", "courseId": "equity-design", "chapterId": "review-comparison", "level": "core", "kind": "correction",
+      "prompt": "最终激励方案正文与成熟示例表存在什么一致性问题？",
+      "answer": "正文写满1年成熟35%、余65%逐月成熟，但示例表按25%计算8.75%，两组口径不一致，应提请复核。",
+      "redLine": true, "tags": ["版本一致性", "成熟比例"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "第二部分及表格2" }], "estimatedSeconds": 35
+    },
+    {
+      "id": "equity.review.002", "courseId": "equity-design", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "交付前对数字条款应怎样做交叉核验？",
+      "answer": "将份额、间接权益、出资、成熟比例和回购价格逐表重算，并与正文、协议和不同版本逐项对照。",
+      "tags": ["数字复核", "交付质量"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "第一至五部分" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "equity.review.003", "courseId": "equity-design", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "为什么“暂定名”和空白签署信息不能忽略？",
+      "answer": "主体名称、登记信息和签署要素直接影响文件落地，交付后仍须随设立、登记和签约进展更新。",
+      "tags": ["落地跟踪", "文件核查"], "sourceRefs": [{ "label": "科技公司股东协议", "path": "实习材料/童回时/定稿/童回时科技公司之股东协议.pdf", "locator": "第1页及第7—8页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.review.004", "courseId": "equity-design", "chapterId": "review-comparison", "level": "core", "kind": "comparison",
+      "prompt": "股权设计与诉讼案件的工作成果表达有何不同？",
+      "answer": "非诉项目重点讲需求、方案比较、文件成果和落地校核，不用胜诉或裁判结果证明工作价值。",
+      "tags": ["非诉表达", "比较"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "equity.interview.001", "courseId": "equity-design", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用20秒概括回童时项目及你的成果。",
+      "checklist": ["说明这是股权架构与激励非诉专项", "说出控股、业务、IP和员工平台结构", "概括方案与配套文件成果", "明确仍在落地跟踪而非诉讼结案"],
+      "tags": ["20秒", "项目概括"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第1页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "equity.interview.002", "courseId": "equity-design", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用90秒说明项目需求、设计方案、实施文件和本人工作。",
+      "checklist": ["说明控制权、风险隔离、融资及IP管理需求", "解释有限合伙间接持股和GP/LP分工", "概括份额、成熟、绩效、分红和退出机制", "列举章程、股东协议及合伙激励文件", "说出一项本人具体工作", "指出版本一致性和落地跟踪意识"],
+      "tags": ["90秒", "整案表达"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 90
+    },
+    {
+      "id": "equity.interview.003", "courseId": "equity-design", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：为什么不让核心员工直接持股？",
+      "answer": "本项目通过有限合伙统一表决并配置经济权益，兼顾控制权、激励和后续人员流动，具体由GP/LP及退出条款落实。",
+      "followUps": [{ "prompt": "LP是否没有权利？", "answer": "不是。方案仍配置成熟权益、分红和退出回购等经济利益，但表决和日常干预受到安排。" }, { "prompt": "方案是否已全部落地？", "answer": "材料显示处于文件交付及跟踪完善阶段，不能说全部设立登记和签约均完成。" }],
+      "tags": ["压力追问", "持股平台"], "sourceRefs": [{ "label": "股权设计案件简要", "path": "实习材料/童回时/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 50
+    },
+    {
+      "id": "equity.interview.004", "courseId": "equity-design", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：你在方案中发现了什么需要复核的问题？",
+      "answer": "最终方案正文的悬崖成熟比例与示例表计算口径不一致，我会标注并由团队确认统一，而不是擅自改数。",
+      "followUps": [{ "prompt": "发现矛盾后应怎样处理？", "answer": "保留版本和定位，重算相关数字，核对正文、表格和协议后提交负责人确认。" }],
+      "tags": ["压力追问", "own-work", "一致性"], "sourceRefs": [{ "label": "股权激励方案最终版", "path": "实习材料/童回时/定稿/[回童时]股权激励方案最终版20260119.docx", "locator": "第二部分及表格2" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "equity.interview.005", "courseId": "equity-design", "chapterId": "interview-performance", "level": "link", "kind": "correction",
+      "prompt": "“项目已胜诉并完成全部工商登记”有哪些错误？",
+      "answerPoints": ["这是非诉项目，不存在胜诉结果", "材料仅显示文件交付和落地跟踪", "不得把暂定主体和待签文件说成登记完成"],
+      "redLine": true, "tags": ["红线", "非诉边界"], "sourceRefs": [{ "label": "股权设计材料情况说明", "path": "实习材料/童回时/材料情况说明-最终版.docx", "locator": "第1段" }], "estimatedSeconds": 30
+    }
+  ]
+}

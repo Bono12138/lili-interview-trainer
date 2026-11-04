@@ -1,0 +1,227 @@
+{
+  "id": "trademark-transfer",
+  "title": "商标转移纠纷",
+  "description": "围绕乐承公司17件注册商标转至关联公司争议，训练商标、关联交易、公司章程、证据分组及未结案件表达。",
+  "riskNote": "本案仍在一审审理中，商标转让违反章程、构成关联交易或自我交易、应恢复登记及返还收益均为原告主张，不得表述为法院已经认定或判令。",
+  "chapters": [
+    { "id": "case-map", "title": "案件地图" },
+    { "id": "evidence-contribution", "title": "证据与本人工作" },
+    { "id": "legal-issues", "title": "法律争点" },
+    { "id": "review-comparison", "title": "复盘与关联案件" },
+    { "id": "interview-performance", "title": "面试表达与压力追问" }
+  ],
+  "cards": [
+    {
+      "id": "trademark.map.001", "courseId": "trademark-transfer", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案原告和两名被告分别是谁？",
+      "answer": "原告为乐承公司，被告为深圳市承诺伊一投资有限公司和庄晓东。",
+      "tags": ["当事人"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1页，案件名称" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "trademark.map.002", "courseId": "trademark-transfer", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "乐承公司的股权和经营管理结构是什么？",
+      "answer": "陈银玲与庄晓东各持股50%；庄晓东任执行董事、总经理并掌握公司证照及经营管理。",
+      "tags": ["股权结构", "公司管理"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "trademark.map.003", "courseId": "trademark-transfer", "chapterId": "case-map", "level": "core", "kind": "cloze",
+      "prompt": "原告主张庄晓东于2026年6月将____件注册商标转至关联公司。",
+      "answer": "17件。",
+      "tags": ["商标数量", "转让"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第1页，第二组证据" }], "estimatedSeconds": 15
+    },
+    {
+      "id": "trademark.map.004", "courseId": "trademark-transfer", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "案涉商标涉及哪些主要品牌？",
+      "answer": "包括LUSON、LUSONBABY、NORNOR等注册商标。",
+      "tags": ["商标", "品牌"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 15
+    },
+    {
+      "id": "trademark.map.005", "courseId": "trademark-transfer", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "乐承公司认为商标转让造成了什么损害？",
+      "answer": "公司认为品牌资源、商业机会和经营收益被转移，关联主体还继续以相关商标开展同类经营。",
+      "tags": ["公司主张", "公司利益"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.map.006", "courseId": "trademark-transfer", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "陈银玲以什么身份代表公司起诉？",
+      "answer": "以公司监事及诉讼代表人身份代表乐承公司提起诉讼。",
+      "tags": ["监事", "诉讼代表"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 15
+    },
+    {
+      "id": "trademark.map.007", "courseId": "trademark-transfer", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "原告希望通过本案实现哪些救济？",
+      "answerPoints": ["审查商标转让效力并恢复公司权利", "停止相关使用或授权使用", "返还经营收益并赔偿公司损失"],
+      "tags": ["诉讼请求", "救济"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点第3项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.map.008", "courseId": "trademark-transfer", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案目前处于什么阶段？",
+      "answer": "案件由深圳市南山区人民法院一审审理中，尚未形成裁判结果。",
+      "tags": ["case-result", "未结案件"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1页，诉讼阶段和案件结果" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "trademark.evidence.001", "courseId": "trademark-transfer", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "原告工商登记查询单用于证明什么？",
+      "answer": "用于证明两名股东各持股50%、陈银玲的监事及诉讼代表资格，以及庄晓东的管理职务。",
+      "tags": ["工商登记", "诉讼代表"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第1页，第一组证据" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.evidence.002", "courseId": "trademark-transfer", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "商标转让公告在本案中的证明作用是什么？",
+      "answer": "用于逐件核对17件商标的注册号、原权利变动及转让至承诺伊一公司的登记情况。",
+      "tags": ["转让公告", "商标登记"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第1页，第二组证据" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.evidence.003", "courseId": "trademark-transfer", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "承诺伊一公司的工商内档用于证明什么？",
+      "answer": "原告据以主张庄晓东持股95%并实际控制该公司，其他股东还包括其父亲和胞妹。",
+      "tags": ["关联关系", "工商内档"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第1页，证据4" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.evidence.004", "courseId": "trademark-transfer", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "网络店铺资料需要与哪些信息逐一对应？",
+      "answer": "对应商标、店铺名称、使用平台和经营主体，证明相关商标实际使用及关联经营线索。",
+      "tags": ["网络店铺", "商标使用"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第2项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.evidence.005", "courseId": "trademark-transfer", "chapterId": "evidence-contribution", "level": "advanced", "kind": "qa",
+      "prompt": "原告证据目录按哪三组组织证明内容？",
+      "answerPoints": ["主体、股东和诉讼代表资格", "商标转让及关联公司控制关系", "关联主体及店铺使用商标的线索"],
+      "tags": ["证据分组", "举证思路"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第1—2页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "trademark.evidence.006", "courseId": "trademark-transfer", "chapterId": "evidence-contribution", "level": "advanced", "kind": "qa",
+      "prompt": "店铺使用证据为何不能只截图品牌名称？",
+      "answer": "还要固定店铺名称、平台和经营主体，才能将商标使用与具体关联主体及经营业务对应。",
+      "tags": ["电子证据", "证明目的"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第2页，证据5" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.work.001", "courseId": "trademark-transfer", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎如何梳理本案事实和主体关系？",
+      "answer": "参与客户沟通，了解股权、商标形成和转移经过，按时间整理事件并制作主体关系表和事实纪要。",
+      "tags": ["own-work", "主体关系表"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第1项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.work.002", "courseId": "trademark-transfer", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎如何核对17件商标及相关证据？",
+      "answer": "逐项核对注册号、权利人和转让公告，整理章程、工商及店铺材料，注明来源、页码和证明目的。",
+      "tags": ["own-work", "证据目录"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第2项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "trademark.work.003", "courseId": "trademark-transfer", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在法律检索和文书方面做了什么？",
+      "answer": "围绕关联交易、忠实义务、同业竞争和公司受损检索，整理证据目录、事实摘要并形成案件分析文稿。",
+      "tags": ["own-work", "法律检索"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第3项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "trademark.work.004", "courseId": "trademark-transfer", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎办理了哪些程序性事务？",
+      "answer": "完成扫描、编号、装订和电子归档，准备补充材料，填写网上立案信息，办理邮寄、送达查询并跟进进度。",
+      "tags": ["own-work", "程序事务"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第4项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.law.001", "courseId": "trademark-transfer", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "公司章程第二十九条对执行董事决定有什么要求？",
+      "answer": "执行董事应将依章程所作决定以书面形式报送股东会。",
+      "tags": ["公司章程", "股东会报告"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第1页，证据2" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "trademark.law.002", "courseId": "trademark-transfer", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "公司章程第三十二条涉及哪两类行为限制？",
+      "answerPoints": ["不得擅自自营或为他人经营同类业务、从事损害公司利益活动", "除章程规定或股东会同意外，不得与公司订立合同或交易"],
+      "tags": ["公司章程", "同业竞争", "自我交易"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第1页，证据2" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "trademark.law.003", "courseId": "trademark-transfer", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "原告关于本案关联交易的核心指控是什么？",
+      "answer": "庄晓东未经股东会同意，将公司商标转至其实际控制的承诺伊一公司，原告主张其违反章程和忠实义务。",
+      "tags": ["关联交易", "忠实义务"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点第1项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "trademark.law.004", "courseId": "trademark-transfer", "chapterId": "legal-issues", "level": "advanced", "kind": "comparison",
+      "prompt": "原告为何同时主张“关联交易”和“自我交易”？",
+      "answer": "商标从乐承公司转至庄晓东控制的公司，原告据此强调其与公司利益冲突及双方交易性质。",
+      "tags": ["关联交易", "自我交易"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第1页，证据4证明目的" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.law.005", "courseId": "trademark-transfer", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "原告证据目录援引《公司法》第182条想证明什么？",
+      "answer": "原告主张未经股东会同意的关联商标转让违反该条及公司章程而无效；该主张尚待法院审查。",
+      "tags": ["公司法182条", "原告主张"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第1页，第二组证据" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "trademark.law.006", "courseId": "trademark-transfer", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "商标转让效力与店铺停止使用是同一个问题吗？",
+      "answer": "不是。前者处理权利登记及转让效力，后者还涉及各主体实际使用、授权和公司损失。",
+      "tags": ["请求区分", "商标使用"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.law.007", "courseId": "trademark-transfer", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "返还收益或赔偿损失还需证明什么？",
+      "answer": "需把具体商标使用、关联经营、收益或损失及因果关系对应起来，不能仅凭商标转让推定金额。",
+      "tags": ["经营收益", "损失证明"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点第2—3项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.law.008", "courseId": "trademark-transfer", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“法院已认定17件商标转让无效”正确吗？",
+      "answer": "不正确。案件仍在一审审理中，转让无效是原告主张，尚无裁判结果。",
+      "redLine": true, "tags": ["红线", "案件结果"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1页，诉讼阶段和案件结果" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.review.001", "courseId": "trademark-transfer", "chapterId": "review-comparison", "level": "core", "kind": "comparison",
+      "prompt": "商标案与数字资产案在权利客体上有何区别？",
+      "answer": "商标案有注册登记和转让公告；数字资产案更依赖平台认证、实际投入、运营控制和收益流向。",
+      "tags": ["关联案件", "比较"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第1—2页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "trademark.review.002", "courseId": "trademark-transfer", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "本案证据分组对庭审表达有什么帮助？",
+      "answer": "先证明谁能起诉，再证明商标如何转移，最后证明谁在使用，形成主体、处分、损害后果的顺序。",
+      "tags": ["证据策略", "庭审表达"], "sourceRefs": [{ "label": "商标证据目录（一）", "path": "实习材料/陈银玲/商标权纠纷/已打印/5.1-证据目录（一）-乐承公司提交_副本.pdf", "locator": "第1—2页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "trademark.review.003", "courseId": "trademark-transfer", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "为什么17件商标要逐件列表核对？",
+      "answer": "注册号、权利人和转让公告是确定处分范围的基础，也能避免把不同品牌、店铺和商标混为一谈。",
+      "tags": ["证据整理", "复盘"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第2项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.review.004", "courseId": "trademark-transfer", "chapterId": "review-comparison", "level": "core", "kind": "qa",
+      "prompt": "本案面试表达应怎样处理原告法律观点？",
+      "answer": "明确说是原告依据章程和证据提出的主张，并说明仍待法院审查，不把证据目录当判决书。",
+      "tags": ["未结案件", "表达边界"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1页，案件结果" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "trademark.interview.001", "courseId": "trademark-transfer", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用20秒概括本案及当前阶段。",
+      "checklist": ["说出乐承公司17件商标被转至关联公司的主张", "点出未经股东会同意及忠实义务争点", "概括恢复权利、停止使用和收益救济", "明确案件仍在一审、没有裁判结果"],
+      "tags": ["20秒", "案件概括"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "trademark.interview.002", "courseId": "trademark-transfer", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用90秒说明本案事实、证据、争点和本人工作。",
+      "checklist": ["交代股权、管理职务及监事代表身份", "说明17件商标转移及关联公司控制关系", "按主体、转让、使用三组概括证据", "说明章程、关联交易和收益损失争点", "说出一项本人具体辅助工作", "明确案件未结且原告主张不等于法院认定"],
+      "tags": ["90秒", "整案表达"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 90
+    },
+    {
+      "id": "trademark.interview.003", "courseId": "trademark-transfer", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：商标已依法办理转让登记，为何公司还主张无效？",
+      "answer": "原告主张处分过程未经股东会同意且涉及庄晓东控制的关联公司，登记事实不替代对处分权限和忠实义务的审查。",
+      "followUps": [{ "prompt": "法院是否已支持无效？", "answer": "没有。案件仍在一审审理中，目前只能表述为原告主张。" }, { "prompt": "为何还要查店铺？", "answer": "店铺材料用于证明商标实际使用、关联经营及收益损失线索，与转让效力是不同证明对象。" }],
+      "tags": ["压力追问", "商标转让"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 50
+    },
+    {
+      "id": "trademark.interview.004", "courseId": "trademark-transfer", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：你在本案中做了哪些可核验的工作？",
+      "answer": "我参与制作主体关系表和事实纪要，逐件核对17件商标及转让公告，并整理章程、工商和店铺证据。",
+      "followUps": [{ "prompt": "这些材料如何服务案件？", "answer": "它们把商标、关联主体和实际使用对应起来，服务关联交易、忠实义务和损失争点的举证。" }],
+      "tags": ["压力追问", "own-work"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "trademark.interview.005", "courseId": "trademark-transfer", "chapterId": "interview-performance", "level": "link", "kind": "correction",
+      "prompt": "“我帮公司终审追回17件商标和全部收益”有哪些错误？",
+      "answerPoints": ["案件仍在一审，不是终审", "尚无恢复商标或返还收益的裁判", "李黎参与辅助工作，不能将团队目标说成个人成果"],
+      "redLine": true, "tags": ["红线", "未结案件", "团队边界"], "sourceRefs": [{ "label": "商标转移案件简要", "path": "实习材料/陈银玲/商标权纠纷/已打印/案件简要.pdf", "locator": "第1页，诉讼阶段和案件结果" }], "estimatedSeconds": 30
+    }
+  ]
+}

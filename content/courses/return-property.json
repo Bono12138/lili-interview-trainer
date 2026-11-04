@@ -1,0 +1,240 @@
+{
+  "id": "return-property",
+  "title": "返还原物纠纷",
+  "description": "围绕天鹅湖花园房屋返还及占有使用费争议，训练登记权利、共同出资、共同生活、无权占有和关联案件协调表达。",
+  "riskNote": "本案一二审均驳回陈银玲的返还房屋及占有使用费请求；裁判并未否定一切后续权利，全面析产后可基于新事实再主张。李黎参与基础性、辅助性工作，不得表述为独立主办或胜诉。",
+  "chapters": [
+    { "id": "case-map", "title": "案件地图" },
+    { "id": "evidence-contribution", "title": "证据与本人工作" },
+    { "id": "legal-issues", "title": "法律争点" },
+    { "id": "review-comparison", "title": "复盘与关联案件" },
+    { "id": "interview-performance", "title": "面试表达与压力追问" }
+  ],
+  "cards": [
+    {
+      "id": "return.map.001", "courseId": "return-property", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案双方和争议房屋是什么？",
+      "answer": "陈银玲诉庄晓东，争议标的是登记在陈银玲名下的深圳天鹅湖花园房屋。",
+      "tags": ["当事人", "争议房屋"], "sourceRefs": [{ "label": "返还原物案件简要", "path": "实习材料/陈银玲/返还原物纠纷/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "return.map.002", "courseId": "return-property", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "陈银玲的两项主要诉讼请求是什么？",
+      "answerPoints": ["要求庄晓东搬离并返还房屋", "按每月10万元支付自2024年5月1日起至实际搬离的占有使用费"],
+      "tags": ["诉讼请求", "占有使用费"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/一审判决书.pdf", "locator": "第2页，原告诉请" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.map.003", "courseId": "return-property", "chapterId": "case-map", "level": "advanced", "kind": "cloze",
+      "prompt": "截至2025年1月15日，主张的占有使用费为____元。",
+      "answer": "85万元。",
+      "tags": ["占有使用费", "金额"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第2页，上诉请求" }], "estimatedSeconds": 15
+    },
+    {
+      "id": "return.map.004", "courseId": "return-property", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案一二审案号分别是什么？",
+      "answerPoints": ["一审：（2025）粤0305民初7676号", "二审：（2025）粤03民终23554号"],
+      "tags": ["案号", "程序"], "sourceRefs": [{ "label": "返还原物案件简要", "path": "实习材料/陈银玲/返还原物纠纷/已打印/案件简要.pdf", "locator": "第1页，案号" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.map.005", "courseId": "return-property", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "一审判决结果和日期是什么？",
+      "answer": "2025年4月23日，深圳市南山区人民法院驳回陈银玲全部诉讼请求。",
+      "tags": ["case-result", "一审结果"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/一审判决书.pdf", "locator": "第7页，判决主文及日期" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "return.map.006", "courseId": "return-property", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "二审判决结果和日期是什么？",
+      "answer": "2025年9月22日，深圳市中级人民法院驳回上诉、维持原判，本案终审结案。",
+      "tags": ["case-result", "二审结果"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第4页，判决主文及日期" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "return.map.007", "courseId": "return-property", "chapterId": "case-map", "level": "advanced", "kind": "qa",
+      "prompt": "一二审案件受理费及保全费如何负担？",
+      "answerPoints": ["一审受理费6150元、保全费4770元，由陈银玲负担", "二审受理费12300元，由陈银玲负担"],
+      "tags": ["诉讼费用", "案件结果"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.map.008", "courseId": "return-property", "chapterId": "case-map", "level": "core", "kind": "correction",
+      "prompt": "“房屋登记在陈银玲名下，法院就判庄晓东返还”符合结果吗？",
+      "answer": "不符合。法院未仅凭登记支持返还，一二审均驳回陈银玲的诉讼请求。",
+      "redLine": true, "tags": ["case-result", "登记权利"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页，本院认为及判项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.evidence.001", "courseId": "return-property", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "2020年7月6日购房合同有何证明意义？",
+      "answer": "合同签订早于2020年8月3日离婚登记，证明房屋在离婚前已筹划购买。",
+      "tags": ["购房合同", "离婚前筹划"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/一审判决书.pdf", "locator": "第4—5页，查明事实" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.evidence.002", "courseId": "return-property", "chapterId": "evidence-contribution", "level": "core", "kind": "cloze",
+      "prompt": "房屋于____登记至陈银玲名下，抵押贷款为____元。",
+      "answerPoints": ["2020年8月24日", "2500万元"],
+      "tags": ["房屋登记", "抵押贷款"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/一审判决书.pdf", "locator": "第5页，查明事实" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "return.evidence.003", "courseId": "return-property", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "庄晓东的转账和还贷记录用于证明什么？",
+      "answer": "用于证明其在离婚前后对购房均有大量出资，是法院认定共同出资购买的重要依据。",
+      "tags": ["出资记录", "共同购房"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/一审判决书.pdf", "locator": "第5—6页，购房款支付及本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.evidence.004", "courseId": "return-property", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "微信聊天记录在本案中证明什么？",
+      "answer": "显示庄晓东曾咨询限购及以离婚方式购房的操作，与离婚、过户和转款时间相互印证。",
+      "tags": ["微信记录", "购房安排"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/一审判决书.pdf", "locator": "第4—5页，微信聊天记录" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.evidence.005", "courseId": "return-property", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "共同生活事实如何影响本案？",
+      "answer": "双方确认离婚后至2024年4月仍在案涉房屋共同生活，支持法院认定房屋为共同生活而共同购买。",
+      "tags": ["共同生活", "占有基础"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/一审判决书.pdf", "locator": "第5—6页，庭审确认及本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.evidence.006", "courseId": "return-property", "chapterId": "evidence-contribution", "level": "advanced", "kind": "comparison",
+      "prompt": "登记证据与出资、居住证据为何不能只取前者？",
+      "answer": "登记是重要权利外观，但法院还需结合共同筹划、出资和共同生活判断占有及整体财产关系。",
+      "tags": ["证据综合", "登记权利"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.work.001", "courseId": "return-property", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎如何梳理本案事实？",
+      "answer": "核对婚姻、购房、出资、共同居住和搬离节点，制作房屋购买及占有使用时间线。",
+      "tags": ["own-work", "时间线"], "sourceRefs": [{ "label": "返还原物案件简要", "path": "实习材料/陈银玲/返还原物纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第1项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.work.002", "courseId": "return-property", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在证据整理中形成了什么成果？",
+      "answer": "分类核对权属、合同、贷款转账、沟通和催告材料，制作一二审证据目录及补充材料清单。",
+      "tags": ["own-work", "证据目录"], "sourceRefs": [{ "label": "返还原物案件简要", "path": "实习材料/陈银玲/返还原物纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第2项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.work.003", "courseId": "return-property", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎还参与了哪些研究和程序工作？",
+      "answer": "参与案例检索与案件研判、文书校对和材料提交，并陪同当事人办理相关公证等辅助事务。",
+      "tags": ["own-work", "案例检索", "程序辅助"], "sourceRefs": [{ "label": "返还原物案件简要", "path": "实习材料/陈银玲/返还原物纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第3—4项" }, { "label": "李黎工作情况说明", "path": "实习材料/陈银玲/返还原物纠纷/情况说明-最终版.docx", "locator": "正文，实际参与工作" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "return.work.004", "courseId": "return-property", "chapterId": "evidence-contribution", "level": "core", "kind": "correction",
+      "prompt": "判决未列李黎为代理人，能否说她没有参与案件？",
+      "answer": "不能。情况说明解释了实习人员不能以律师名义办理委托手续，她实际参与基础性、辅助性工作。",
+      "tags": ["own-work", "团队边界"], "sourceRefs": [{ "label": "李黎工作情况说明", "path": "实习材料/陈银玲/返还原物纠纷/情况说明-最终版.docx", "locator": "正文，委托材料及参与情况" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.law.001", "courseId": "return-property", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "二审概括的争议焦点是什么？",
+      "answer": "房屋是否为陈银玲个人所有，以及她是否有权要求庄晓东搬离并支付占用费。",
+      "tags": ["二审争点", "所有权"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3页，争议焦点" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "return.law.002", "courseId": "return-property", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "法院依据哪些事实认定共同购房？",
+      "answer": "离婚前筹划和签约、规避限购、庄晓东离婚前后大量出资，以及离婚后长期共同生活。",
+      "tags": ["共同购房", "裁判理由"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.law.003", "courseId": "return-property", "chapterId": "legal-issues", "level": "core", "kind": "comparison",
+      "prompt": "登记权利与无权占有为何是两个判断层次？",
+      "answer": "登记提供权利外观，但是否能排除他人占有仍须审查共同购房、共同生活和占有的事实基础。",
+      "tags": ["登记权利", "无权占有"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.law.004", "courseId": "return-property", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "陈银玲主动搬离这一事实为何重要？",
+      "answer": "法院认为她并非因庄晓东非法占有而离开，现要求排除占有与其共同购房、共同生活事实相悖。",
+      "tags": ["主动搬离", "占有判断"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/一审判决书.pdf", "locator": "第6页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.law.005", "courseId": "return-property", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "法院为何主张整体处理财产关系？",
+      "answer": "双方在婚姻及共同生活期间有多项财产调配，单独处理一套房屋难以周全，易忽视整体关系。",
+      "tags": ["整体析产", "裁判理由"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/一审判决书.pdf", "locator": "第6页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.law.006", "courseId": "return-property", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“本案败诉后永远不能再说占有问题”准确吗？",
+      "answer": "不准确。二审明确，全面析产后如仍存在占用纠纷，可基于析产新事实再行主张。",
+      "redLine": true, "tags": ["后续权利", "裁判边界"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第4页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.law.007", "courseId": "return-property", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "占有使用费请求为何随返还请求一并未获支持？",
+      "answer": "法院未认定陈银玲有权在本案单独排除庄晓东占有，按月计费的占用费请求也失去本案支持基础。",
+      "tags": ["占有使用费", "请求权基础"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.law.008", "courseId": "return-property", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "民诉法第六十七条在本案提示什么？",
+      "answer": "当事人应对自己的主张提供证据，不能仅凭登记或对方不搬离就省略共同购房和占有基础审查。",
+      "tags": ["举证责任", "民诉法67条"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/一审判决书.pdf", "locator": "第6—7页，本院认为及裁判依据" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.review.001", "courseId": "return-property", "chapterId": "review-comparison", "level": "core", "kind": "qa",
+      "prompt": "本案与离婚后财产纠纷的关联是什么？",
+      "answer": "两案涉及同一批复杂财产安排；返还案不宜脱离共有财产诉讼单独确定房屋权利和占有。",
+      "tags": ["关联案件", "整体析产"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.review.002", "courseId": "return-property", "chapterId": "review-comparison", "level": "advanced", "kind": "comparison",
+      "prompt": "返还案与离婚后财产案的诉讼目标有何不同？",
+      "answer": "返还案要求搬离、返还和占用费；财产案处理离婚协议财产条款效力及整体财产关系。",
+      "tags": ["两案比较", "诉讼目标"], "sourceRefs": [{ "label": "返还案二审判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第2—4页" }, { "label": "财产案一审判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第2页及第8—9页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "return.review.003", "courseId": "return-property", "chapterId": "review-comparison", "level": "core", "kind": "qa",
+      "prompt": "本案“假离婚”主张为何产生双重影响？",
+      "answer": "它有助于解释购房背景，也同时支持共同筹划、共同生活的认定，削弱单独排除对方占有的主张。",
+      "tags": ["策略复盘", "主张一致"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "return.review.004", "courseId": "return-property", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "占有使用费举证可怎样更有针对性？",
+      "answer": "除金额和期间外，还应先证明对方属无权占有及费用请求基础，再论证标准的合理性和实际损失。",
+      "tags": ["策略复盘", "占有使用费"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第2—4页，上诉请求及本院认为" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "return.review.005", "courseId": "return-property", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "关联案件并行时，文书工作应怎样改进？",
+      "answer": "统一事实时间线和财产口径，逐案区分诉讼目标，避免一案主张被另一案用作矛盾依据。",
+      "tags": ["策略复盘", "案件协调"], "sourceRefs": [{ "label": "返还案二审判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页" }, { "label": "返还原物案件简要", "path": "实习材料/陈银玲/返还原物纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "return.interview.001", "courseId": "return-property", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用20秒概括本案结果和核心理由。",
+      "checklist": ["一二审均未支持返还房屋及占有使用费", "说明离婚前筹划、双方出资和离婚后共同生活", "指出不宜脱离整体财产关系单独处理", "不归咎法院、不隐瞒败诉结果"],
+      "tags": ["20秒", "案件概括"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "return.interview.002", "courseId": "return-property", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用90秒陈述本案事实、证据、争点、结果和本人工作。",
+      "checklist": ["交代登记、购房安排和两项诉请", "用合同、出资、微信和共同生活说明证据链", "区分登记权利与无权占有判断", "准确说出一二审驳回结果", "说明与离婚后财产案的整体处理关系", "说出时间线、证据目录或检索等本人辅助工作"],
+      "tags": ["90秒", "整案表达"], "sourceRefs": [{ "label": "返还原物案件简要", "path": "实习材料/陈银玲/返还原物纠纷/已打印/案件简要.pdf", "locator": "第1—2页" }, { "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页" }], "estimatedSeconds": 90
+    },
+    {
+      "id": "return.interview.003", "courseId": "return-property", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：登记在客户名下，为何还会败诉？",
+      "answer": "法院未只看登记，而是认定房屋为共同生活共同出资购买，单独排除占有与这些事实及整体析产不符。",
+      "followUps": [{ "prompt": "是否说明登记完全没意义？", "answer": "不是。登记是重要权利外观，但本案还需审查占有基础和关联财产关系。" }, { "prompt": "以后还能主张吗？", "answer": "全面析产后如仍有占用纠纷，可基于析产新事实再行主张。" }],
+      "tags": ["压力追问", "登记权利"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页" }], "estimatedSeconds": 50
+    },
+    {
+      "id": "return.interview.004", "courseId": "return-property", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：共同生活已经结束，为何对方还能继续住？",
+      "answer": "共同生活结束不自动解决房产权属和占有基础，法院要求结合共同购房及整体财产关系处理。",
+      "followUps": [{ "prompt": "是否等于对方取得所有权？", "answer": "不能这样推论。本案未单独完成权属析分，而是未支持当时的返还及占用费请求。" }],
+      "tags": ["压力追问", "占有基础"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "return.interview.005", "courseId": "return-property", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：你在这个败诉案件里做了什么有价值的工作？",
+      "answer": "我把购房、出资、居住和程序节点做成时间线，整理证据目录并研究关联案件，帮助团队识别整体析产问题。",
+      "followUps": [{ "prompt": "能否把团队策略说成你的决定？", "answer": "不能。我参与基础性、辅助性工作，诉讼策略和代理由执业律师负责。" }],
+      "tags": ["压力追问", "own-work"], "sourceRefs": [{ "label": "返还原物案件简要", "path": "实习材料/陈银玲/返还原物纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作" }, { "label": "李黎工作情况说明", "path": "实习材料/陈银玲/返还原物纠纷/情况说明-最终版.docx", "locator": "正文" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "return.interview.006", "courseId": "return-property", "chapterId": "interview-performance", "level": "link", "kind": "correction",
+      "prompt": "“李黎主办返还案并凭房产证胜诉，对方永无权利”有哪些错误？",
+      "answerPoints": ["李黎参与辅助工作而非独立主办", "一二审均驳回陈银玲诉讼请求", "全面析产后仍可基于新事实处理占用纠纷"],
+      "redLine": true, "tags": ["红线", "own-work", "case-result"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页" }, { "label": "李黎工作情况说明", "path": "实习材料/陈银玲/返还原物纠纷/情况说明-最终版.docx", "locator": "正文" }], "estimatedSeconds": 35
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "id": "obtaining-loan-by-fraud",
+  "title": "骗取贷款刑事案",
+  "description": "围绕林小芳涉嫌骗取贷款罪案，训练审查起诉阶段的事实梳理、责任个别化、证据核对、分层辩护及本人辅助工作。",
+  "riskNote": "本案材料显示仍处于审查起诉阶段，尚未进入法院审理程序，未形成生效裁判；涉案数额、损失、个人获利及主观明知仍须结合卷宗核定，不得表述为已定罪、已不起诉或已适用缓刑。",
+  "chapters": [
+    { "id": "case-map", "title": "案件地图" },
+    { "id": "evidence-contribution", "title": "证据与本人工作" },
+    { "id": "legal-issues", "title": "法律争点" },
+    { "id": "review-comparison", "title": "复盘与关联案件" },
+    { "id": "interview-performance", "title": "面试表达与压力追问" }
+  ],
+  "cards": [
+    {
+      "id": "loan.map.001", "courseId": "obtaining-loan-by-fraud", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案当事人涉嫌什么罪名，因何类业务涉案？",
+      "answer": "林小芳涉嫌骗取贷款罪，因其工作期间参与所在公司贷款相关业务而涉案。",
+      "tags": ["罪名", "案情"], "sourceRefs": [{ "label": "骗取贷款案件简要", "path": "实习材料/林小芳/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "loan.map.002", "courseId": "obtaining-loan-by-fraud", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案承办机关和当前程序阶段是什么？",
+      "answer": "承办机关是辽阳市白塔区人民检察院，材料显示案件处于审查起诉阶段。",
+      "tags": ["审查起诉", "程序"], "sourceRefs": [{ "label": "骗取贷款案件简要", "path": "实习材料/林小芳/已打印/案件简要.pdf", "locator": "第1页，案件基本信息" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "loan.map.003", "courseId": "obtaining-loan-by-fraud", "chapterId": "case-map", "level": "core", "kind": "correction",
+      "prompt": "“法院已经判林小芳构成骗取贷款罪”符合材料吗？",
+      "answer": "不符合。案件尚未进入法院审理程序，未形成生效裁判结果。",
+      "redLine": true, "tags": ["case-result", "程序阶段"], "sourceRefs": [{ "label": "骗取贷款案件简要", "path": "实习材料/林小芳/已打印/案件简要.pdf", "locator": "第1页，诉讼阶段和案件结果" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "loan.map.004", "courseId": "obtaining-loan-by-fraud", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "为什么本案必须对不同公司人员个别化评价？",
+      "answer": "各人在岗位、职责、经办事项、对材料的认识和获利方面不同，不能因参与同一业务链条而等同归责。",
+      "tags": ["责任区分", "共同犯罪"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第二至三部分" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.map.005", "courseId": "obtaining-loan-by-fraud", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "林小芳关于自身地位和作用的主要辩解是什么？",
+      "answer": "她主张自己的职务、工作性质和参与程度与深圳地区负责人及部门领导存在明显差异。",
+      "tags": ["当事人辩解", "岗位"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第三部分第1项" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "loan.map.006", "courseId": "obtaining-loan-by-fraud", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案哪些关键事实仍待审计和卷宗核实？",
+      "answerPoints": ["涉案数额与实际损失", "个人获利情况", "具体经办行为及其与贷款发放、损失的关联"],
+      "tags": ["待核事实", "审计"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第三至五部分" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.map.007", "courseId": "obtaining-loan-by-fraud", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "辩护团队已与检察机关沟通哪些事项？",
+      "answer": "已围绕补充笔录、阅卷、认罪认罚及量刑意见进行沟通，并提交阅卷申请和委托材料。",
+      "tags": ["辩护进展", "检察沟通"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第六部分" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.map.008", "courseId": "obtaining-loan-by-fraud", "chapterId": "case-map", "level": "advanced", "kind": "qa",
+      "prompt": "本案下一阶段辩护工作的重点是什么？",
+      "answer": "完成阅卷并固定有利证据，核定数额和获利，形成书面辩护意见，继续沟通量刑并准备退赃退赔方案。",
+      "tags": ["下一步", "辩护计划"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第七部分" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "loan.evidence.001", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "劳动合同在本案中的证明用途是什么？",
+      "answer": "用于证明林小芳的任职时间和岗位，为判断职责范围及参与程度提供基础。",
+      "tags": ["劳动合同", "岗位职责"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第四部分第（一）项" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "loan.evidence.002", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "工资流水在本案中主要核对什么？",
+      "answer": "用于核对收入水平和个人获利情况，不能只凭岗位名称推断其实际收益。",
+      "tags": ["工资流水", "个人获利"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第四部分第（一）项" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "loan.evidence.003", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "《人员职责对照表》用于解决什么问题？",
+      "answer": "比对林小芳与负责人、部门领导及其他同案人员的岗位、职责和经办事项，服务责任个别化。",
+      "tags": ["职责对照表", "责任区分"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第四部分第（二）项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.evidence.004", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "审计报告在本案中的核心核对作用是什么？",
+      "answer": "用于核定涉案数额、实际损失和个人获利，不能仅以贷款金额或不良贷款标签代替损失审查。",
+      "tags": ["审计报告", "重大损失"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第四至五部分" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.evidence.005", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "同案人员裁判文书应怎样使用？",
+      "answer": "用于核对同案处理、职责分工和责任区分，并与本案具体证据比较，而非机械照搬结果。",
+      "tags": ["同案裁判", "类案"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第四部分第（四）项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.evidence.006", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "advanced", "kind": "qa",
+      "prompt": "阅卷时应建立哪两条对应关系？",
+      "answer": "逐份对应贷款材料的形成环节与林小芳的经办事项，再核对其行为与贷款发放、损失之间的关联。",
+      "tags": ["阅卷", "证据策略"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第七部分第1项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.work.001", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在客户沟通和事实梳理中完成了什么？",
+      "answer": "参与会见，核对任职、岗位、业务流程、同案分工及讯问情况，制作会谈纪要和人员职责对照表。",
+      "tags": ["own-work", "会见", "职责对照"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第六部分第1—2项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.work.002", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎如何整理本案证据材料？",
+      "answer": "按人员、时间和业务环节分类整理合同、流水、岗位说明、沟通、审计及同案裁判，核对参与范围和获利。",
+      "tags": ["own-work", "证据整理"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第六部分第3项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "loan.work.003", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎的法律检索报告覆盖了哪些主题？",
+      "answer": "覆盖构成要件、主观明知、共同犯罪责任区分、重大损失、涉案数额及认罪认罚、退赃退赔和缓刑。",
+      "tags": ["own-work", "法律检索"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第一至二部分" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "loan.work.004", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎具体怎样完成类案检索？",
+      "answer": "设计关键词和检索式，在裁判文书网、威科先行、北大法宝筛选类案，摘录要旨并归纳规则，成果经律师审核。",
+      "tags": ["own-work", "类案检索"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第六部分" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "loan.work.005", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎办理了哪些程序和事务性工作？",
+      "answer": "准备委托和辩护手续，办理网上案件绑定、阅卷申请、打印装订及EMS寄送，跟进材料传送。",
+      "tags": ["own-work", "程序事务"], "sourceRefs": [{ "label": "骗取贷款案件简要", "path": "实习材料/林小芳/已打印/案件简要.pdf", "locator": "第2页，主要工作第4项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.work.006", "courseId": "obtaining-loan-by-fraud", "chapterId": "evidence-contribution", "level": "core", "kind": "correction",
+      "prompt": "“本案由曹莎主办，检索意见都是李黎独立决定”准确吗？",
+      "answer": "不准确。蓝清华律师主办，曹莎未亲自参与；李黎在指导下完成检索，成果经主办律师审核。",
+      "redLine": true, "tags": ["own-work", "团队边界"], "sourceRefs": [{ "label": "李黎工作说明", "path": "实习材料/林小芳/情况说明-李黎.docx", "locator": "第2段" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.law.001", "courseId": "obtaining-loan-by-fraud", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "根据检索报告，骗取贷款罪的基本入罪结构是什么？",
+      "answer": "以欺骗手段取得银行或其他金融机构贷款，并给金融机构造成重大损失。",
+      "tags": ["构成要件", "刑法175条之一"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第三部分第（一）项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.law.002", "courseId": "obtaining-loan-by-fraud", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "《刑法修正案（十一）》对本罪入罪条件有何重要修改？",
+      "answer": "删除了“或者有其他严重情节”的入罪条件，检索报告据此强调重大损失要件。",
+      "tags": ["刑法修正案", "重大损失"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第三部分第（一）项提示" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.law.003", "courseId": "obtaining-loan-by-fraud", "chapterId": "legal-issues", "level": "advanced", "kind": "cloze",
+      "prompt": "2022年立案追诉标准规定，直接经济损失在____以上应予立案追诉。",
+      "answer": "50万元。",
+      "tags": ["立案追诉", "金额"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第三部分第（二）项" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "loan.law.004", "courseId": "obtaining-loan-by-fraud", "chapterId": "legal-issues", "level": "core", "kind": "comparison",
+      "prompt": "骗取贷款罪与贷款诈骗罪的核心区别是什么？",
+      "answer": "核心区别在于是否具有非法占有目的；本案检索将有归还意愿、用于正常经营等作为判断线索。",
+      "tags": ["罪名比较", "非法占有目的"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第四部分第1项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "loan.law.005", "courseId": "obtaining-loan-by-fraud", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“形成不良贷款就等于刑法上的重大损失”严谨吗？",
+      "answer": "不严谨。检索观点认为仍须审查直接经济损失，并核对已归还或通过担保实现债权的部分。",
+      "tags": ["重大损失", "证明限制"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第四部分第2项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "loan.law.006", "courseId": "obtaining-loan-by-fraud", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "判断低层级经办人员责任时应综合哪些因素？",
+      "answer": "综合岗位、职责、是否参与决策、对虚假材料的明知程度、实际经办事项及获利情况。",
+      "tags": ["责任区分", "主观明知"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第四部分第3项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.law.007", "courseId": "obtaining-loan-by-fraud", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "本案检索报告提出的三层辩护思路是什么？",
+      "answerPoints": ["无罪层：主观明知及因果关系不足", "罪轻层：地位作用较轻，争取从犯或较轻责任评价", "量刑层：退赃退赔、认罪认罚，争取不起诉或缓刑"],
+      "tags": ["辩护策略", "分层辩护"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第五部分" }], "estimatedSeconds": 35
+    },
+    {
+      "id": "loan.law.008", "courseId": "obtaining-loan-by-fraud", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“当事人愿意退赃退赔，就说明已经认罪”是否准确？",
+      "answer": "不准确。材料表述为愿意在查明事实基础上依法退赃退赔、认罪认罚，不能替当事人补写作案事实。",
+      "redLine": true, "tags": ["事实边界", "认罪认罚"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第三部分第3项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.law.009", "courseId": "obtaining-loan-by-fraud", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "地方司法文件和类案观点在本案检索中应如何使用？",
+      "answer": "作为辩护分析参考，仍须核验裁判原文、本案证据及当地司法实践，不能直接视为本案结论。",
+      "tags": ["检索边界", "类案"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第三部分第（四）项及第四部分说明" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.review.001", "courseId": "obtaining-loan-by-fraud", "chapterId": "review-comparison", "level": "core", "kind": "comparison",
+      "prompt": "“参与贷款业务”与“承担骗取贷款刑责”之间还缺哪些证明？",
+      "answer": "还需证明欺骗手段、主观明知、具体行为作用、重大损失及个人责任范围，不能只凭任职或经手归责。",
+      "tags": ["证明链", "责任区分"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第三至五部分" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "loan.review.002", "courseId": "obtaining-loan-by-fraud", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "本案证据整理为何采用人员、时间、业务环节三条轴？",
+      "answer": "三条轴能把谁知情、谁决定、谁经办及何时参与对应起来，防止将团队整体行为笼统归于个人。",
+      "tags": ["证据策略", "复盘"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第四及第六部分" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "loan.review.003", "courseId": "obtaining-loan-by-fraud", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "为什么无罪、罪轻和量刑三层思路可以同时准备？",
+      "answer": "它们分别回应是否构罪、责任大小和从宽处理，便于在事实与证据核定的不同阶段保留辩护空间。",
+      "tags": ["辩护策略", "复盘"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第五部分" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.review.004", "courseId": "obtaining-loan-by-fraud", "chapterId": "review-comparison", "level": "core", "kind": "qa",
+      "prompt": "本案事实梳理最重要的表达纪律是什么？",
+      "answer": "严格区分委托人辩解、在案证据、检索观点和待核事实，未核定事项不说成确定结论。",
+      "tags": ["事实边界", "复盘"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第三至五部分" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "loan.interview.001", "courseId": "obtaining-loan-by-fraud", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用20秒概括本案及当前阶段。",
+      "checklist": ["说出涉嫌骗取贷款罪及贷款业务背景", "说明多名公司人员责任需个别化", "点出岗位职责、主观明知、损失和获利等待核问题", "明确仍在审查起诉、没有生效裁判"],
+      "tags": ["20秒", "案件概括"], "sourceRefs": [{ "label": "骗取贷款案件简要", "path": "实习材料/林小芳/已打印/案件简要.pdf", "locator": "第1页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "loan.interview.002", "courseId": "obtaining-loan-by-fraud", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用90秒说明本案事实、争点、辩护思路和本人工作。",
+      "checklist": ["交代审查起诉阶段及无裁判结果", "说明当事人与负责人、部门领导的职责差异主张", "归纳主观明知、行为作用、损失和获利争点", "说出无罪、罪轻、量刑三层辩护思路", "举例说明职责对照表或检索报告", "准确区分本人辅助工作与律师审核"],
+      "tags": ["90秒", "整案表达"], "sourceRefs": [{ "label": "案件事实梳理", "path": "实习材料/林小芳/案件事实梳理.docx", "locator": "第三至七部分" }], "estimatedSeconds": 90
+    },
+    {
+      "id": "loan.interview.003", "courseId": "obtaining-loan-by-fraud", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：她既然经办了贷款，为什么还说责任需要个别化？",
+      "answer": "经办只是事实起点，还须审查其岗位职责、决策权限、主观明知、具体作用和获利，不能等同负责人责任。",
+      "followUps": [{ "prompt": "你是否在替她作无罪结论？", "answer": "不是。无罪、罪轻和量刑是分层辩护思路，结论仍取决于阅卷、审计及证据核定。" }],
+      "tags": ["压力追问", "责任区分"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第四至五部分" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "loan.interview.004", "courseId": "obtaining-loan-by-fraud", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：你的检索报告对案件有什么实际用途？",
+      "answer": "它把构成要件、责任区分和量刑情节转成检索框架，帮助律师设计证据核对重点和分层辩护方案。",
+      "followUps": [{ "prompt": "报告是否就是最终辩护意见？", "answer": "不是。报告供承办律师制定方案参考，已经审核，但最终意见仍须结合完整卷宗形成。" }],
+      "tags": ["压力追问", "own-work", "法律检索"], "sourceRefs": [{ "label": "案件检索报告", "path": "实习材料/林小芳/案件检索报告.docx", "locator": "第一部分及第五至六部分" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "loan.interview.005", "courseId": "obtaining-loan-by-fraud", "chapterId": "interview-performance", "level": "link", "kind": "correction",
+      "prompt": "“本案已经不起诉，我独立为当事人争取了缓刑”有哪些错误？",
+      "answerPoints": ["材料仅显示审查起诉阶段，没有不起诉结果", "案件未进入法院审理，更无缓刑判决", "李黎从事辅助工作，辩护成果不能归为个人独立取得"],
+      "redLine": true, "tags": ["红线", "程序阶段", "团队边界"], "sourceRefs": [{ "label": "骗取贷款案件简要", "path": "实习材料/林小芳/已打印/案件简要.pdf", "locator": "第1页，诉讼阶段和案件结果" }], "estimatedSeconds": 30
+    }
+  ]
+}

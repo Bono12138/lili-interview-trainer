@@ -1,0 +1,233 @@
+{
+  "id": "digital-assets",
+  "title": "公司数字资产纠纷",
+  "description": "围绕乐承公司小O宝账号、店铺、支付账户及经营收益争议，训练数字经营资产的证据组织、公司利益争点和未结案件表达。",
+  "riskNote": "本案仍在一审审理中，账号转移、收益侵占及忠实义务违反均是乐承公司的诉讼主张，不得说成法院已经认定；返还收益2000万元是诉讼请求，不是裁判金额。",
+  "chapters": [
+    { "id": "case-map", "title": "案件地图" },
+    { "id": "evidence-contribution", "title": "证据与本人工作" },
+    { "id": "legal-issues", "title": "法律争点" },
+    { "id": "review-comparison", "title": "复盘与关联案件" },
+    { "id": "interview-performance", "title": "面试表达与压力追问" }
+  ],
+  "cards": [
+    {
+      "id": "digital.map.001", "courseId": "digital-assets", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案原告和四被告分别是谁？",
+      "answer": "原告为乐承公司；被告为庄晓东、庄晓洁、廖雯婕及深圳市龙岗区龙翔诺诺宝贝童装店。",
+      "tags": ["当事人"], "sourceRefs": [{ "label": "数字资产案件小结", "path": "实习材料/陈银玲/侵害公司利益纠纷/案件小结.pdf", "locator": "第1页，案件简介" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.map.002", "courseId": "digital-assets", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "乐承公司的股权结构及陈银玲的诉讼身份是什么？",
+      "answer": "陈银玲与庄晓东各持股50%；陈银玲以监事身份代表乐承公司起诉。",
+      "tags": ["股权结构", "监事代表"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "digital.map.003", "courseId": "digital-assets", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案涉及哪些数字化经营资产？",
+      "answerPoints": ["小O宝抖音账号及抖音店铺", "淘宝店铺", "关联支付宝账户及经营收益"],
+      "tags": ["数字资产", "账号店铺"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "digital.map.004", "courseId": "digital-assets", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "乐承公司关于资产转移的核心事实主张是什么？",
+      "answer": "公司主张原由其投入、运营和控制的账号店铺被转由个人或关联主体控制，并继续利用原团队、品牌和客户基础经营。",
+      "tags": ["公司主张", "资产转移"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "digital.map.005", "courseId": "digital-assets", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "乐承公司的主要诉讼请求有哪些？",
+      "answerPoints": ["确认账号、店铺及收益属于公司", "返还账号店铺并协助变更手续", "返还经营收益并承担诉讼费用"],
+      "tags": ["诉讼请求"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.map.006", "courseId": "digital-assets", "chapterId": "case-map", "level": "advanced", "kind": "cloze",
+      "prompt": "案件小结记载的公司主张返还经营收益金额为____元。",
+      "answer": "2000万元。",
+      "tags": ["诉讼请求", "金额"], "sourceRefs": [{ "label": "数字资产案件小结", "path": "实习材料/陈银玲/侵害公司利益纠纷/案件小结.pdf", "locator": "第1页，主要工作" }], "estimatedSeconds": 15
+    },
+    {
+      "id": "digital.map.007", "courseId": "digital-assets", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案目前处于什么阶段？",
+      "answer": "案件处于一审审理阶段，法院尚未作出裁判。",
+      "tags": ["case-result", "未结案件"], "sourceRefs": [{ "label": "未结案说明", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/未结案说明.pdf", "locator": "第1页" }], "estimatedSeconds": 15
+    },
+    {
+      "id": "digital.map.008", "courseId": "digital-assets", "chapterId": "case-map", "level": "advanced", "kind": "qa",
+      "prompt": "本案案号和受理法院是什么？",
+      "answer": "案号为（2024）粤0305民诉前调55358号，由深圳市南山区人民法院受理。",
+      "tags": ["案号", "法院"], "sourceRefs": [{ "label": "未结案说明", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/未结案说明.pdf", "locator": "第1页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "digital.evidence.001", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "工商档案在本案中的证明作用是什么？",
+      "answer": "用于核对公司股权、职务、关联主体及诉讼代表资格，建立主体关系基础。",
+      "tags": ["工商档案", "主体关系"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第1—2页，案情及主要工作" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "digital.evidence.002", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "平台信息披露和账号后台资料主要证明什么？",
+      "answer": "用于核对账号名称、认证主体、绑定账户、运营人员及控制权变化。",
+      "tags": ["平台披露", "账号控制"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第2项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.evidence.003", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "支付账户及资金线索为什么必须与账号店铺对应？",
+      "answer": "只有对应到具体店铺、期间和收款主体，才能分析经营收益归属及返还金额。",
+      "tags": ["支付账户", "收益流向"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点及主要工作" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.evidence.004", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "公证和时间戳取证在本案中解决什么问题？",
+      "answer": "用于固定网页、店铺和账号在特定时间呈现的内容，支持主体、使用及经营状态的核对。",
+      "tags": ["公证", "时间戳", "电子证据"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第2项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.evidence.005", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "advanced", "kind": "evidence-purpose",
+      "prompt": "取证记录中的店铺认证、发货和吊牌信息有何用途？",
+      "answer": "可用于交叉核对店铺实际主体、发货主体和商品标示主体，发现个人认证与公司经营线索之间的关系。",
+      "tags": ["取证记录", "交叉核对"], "sourceRefs": [{ "label": "取证记录", "path": "实习材料/陈银玲/侵害公司利益纠纷/4、取证记录.pdf", "locator": "第1页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "digital.evidence.006", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "本案为什么要制作主体与账号关系图？",
+      "answer": "因为公司、个人、关联主体、平台账号和收款账户交错，关系图用于把控制链条和资产对应关系讲清。",
+      "tags": ["关系图", "证据组织"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第1项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.work.001", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎如何梳理本案事实？",
+      "answer": "参与客户沟通，了解品牌、账号和店铺设立运营，制作主体账号关系图并按时间整理控制权变化。",
+      "tags": ["own-work", "关系图"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第1项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.work.002", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在证据整理方面做了什么？",
+      "answer": "分类整理工商、平台、后台、支付、公证和沟通材料，核对认证、账户及收益流向，制作目录并排查缺项。",
+      "tags": ["own-work", "证据目录"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第2项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "digital.work.003", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在法律分析和文书方面做了什么？",
+      "answer": "梳理实际投入、运营、控制与名义登记关系，参与起诉状、补充证据目录和情况说明校对，形成分析文稿。",
+      "tags": ["own-work", "案件分析"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第3项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "digital.work.004", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎承担了哪些程序性事务？",
+      "answer": "准备网上立案和纸质材料，完成扫描、页码核对、装订、邮寄和送达查询，补充证据并跟进进度。",
+      "tags": ["own-work", "程序事务"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第4项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.work.005", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "advanced", "kind": "qa",
+      "prompt": "李黎在电子证据固定之外还陪同办理了哪类事务？",
+      "answer": "陪同当事人办理相关公证事务。",
+      "tags": ["own-work", "公证"], "sourceRefs": [{ "label": "数字资产纠纷情况说明", "path": "实习材料/陈银玲/侵害公司利益纠纷/情况说明-最终版.docx", "locator": "第3段" }], "estimatedSeconds": 15
+    },
+    {
+      "id": "digital.work.006", "courseId": "digital-assets", "chapterId": "evidence-contribution", "level": "core", "kind": "correction",
+      "prompt": "“李黎以执业律师身份独立办理本案”符合材料吗？",
+      "answer": "不符合。她在曹莎律师指导下参与会见、证据整理、案例检索和案件研判等辅助工作。",
+      "redLine": true, "tags": ["own-work", "团队边界"], "sourceRefs": [{ "label": "数字资产纠纷情况说明", "path": "实习材料/陈银玲/侵害公司利益纠纷/情况说明-最终版.docx", "locator": "第1—3段" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.law.001", "courseId": "digital-assets", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "数字账号和店铺权属分析不能只看什么？",
+      "answer": "不能只看名义认证或登记主体，还要核对实际投入、运营、控制、团队来源和收益流向。",
+      "tags": ["数字资产", "权属"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点及主要工作" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.law.002", "courseId": "digital-assets", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "本案关于公司管理人员忠实义务的争点是什么？",
+      "answer": "庄晓东等是否通过关联主体承接公司账号、人员、业务和商业机会，构成对公司利益的损害。",
+      "tags": ["忠实义务", "商业机会"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点第2项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.law.003", "courseId": "digital-assets", "chapterId": "legal-issues", "level": "core", "kind": "comparison",
+      "prompt": "账号、店铺、支付账户和收益为何不能笼统视为同一对象？",
+      "answer": "它们的认证、控制、结算和收益证明各不相同，须逐项确定权属及返还范围。",
+      "tags": ["资产区分", "证明对象"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.law.004", "courseId": "digital-assets", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "返还账号店铺请求为什么还要审查可执行性？",
+      "answer": "因为返还和主体变更涉及平台账号、店铺及绑定关系，须明确具体对象和实际变更路径。",
+      "tags": ["可执行性", "返还请求"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点第3项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.law.005", "courseId": "digital-assets", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "返还经营收益主张需要核清哪三项？",
+      "answerPoints": ["收益对应的具体账号和店铺", "计算期间及收款主体", "金额计算依据和资金证据"],
+      "tags": ["经营收益", "举证"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点第3项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.law.006", "courseId": "digital-assets", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“个人名义认证就当然属于个人财产”是否严谨？",
+      "answer": "不严谨。本案还需审查实际投入、运营和控制，但公司主张同样须经证据证明，不能直接下结论。",
+      "tags": ["名义登记", "实际权属"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第3项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.law.007", "courseId": "digital-assets", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“法院已判四被告返还2000万元”错在哪里？",
+      "answer": "2000万元是公司诉讼请求，案件仍在一审审理中，尚无裁判结果。",
+      "redLine": true, "tags": ["红线", "案件结果", "金额"], "sourceRefs": [{ "label": "数字资产案件小结", "path": "实习材料/陈银玲/侵害公司利益纠纷/案件小结.pdf", "locator": "第1页，主要工作及案件结果" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.review.001", "courseId": "digital-assets", "chapterId": "review-comparison", "level": "core", "kind": "comparison",
+      "prompt": "数字资产案与商标转移案的证明对象有何不同？",
+      "answer": "前者重在账号店铺的投入、控制及收益流向；后者有注册商标登记和转让公告，同时审查关联交易。",
+      "tags": ["关联案件", "比较"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "digital.review.002", "courseId": "digital-assets", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "电子证据固定后，还要完成哪一步才有证明意义？",
+      "answer": "把证据与具体账号、主体、时间和证明目的对应，并与资金和运营材料交叉验证。",
+      "tags": ["电子证据", "复盘"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第2项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.review.003", "courseId": "digital-assets", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "本案诉讼策略为何要同时考虑权属与执行？",
+      "answer": "即使确认公司权利，也需解决账号返还、主体变更和收益计算能否具体落实的问题。",
+      "tags": ["诉讼策略", "可执行性"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点第3项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.review.004", "courseId": "digital-assets", "chapterId": "review-comparison", "level": "core", "kind": "qa",
+      "prompt": "未结案件面试表达最重要的纪律是什么？",
+      "answer": "明确使用“公司主张”“现有证据拟证明”，不把诉求、证据目录或案件小结写成法院认定。",
+      "tags": ["未结案件", "表达边界"], "sourceRefs": [{ "label": "未结案说明", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/未结案说明.pdf", "locator": "第1页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "digital.interview.001", "courseId": "digital-assets", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用20秒概括本案及当前阶段。",
+      "checklist": ["说出乐承公司与小O宝数字经营资产背景", "概括账号店铺被转移控制的公司主张", "说出返还资产及收益的主要请求", "明确案件仍在一审、没有裁判结果"],
+      "tags": ["20秒", "案件概括"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第1页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "digital.interview.002", "courseId": "digital-assets", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用90秒说明本案事实、证据、争点和本人工作。",
+      "checklist": ["交代公司股权、监事代表及品牌经营背景", "区分账号、店铺、支付账户和收益", "说明投入、运营、控制及资金流向的证明思路", "归纳忠实义务和可执行性争点", "说出一项本人具体辅助工作", "明确案件未结并避免把主张说成认定"],
+      "tags": ["90秒", "整案表达"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 90
+    },
+    {
+      "id": "digital.interview.003", "courseId": "digital-assets", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：账号登记在个人名下，公司凭什么主张权利？",
+      "answer": "公司需证明实际投入、运营、控制及收益来源，名义认证只是证据之一，不能代替完整证明链。",
+      "followUps": [{ "prompt": "法院已经认可公司权属了吗？", "answer": "没有。案件仍在一审审理中，目前只能介绍公司主张和举证思路。" }, { "prompt": "2000万元如何认定？", "answer": "这是公司请求金额，仍须按店铺、期间、收款主体和资金证据核定。" }],
+      "tags": ["压力追问", "数字资产"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 50
+    },
+    {
+      "id": "digital.interview.004", "courseId": "digital-assets", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：你做的关系图和证据目录有什么实际价值？",
+      "answer": "它们把复杂主体、账号、认证、绑定账户和收益流向对应起来，帮助发现证据缺口并组织证明目的。",
+      "followUps": [{ "prompt": "这些成果是否等于法院采信？", "answer": "不等于。它们是团队诉讼准备材料，是否采信由法院依法审查。" }],
+      "tags": ["压力追问", "own-work"], "sourceRefs": [{ "label": "数字资产案件简要", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第1—2项" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "digital.interview.005", "courseId": "digital-assets", "chapterId": "interview-performance", "level": "link", "kind": "correction",
+      "prompt": "“我独立追回公司全部账号和2000万元”有哪些错误？",
+      "answerPoints": ["案件未结，没有追回结果的裁判依据", "2000万元是请求金额", "李黎参与辅助工作，不能宣称独立取得成果"],
+      "redLine": true, "tags": ["红线", "未结案件", "团队边界"], "sourceRefs": [{ "label": "未结案说明", "path": "实习材料/陈银玲/侵害公司利益纠纷/已打印/未结案说明.pdf", "locator": "第1页" }], "estimatedSeconds": 30
+    }
+  ]
+}

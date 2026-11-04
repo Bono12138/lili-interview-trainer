@@ -1,0 +1,264 @@
+{
+  "id": "cross-border-family",
+  "title": "跨境家事项目",
+  "description": "围绕涉港抚养权应诉咨询及内地调解书在香港承认与执行专项，训练跨法域程序协调、子女最佳利益、证据核验和团队边界。",
+  "riskNote": "香港程序及专项服务均在办理中，没有终局裁判或登记结果；本所不作为香港诉讼出庭代理人。反誓章、Form J及证据清单均为工作稿，未经核实的事实、法律观点或对方指控不得当作确定事实。",
+  "chapters": [
+    { "id": "case-map", "title": "案件地图" },
+    { "id": "evidence-contribution", "title": "证据与本人工作" },
+    { "id": "legal-issues", "title": "法律争点" },
+    { "id": "review-comparison", "title": "复盘与关联案件" },
+    { "id": "interview-performance", "title": "面试表达与压力追问" }
+  ],
+  "cards": [
+    {
+      "id": "cross.map.001", "courseId": "cross-border-family", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本项目包含哪两项相互关联的服务？",
+      "answerPoints": ["香港抚养权变更程序的应诉咨询", "内地民事调解书在香港申请承认与执行的专项服务"],
+      "tags": ["服务范围", "跨境"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.map.002", "courseId": "cross-border-family", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "内地调解书的法院和案号是什么？",
+      "answer": "深圳市宝安区人民法院，案号为（2024）粤0306民初27856号。",
+      "tags": ["内地调解书", "案号"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第1页，案号" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "cross.map.003", "courseId": "cross-border-family", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "香港程序的案号和主要争议是什么？",
+      "answer": "香港区域法院家事法庭FCMP 64/2026，男方申请变更三名子女的现有照顾安排。",
+      "tags": ["香港程序", "抚养权变更"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.map.004", "courseId": "cross-border-family", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "为什么本项目必须协调两个法域的程序？",
+      "answer": "两地程序并行，需协调法律意见、证据形式、送达和时序，避免事实陈述与请求相互冲突。",
+      "tags": ["程序协调", "跨法域"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.map.005", "courseId": "cross-border-family", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本所在香港诉讼中的代理边界是什么？",
+      "answer": "本所提供涉港应诉咨询和承认执行专项服务，不作为香港诉讼的出庭代理人。",
+      "tags": ["团队边界", "服务范围"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第2页，办理阶段和结果" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "cross.map.006", "courseId": "cross-border-family", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本项目目前是否已有终局裁判或登记结果？",
+      "answer": "没有。香港抚养权程序及承认执行专项均在办理中。",
+      "tags": ["case-result", "项目阶段"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第1—2页，办理阶段和结果" }], "estimatedSeconds": 15
+    },
+    {
+      "id": "cross.map.007", "courseId": "cross-border-family", "chapterId": "case-map", "level": "advanced", "kind": "qa",
+      "prompt": "Form J工作稿反映三名子女的照顾现状有何差异？",
+      "answer": "两名年长子女主要由母亲在香港照顾，幼女暂由亲属在深圳照顾；正式使用前仍须客户确认。",
+      "tags": ["照顾现状", "工作稿"], "sourceRefs": [{ "label": "Form J填写初稿", "path": "实习材料/黄昭昭/Form_J_黃昭昭_答辯人_填寫初稿_待委託人確認.docx", "locator": "第2部分，现时居住安排" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "cross.evidence.001", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "内地调解书和香港程序文件应如何结合使用？",
+      "answer": "用于核对既有安排、双方主张和程序发展，但引用前须按原文确认子女范围及准确措辞。",
+      "tags": ["内地调解书", "交叉核验"], "sourceRefs": [{ "label": "交叉验证报告", "path": "实习材料/黄昭昭/已打印/交叉验证报告_工作成果展示_2026-07-15.pdf", "locator": "第3页，事实待核事项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.evidence.002", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "学校和治疗沟通记录主要证明什么？",
+      "answer": "证明母亲实际参与日常照顾、教育及治疗协调，以及现有支持体系的连续性。",
+      "tags": ["学校记录", "治疗记录"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "表格1第2—4项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.evidence.003", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "为什么应提交完整的专家报告而非摘录？",
+      "answer": "完整报告能保留儿童意见及专业判断的限定语，避免选择性引用改变原意。",
+      "tags": ["专家报告", "完整性"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "表格1第4项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.evidence.004", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "幼女在深圳的哪些记录需要优先整理？",
+      "answer": "整理实际照顾者、居住、医疗、日常作息及母亲探望和视频记录，用于说明现状稳定性。",
+      "tags": ["幼女照顾", "现状稳定"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "表格1第16项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.evidence.005", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "子女费用表及凭证用于回应什么指控？",
+      "answer": "用于客观说明租金、学费、治疗、保险和必要生活支出，回应抚养费被挪用或挥霍的指控。",
+      "tags": ["费用表", "抚养费"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "表格1第8项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.evidence.006", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "advanced", "kind": "qa",
+      "prompt": "离港争议为什么适合制作travel matrix？",
+      "answer": "按日期列明目的、是否带孩子、照顾人和返港时间，能用客观安排回应“离港即疏于照顾”的推断。",
+      "tags": ["离港记录", "证据整理"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "表格1第7项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.evidence.007", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "advanced", "kind": "evidence-purpose",
+      "prompt": "6月24日律师信及返港记录用于证明什么？",
+      "answer": "用于回应离港风险，说明母亲愿作出返港承诺并以通知、承诺等较相称方式处理争议。",
+      "tags": ["返港承诺", "离港限制"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "表格1第13项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.evidence.008", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "core", "kind": "correction",
+      "prompt": "面对子女受伤这一不利事实，反誓章应如何处理？",
+      "answer": "诚实承认、解释背景并表达悔意，同时提出育儿辅导和具体安全计划，不能回避或编造。",
+      "redLine": true, "tags": ["不利事实", "安全计划"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "起草注意及表格1第5项" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "cross.work.001", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在案情梳理中做了什么？",
+      "answer": "核对内地调解、子女照顾居住、抚养费和香港程序经过，制作时间线、关系表和程序节点清单。",
+      "tags": ["own-work", "时间线"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第2页，主要工作第1项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.work.002", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎如何做证据交叉验证？",
+      "answer": "对事实、法律主张和证据逐项核验，排查表述不一致、无证内容和待补证事项，形成交叉验证报告。",
+      "tags": ["own-work", "交叉验证"], "sourceRefs": [{ "label": "交叉验证报告", "path": "实习材料/黄昭昭/已打印/交叉验证报告_工作成果展示_2026-07-15.pdf", "locator": "第1—3页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "cross.work.003", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在应诉分析中形成了哪些成果？",
+      "answer": "梳理子女最佳利益、反誓章事实基础和证据缺口，形成跨境抚养权评估及争点证据清单。",
+      "tags": ["own-work", "应诉分析"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第2页，主要工作第3项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.work.004", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎为承认与执行程序准备了什么？",
+      "answer": "梳理申请条件、时限、文件、送达、异议和执行流程，制作两地律师分工表及申请材料清单。",
+      "tags": ["own-work", "承认执行"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第2页，主要工作第4项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.work.005", "courseId": "cross-border-family", "chapterId": "evidence-contribution", "level": "core", "kind": "correction",
+      "prompt": "“本所已代表客户在香港出庭”符合材料吗？",
+      "answer": "不符合。本所提供应诉咨询和承认执行专项服务，香港法院程序由香港律师主导。",
+      "redLine": true, "tags": ["own-work", "团队边界"], "sourceRefs": [{ "label": "两地律师分工表", "path": "实习材料/黄昭昭/调解书香港承认执行程序_两地律师分工表.docx", "locator": "第一部分及负责方图例" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.law.001", "courseId": "cross-border-family", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "香港Cap.13第3条在本案中的核心原则是什么？",
+      "answer": "法院处理未成年人管养等问题时，以未成年人福利为首要及最重要考虑。",
+      "tags": ["Cap13", "子女最佳利益"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "适用香港法律依据摘要" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "cross.law.002", "courseId": "cross-border-family", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "儿童表达希望与父亲同住，是否就当然变更照顾安排？",
+      "answer": "不是。儿童意见须结合年龄、理解能力、具体情境及其他福利资料评估，不是机械决定。",
+      "tags": ["儿童意见", "福利原则"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "表格1第4项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.law.003", "courseId": "cross-border-family", "chapterId": "legal-issues", "level": "advanced", "kind": "comparison",
+      "prompt": "custody、care and control与access为何需要区分？",
+      "answer": "它们分别涉及重大决定、日常照顾和探视联系，不能把经济支持或探视活动等同日常照顾能力。",
+      "tags": ["概念区分", "日常照顾"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "适用香港法律依据摘要" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "cross.law.004", "courseId": "cross-border-family", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "父亲经济能力强，为什么不是变更照顾安排的决定性理由？",
+      "answer": "经济能力只是相关因素，法院仍须比较日常照顾、稳定性、学校治疗和变更环境的实际影响。",
+      "tags": ["经济能力", "子女福利"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "表格1第15项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.law.005", "courseId": "cross-border-family", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "父亲另租单位并由姐姐和雇员协助的方案应怎样评估？",
+      "answer": "重点看实际主要照顾者、方案稳定性及改变环境是否符合儿童需要，而不是只看房屋和人员投入。",
+      "tags": ["照顾方案", "稳定性"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "表格1第9项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.law.006", "courseId": "cross-border-family", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“幼女在深圳且非港籍，所以香港法院必然无权处理”严谨吗？",
+      "answer": "不严谨。可围绕实际照顾、现状稳定和证据便利性回应，不能仅凭居住地或身份直接否定法院权力。",
+      "redLine": true, "tags": ["管辖表述", "法律边界"], "sourceRefs": [{ "label": "交叉验证报告", "path": "实习材料/黄昭昭/已打印/交叉验证报告_工作成果展示_2026-07-15.pdf", "locator": "第2页，Shuyi管辖表述" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "cross.law.007", "courseId": "cross-border-family", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "Cap.639下三类指明命令分别是什么？",
+      "answerPoints": ["状况相关命令，如离婚", "看顾相关命令，如子女照顾安排", "赡养相关命令，如抚养费"],
+      "tags": ["Cap639", "指明命令"], "sourceRefs": [{ "label": "两地律师分工表", "path": "实习材料/黄昭昭/调解书香港承认执行程序_两地律师分工表.docx", "locator": "第一部分，程序概述" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.law.008", "courseId": "cross-border-family", "chapterId": "legal-issues", "level": "advanced", "kind": "comparison",
+      "prompt": "三类命令的申请时限有何基本差异？",
+      "answer": "状况相关命令通常无申请时限；看顾及赡养相关命令一般涉及两年期限，具体起算须按命令和违约情况核算。",
+      "tags": ["Cap639", "申请时限"], "sourceRefs": [{ "label": "两地律师分工表", "path": "实习材料/黄昭昭/调解书香港承认执行程序_两地律师分工表.docx", "locator": "第一部分及关键时间节点" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "cross.law.009", "courseId": "cross-border-family", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“调解书登记后就能自动阻止香港变更之诉”错在哪里？",
+      "answer": "登记处理承认与执行，不当然取代香港法院基于现时子女福利对照顾申请的审查。",
+      "redLine": true, "tags": ["Cap639", "程序边界"], "sourceRefs": [{ "label": "交叉验证报告", "path": "实习材料/黄昭昭/已打印/交叉验证报告_工作成果展示_2026-07-15.pdf", "locator": "第2页，Cap.639表述修正" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.law.010", "courseId": "cross-border-family", "chapterId": "legal-issues", "level": "core", "kind": "comparison",
+      "prompt": "内地律师与香港律师在承认执行程序中如何分工？",
+      "answer": "内地律师主要负责内地法院文件及本地法律事项，香港律师主导香港申请、出庭和执行，双方协同策略和核对。",
+      "tags": ["两地分工", "程序协调"], "sourceRefs": [{ "label": "两地律师分工表", "path": "实习材料/黄昭昭/调解书香港承认执行程序_两地律师分工表.docx", "locator": "第一部分及负责方图例" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "cross.review.001", "courseId": "cross-border-family", "chapterId": "review-comparison", "level": "core", "kind": "comparison",
+      "prompt": "交叉验证报告为何建议选择文书2作为主版本？",
+      "answer": "文书2较少使用无证事实，不作过度管辖抗辩，并将证据必要性分层，更适合作为工作底稿。",
+      "tags": ["版本选择", "交叉验证"], "sourceRefs": [{ "label": "交叉验证报告", "path": "实习材料/黄昭昭/已打印/交叉验证报告_工作成果展示_2026-07-15.pdf", "locator": "第1页，采用建议" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "cross.review.002", "courseId": "cross-border-family", "chapterId": "review-comparison", "level": "advanced", "kind": "correction",
+      "prompt": "“幼女出生于离婚调解之后，所以未被涉及”为何不能直接使用？",
+      "answer": "出生日期与调解时间表明该说法错误；调解书是否列明幼女及具体措辞仍须核对原件。",
+      "redLine": true, "tags": ["时间线", "事实核查"], "sourceRefs": [{ "label": "交叉验证报告", "path": "实习材料/黄昭昭/已打印/交叉验证报告_工作成果展示_2026-07-15.pdf", "locator": "第2页，Shuyi时间线" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "cross.review.003", "courseId": "cross-border-family", "chapterId": "review-comparison", "level": "advanced", "kind": "correction",
+      "prompt": "“男方长期拖欠抚养费”为何不能直接写成确定事实？",
+      "answer": "双方对付款方式、直接支出及抵扣存在争议，须先核对调解金额、到期日和完整付款记录。",
+      "tags": ["抚养费", "事实边界"], "sourceRefs": [{ "label": "交叉验证报告", "path": "实习材料/黄昭昭/已打印/交叉验证报告_工作成果展示_2026-07-15.pdf", "locator": "第2页，抚养费表述" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "cross.review.004", "courseId": "cross-border-family", "chapterId": "review-comparison", "level": "core", "kind": "qa",
+      "prompt": "为什么婚姻过错和财产争议不宜成为反誓章主线？",
+      "answer": "它们容易偏离子女福利并引发旁枝争议，只保留与日常照顾、费用或方案可行性直接相关的内容。",
+      "tags": ["证据筛选", "子女福利"], "sourceRefs": [{ "label": "交叉验证报告", "path": "实习材料/黄昭昭/已打印/交叉验证报告_工作成果展示_2026-07-15.pdf", "locator": "第1页证据调整及第3页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.review.005", "courseId": "cross-border-family", "chapterId": "review-comparison", "level": "advanced", "kind": "correction",
+      "prompt": "能否由律师直接断定ADHD/ODD完全由生理因素造成？",
+      "answer": "不能。医学因果应由专业证据支持，律师可反对无依据归因，但不应自行作绝对医学结论。",
+      "tags": ["专家证据", "表达边界"], "sourceRefs": [{ "label": "交叉验证报告", "path": "实习材料/黄昭昭/已打印/交叉验证报告_工作成果展示_2026-07-15.pdf", "locator": "第2页，医学结论表述" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "cross.interview.001", "courseId": "cross-border-family", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用20秒概括本项目及服务边界。",
+      "checklist": ["说出香港抚养权变更和内地调解书承认执行两条线", "点出三名子女最佳利益和现状稳定性", "说明本所提供咨询及专项而非香港出庭代理", "明确尚无终局裁判或登记结果"],
+      "tags": ["20秒", "项目概括"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "cross.interview.002", "courseId": "cross-border-family", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用90秒说明项目事实、两地程序、证据策略和本人工作。",
+      "checklist": ["交代内地调解与香港FCMP程序", "说明两项服务及本所代理边界", "围绕子女福利、日常照顾和连续性概括争点", "列举学校治疗、幼女照顾和费用等证据", "说明Cap.639承认执行与变更程序不能简单等同", "说出交叉验证或两地分工表等本人成果"],
+      "tags": ["90秒", "整案表达"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第1—2页" }], "estimatedSeconds": 90
+    },
+    {
+      "id": "cross.interview.003", "courseId": "cross-border-family", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：父亲有钱又能提供更好的房子，为何不应变更照顾？",
+      "answer": "法院核心是比较子女福利，房屋和经济投入不替代日常照顾、学校治疗连续性及变更影响评估。",
+      "followUps": [{ "prompt": "是否应否认父亲与子女的关系？", "answer": "不应。可支持合理结构化探视，同时区分探视关系与主要日常照顾。" }, { "prompt": "内地调解书能否直接结束香港案件？", "answer": "不能这样绝对表述；登记承认执行与香港现时福利审查需要分别分析。" }],
+      "tags": ["压力追问", "子女福利"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "表格1第9—10及15项" }], "estimatedSeconds": 50
+    },
+    {
+      "id": "cross.interview.004", "courseId": "cross-border-family", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：你的交叉验证工作具体发现了什么？",
+      "answer": "发现年龄、幼女出生与调解时间线、抚养费、管辖和Cap.639效果等表述过满或错误，并逐项提出修正。",
+      "followUps": [{ "prompt": "工作价值只是挑错吗？", "answer": "不是。还要选择可靠主版本、分层证据必要性，让后续反誓章围绕福利和可证事实展开。" }],
+      "tags": ["压力追问", "own-work", "交叉验证"], "sourceRefs": [{ "label": "交叉验证报告", "path": "实习材料/黄昭昭/已打印/交叉验证报告_工作成果展示_2026-07-15.pdf", "locator": "第1—3页" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "cross.interview.005", "courseId": "cross-border-family", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：如何处理对我方明显不利的子女受伤事件？",
+      "answer": "如实承认并说明悔意和补救，提交育儿辅导及安全计划，同时以长期照顾记录供法院全面评估。",
+      "followUps": [{ "prompt": "能否用对方也有问题来冲淡？", "answer": "不能替代对本方事件的诚实处理；对方证据只应在相关、清晰且必要时使用。" }],
+      "tags": ["压力追问", "不利事实"], "sourceRefs": [{ "label": "反誓章争点与证据清单", "path": "实习材料/黄昭昭/香港法庭反誓章争点与证据清单_2026-07-15.docx", "locator": "表格1第5项" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "cross.interview.006", "courseId": "cross-border-family", "chapterId": "interview-performance", "level": "link", "kind": "correction",
+      "prompt": "“本所在香港胜诉并登记调解书，成功阻止变更”有哪些错误？",
+      "answerPoints": ["项目尚无终局裁判或登记结果", "本所不是香港诉讼出庭代理人", "登记不当然阻止香港法院审查子女现时福利"],
+      "redLine": true, "tags": ["红线", "团队边界", "项目结果"], "sourceRefs": [{ "label": "跨境家事案件简要", "path": "实习材料/黄昭昭/已打印/案件简要.pdf", "locator": "第1—2页，办理阶段和结果" }], "estimatedSeconds": 30
+    }
+  ]
+}

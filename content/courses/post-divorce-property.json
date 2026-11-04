@@ -1,0 +1,240 @@
+{
+  "id": "post-divorce-property",
+  "title": "离婚后财产纠纷",
+  "description": "围绕离婚协议第三条的效力，训练虚假意思表示、离婚登记与财产条款区分、证据链及关联返还案件表达。",
+  "riskNote": "一审判决仅确认2020年8月3日离婚协议书第三条无效，不等于离婚登记无效，也不等于全部共同财产已按6:4分割。材料显示一审判决已作出，不自行表述为终审或全面析产完成。李黎参与基础性、辅助性工作。",
+  "chapters": [
+    { "id": "case-map", "title": "案件地图" },
+    { "id": "evidence-contribution", "title": "证据与本人工作" },
+    { "id": "legal-issues", "title": "法律争点" },
+    { "id": "review-comparison", "title": "复盘与关联案件" },
+    { "id": "interview-performance", "title": "面试表达与压力追问" }
+  ],
+  "cards": [
+    {
+      "id": "divorce.map.001", "courseId": "post-divorce-property", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案双方及基本关系是什么？",
+      "answer": "陈银玲与庄晓东原系夫妻，共同生育三名子女，并以乐承服饰为核心共同经营母婴童装业务。",
+      "tags": ["当事人", "共同经营"], "sourceRefs": [{ "label": "离婚后财产案件简要", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/案件简要.pdf", "locator": "第1页，案情介绍" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.map.002", "courseId": "post-divorce-property", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "双方2020年办理离婚登记的背景是什么？",
+      "answer": "法院认定双方主要为规避深圳住房限购、购买天鹅湖花园房屋而办理离婚登记，并非因感情破裂。",
+      "tags": ["购房背景", "法院认定"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第8—9页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.map.003", "courseId": "post-divorce-property", "chapterId": "case-map", "level": "core", "kind": "cloze",
+      "prompt": "双方于____签署离婚协议，共同生活持续至____。",
+      "answerPoints": ["2020年8月3日", "2024年5月1日"],
+      "tags": ["时间线", "共同生活"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第7页，查明事实" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "divorce.map.004", "courseId": "post-divorce-property", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "陈银玲在判决所涉诉讼中的核心请求是什么？",
+      "answer": "请求确认2020年8月3日《离婚协议书》第三条关于香山美墅房产及其余名下财产归属的约定无效。",
+      "tags": ["诉讼请求", "第三条"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第2页，原告诉请" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.map.005", "courseId": "post-divorce-property", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "庄晓东的主要抗辩是什么？",
+      "answer": "离婚协议已登记备案，系双方真实意思表示且无欺诈胁迫，内容合法有效，请求驳回原告诉请。",
+      "tags": ["对方抗辩", "协议备案"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第6页，被告答辩" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.map.006", "courseId": "post-divorce-property", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案案号和一审判决日期是什么？",
+      "answer": "案号为（2025）粤0305民初18600号，深圳市南山区人民法院于2025年12月17日作出一审判决。",
+      "tags": ["案号", "裁判日期"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第1页及第10页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "divorce.map.007", "courseId": "post-divorce-property", "chapterId": "case-map", "level": "core", "kind": "correction",
+      "prompt": "“法院判决离婚无效并将全部财产按6:4分割”符合判项吗？",
+      "answer": "不符合。判项仅确认离婚协议书第三条无效，没有判离婚无效，也没有完成6:4财产分割。",
+      "redLine": true, "tags": ["case-result", "判项边界"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第9页，判决主文" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.map.008", "courseId": "post-divorce-property", "chapterId": "case-map", "level": "advanced", "kind": "cloze",
+      "prompt": "案件受理费____元，由双方各负担____元。",
+      "answerPoints": ["4300元", "2150元"],
+      "tags": ["诉讼费用", "数字"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第10页，诉讼费用" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "divorce.evidence.001", "courseId": "post-divorce-property", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "2020年12月12日生育第三名子女证明什么？",
+      "answer": "结合怀孕时间，说明登记离婚前双方关系仍良好，是法院判断并非感情破裂的重要事实。",
+      "tags": ["生育事实", "真实意思"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第7页及第9页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.evidence.002", "courseId": "post-divorce-property", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "离婚后继续共同生活的证明作用是什么？",
+      "answer": "双方共同生活至2024年5月1日，与购房和生育事实结合，用于判断签约时真实安排。",
+      "tags": ["共同生活", "证据链"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第7页及第9页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.evidence.003", "courseId": "post-divorce-property", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "直播视频为何是关键证据？",
+      "answer": "庄晓东在直播中确认购房、限购和离婚安排，且其认可视频真实性，能印证双方购房背景。",
+      "tags": ["直播视频", "真实性"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第7页，直播事实" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.evidence.004", "courseId": "post-divorce-property", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "法院如何评价双方对新房的出资？",
+      "answer": "庄晓东在离婚前后均有大量出资，结合共同生活，法院认定新房系双方为共同生活共同出资购买。",
+      "tags": ["共同出资", "天鹅湖房屋"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第9页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.evidence.005", "courseId": "post-divorce-property", "chapterId": "evidence-contribution", "level": "advanced", "kind": "evidence-purpose",
+      "prompt": "关联返还案二审判决在本案中提供了什么印证？",
+      "answer": "该案认定共同筹划、共同出资和共同生活，与本案关于购房背景及整体财产关系的证据相互呼应。",
+      "tags": ["关联判决", "交叉印证"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第7—8页，关联案件" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.evidence.006", "courseId": "post-divorce-property", "chapterId": "evidence-contribution", "level": "advanced", "kind": "qa",
+      "prompt": "本案证据链应围绕哪个核心问题组织？",
+      "answer": "围绕签订财产条款时的真实意思，将购房目的、离婚前后行为、共同生活、生育和出资相互连接。",
+      "tags": ["证据链", "证明对象"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第8—9页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.work.001", "courseId": "post-divorce-property", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎如何梳理案件事实？",
+      "answer": "核对婚姻、共同创业、购房、离婚登记和共同生活节点，制作案件时间线并形成事实纪要。",
+      "tags": ["own-work", "时间线"], "sourceRefs": [{ "label": "离婚后财产案件简要", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第1项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.work.002", "courseId": "post-divorce-property", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在证据整理中做了什么？",
+      "answer": "分类整理协议、购房付款、沟通、共同生活、生育和直播材料，核对时间与证明对象并制作证据目录。",
+      "tags": ["own-work", "证据目录"], "sourceRefs": [{ "label": "离婚后财产案件简要", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第2项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.work.003", "courseId": "post-divorce-property", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎还参与了哪些研究和辅助事务？",
+      "answer": "参与案例检索、案件研判、文书和庭审材料准备、网上立案，并陪同当事人办理相关公证。",
+      "tags": ["own-work", "案例检索", "程序辅助"], "sourceRefs": [{ "label": "离婚后财产案件简要", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/案件简要.pdf", "locator": "第2页，主要工作第3—4项" }, { "label": "李黎工作情况说明", "path": "实习材料/陈银玲/离婚后财产纠纷/情况说明-最终版.docx", "locator": "正文，实际参与工作" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "divorce.work.004", "courseId": "post-divorce-property", "chapterId": "evidence-contribution", "level": "core", "kind": "correction",
+      "prompt": "判决只列两名执业律师，能否把李黎写成独立代理人？",
+      "answer": "不能。她在曹莎律师指导下参与辅助工作，未列名与代理人人数及实习人员身份限制有关。",
+      "redLine": true, "tags": ["own-work", "团队边界"], "sourceRefs": [{ "label": "李黎工作情况说明", "path": "实习材料/陈银玲/离婚后财产纠纷/情况说明-最终版.docx", "locator": "正文，委托材料及参与情况" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.law.001", "courseId": "post-divorce-property", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "法院归纳的核心争议是什么？",
+      "answer": "《离婚协议书》是否是双方真实意思表示，尤其是其中财产分配条款是否真实。",
+      "tags": ["争议焦点", "真实意思"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第8—9页，本院认为" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "divorce.law.002", "courseId": "post-divorce-property", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "法院如何判断意思表示是否真实？",
+      "answer": "不是只看协议文本，而是结合双方签订协议前后的相关行为进行综合认定。",
+      "tags": ["判断方法", "签约前后行为"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第8—9页，本院认为" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "divorce.law.003", "courseId": "post-divorce-property", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "本案适用民法典第一百四十六条第一款的什么规则？",
+      "answer": "行为人与相对人以虚假的意思表示实施的民事法律行为无效。",
+      "tags": ["民法典146条", "虚假意思表示"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第9页及第11页，法律条文" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "divorce.law.004", "courseId": "post-divorce-property", "chapterId": "legal-issues", "level": "core", "kind": "comparison",
+      "prompt": "离婚登记与财产条款为何可以分别评价？",
+      "answer": "法院认为婚姻关系终止与财产处分是两个独立意思表示，财产条款可因非真实意思而无效。",
+      "tags": ["离婚登记", "财产条款"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第9页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.law.005", "courseId": "post-divorce-property", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“协议在民政局备案，就当然不能审查真实意思”为何错误？",
+      "answer": "备案不替代真实意思审查，法院仍根据签约前后行为认定财产条款属于虚假意思表示。",
+      "tags": ["协议备案", "真实意思"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第6页被告答辩及第8—9页本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.law.006", "courseId": "post-divorce-property", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "第三条无效的裁判效力如何准确表达？",
+      "answer": "法院认定该财产分配条款并非双方真实意思，对双方不具法律约束力，视为自始无效。",
+      "tags": ["case-result", "自始无效"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第9页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.law.007", "courseId": "post-divorce-property", "chapterId": "legal-issues", "level": "advanced", "kind": "correction",
+      "prompt": "“起诉状曾写6:4分割，所以本案已按6:4判完”错在哪里？",
+      "answer": "早期起诉状与判决所涉诉请须区分；本案判项只有确认第三条无效，没有6:4分割。",
+      "redLine": true, "tags": ["诉请变化", "判项边界"], "sourceRefs": [{ "label": "民事起诉状", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/20240920-民事起诉状脱敏.pdf", "locator": "第1页，诉讼请求" }, { "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第2页及第9页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "divorce.law.008", "courseId": "post-divorce-property", "chapterId": "legal-issues", "level": "advanced", "kind": "comparison",
+      "prompt": "被告援引离婚协议有效规则，法院为何仍支持原告？",
+      "answer": "双方对备案和协议效力理解不同；法院以虚假意思表示规则及具体事实审查财产条款，而非只看形式。",
+      "tags": ["双方观点", "裁判理由"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第6页及第8—9页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "divorce.review.001", "courseId": "post-divorce-property", "chapterId": "review-comparison", "level": "core", "kind": "comparison",
+      "prompt": "本案与返还原物案的诉讼目标和结果有何不同？",
+      "answer": "本案确认财产条款无效获一审支持；返还案的搬离、返还和占用费请求在一二审均未获支持。",
+      "tags": ["两案比较", "案件结果"], "sourceRefs": [{ "label": "财产案一审判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第9页" }, { "label": "返还案二审判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "divorce.review.002", "courseId": "post-divorce-property", "chapterId": "review-comparison", "level": "core", "kind": "qa",
+      "prompt": "两案为何必须保持事实口径一致？",
+      "answer": "共同购房、出资和生活事实会跨案使用；口径冲突可能削弱可信度，也会被对方用于反驳。",
+      "tags": ["关联案件", "口径一致"], "sourceRefs": [{ "label": "财产案一审判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第7—8页，关联案件" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.review.003", "courseId": "post-divorce-property", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "直播证据的使用方法有什么可复用之处？",
+      "answer": "保存完整语境并确认真实性，再把其中对购房、限购和离婚安排的陈述与其他客观证据对应。",
+      "tags": ["证据复盘", "直播视频"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第7页，直播事实" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "divorce.review.004", "courseId": "post-divorce-property", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "为何不宜让公司经营矛盾淹没本案主线？",
+      "answer": "本案核心是财产条款真实意思，应优先使用购房、生育、共同生活和出资证据，避免无关争议分散焦点。",
+      "tags": ["策略复盘", "争议焦点"], "sourceRefs": [{ "label": "离婚后财产案件简要", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/案件简要.pdf", "locator": "第2页，争议焦点" }, { "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第8—9页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "divorce.review.005", "courseId": "post-divorce-property", "chapterId": "review-comparison", "level": "advanced", "kind": "correction",
+      "prompt": "“一审确认条款无效，后续所有财产问题都自动解决”准确吗？",
+      "answer": "不准确。条款效力与具体析产是不同层次，仍需依法明确财产范围、权属和后续处理。",
+      "tags": ["后续处理", "裁判边界"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第9页，判决主文" }, { "label": "返还案二审判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第4页，全面析产表述" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "divorce.interview.001", "courseId": "post-divorce-property", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用20秒概括本案结果和核心理由。",
+      "checklist": ["一审确认离婚协议书第三条无效", "说明购房规避限购、共同生活和生育等事实", "指出财产处分与婚姻关系终止可分别评价", "不扩大为离婚无效或全部财产已分割"],
+      "tags": ["20秒", "案件概括"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第8—9页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "divorce.interview.002", "courseId": "post-divorce-property", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用90秒陈述本案事实、证据、争点、结果和本人工作。",
+      "checklist": ["交代购房背景、离婚登记和共同生活时间线", "说明第三条诉请及被告备案有效抗辩", "用生育、直播、出资和共同生活组成证据链", "讲清民法典146条与离婚、财产分别评价", "准确限定一审判项为第三条无效", "说出时间线、证据目录、检索或公证辅助工作"],
+      "tags": ["90秒", "整案表达"], "sourceRefs": [{ "label": "离婚后财产案件简要", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/案件简要.pdf", "locator": "第1—2页" }, { "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第8—9页" }], "estimatedSeconds": 90
+    },
+    {
+      "id": "divorce.interview.003", "courseId": "post-divorce-property", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：协议已备案，为何还能认定无效？",
+      "answer": "备案是形式事实，法院仍须审查真实意思；本案签约前后行为证明财产条款并非真实处分安排。",
+      "followUps": [{ "prompt": "是否意味着离婚登记也无效？", "answer": "不是。法院区分婚姻关系终止和财产处分，本案只判第三条无效。" }, { "prompt": "最关键的证据有哪些？", "answer": "生育和共同生活、直播中对购房限购安排的确认，以及双方共同出资等事实。" }],
+      "tags": ["压力追问", "协议备案"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第6—9页" }], "estimatedSeconds": 50
+    },
+    {
+      "id": "divorce.interview.004", "courseId": "post-divorce-property", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：双方确实自愿去登记，为何说是虚假意思？",
+      "answer": "要区分自愿办理登记与是否真实处分财产，法院认定的是第三条财产分配并非真实意思。",
+      "followUps": [{ "prompt": "能否把“假离婚”当作全部法律结论？", "answer": "不能。仍需用具体证据证明何种意思表示虚假，并对应民法典146条和具体判项。" }],
+      "tags": ["压力追问", "意思表示"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第9页，本院认为" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "divorce.interview.005", "courseId": "post-divorce-property", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：本案胜诉是否意味着返还房屋案也应赢？",
+      "answer": "不当然。两案请求和审理时点不同；返还案未获支持，并明确可在全面析产后基于新事实再处理占用。",
+      "followUps": [{ "prompt": "两案共同的事实基础是什么？", "answer": "共同筹划购房、双方出资、离婚后共同生活及整体财产调配。" }],
+      "tags": ["压力追问", "关联案件"], "sourceRefs": [{ "label": "财产案一审判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第7—9页" }, { "label": "返还案二审判决", "path": "实习材料/陈银玲/返还原物纠纷/二审判决书.pdf", "locator": "第3—4页" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "divorce.interview.006", "courseId": "post-divorce-property", "chapterId": "interview-performance", "level": "link", "kind": "correction",
+      "prompt": "“李黎独立代理，法院判离婚无效并按6:4分完财产”有哪些错误？",
+      "answerPoints": ["李黎在指导律师指导下参与辅助工作", "法院仅确认离婚协议书第三条无效", "判项没有按6:4完成财产分割，也不能自行说成终审"],
+      "redLine": true, "tags": ["红线", "own-work", "case-result"], "sourceRefs": [{ "label": "一审民事判决", "path": "实习材料/陈银玲/离婚后财产纠纷/已打印/（2025）粤 0305 民初 18600 号脱敏.pdf", "locator": "第9—10页" }, { "label": "李黎工作情况说明", "path": "实习材料/陈银玲/离婚后财产纠纷/情况说明-最终版.docx", "locator": "正文" }], "estimatedSeconds": 35
+    }
+  ]
+}

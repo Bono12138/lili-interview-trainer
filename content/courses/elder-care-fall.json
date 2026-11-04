@@ -1,0 +1,246 @@
+{
+  "id": "elder-care-fall",
+  "title": "养老机构摔伤责任案",
+  "description": "围绕方金凤在养老机构摔伤案，训练照护等级、老人拒绝协助、机构谨慎照护、因果关系及两起养老案比较。",
+  "riskNote": "法院认定老人自身行为是摔伤主要原因，机构因关注和沟通不足承担20%责任并赔偿14932.06元；上诉请求金额不是判赔额。李黎从事辅助工作，不得表述为独立主办、机构无责或全面胜诉。",
+  "chapters": [
+    { "id": "case-map", "title": "案件地图" },
+    { "id": "evidence-contribution", "title": "证据与本人工作" },
+    { "id": "legal-issues", "title": "法律争点" },
+    { "id": "review-comparison", "title": "复盘与关联案件" },
+    { "id": "interview-performance", "title": "面试表达与压力追问" }
+  ],
+  "cards": [
+    {
+      "id": "fall.map.001", "courseId": "elder-care-fall", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案当事人和纠纷起因是什么？",
+      "answer": "周方、周元因母亲方金凤在泰康之家公司接受养老服务期间摔伤，以侵权为由起诉要求机构赔偿。",
+      "tags": ["当事人", "纠纷起因"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第1页及第7页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.map.002", "courseId": "elder-care-fall", "chapterId": "case-map", "level": "core", "kind": "cloze",
+      "prompt": "入住协议签订于____，方金凤于____摔伤。",
+      "answerPoints": ["2023年5月28日", "2023年8月22日"],
+      "tags": ["入住协议", "时间线"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7页，本院认为" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "fall.map.003", "courseId": "elder-care-fall", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "本案一二审案号分别是什么？",
+      "answerPoints": ["一审：（2024）粤0112民初22068号", "二审：（2025）粤01民终24677号"],
+      "tags": ["案号", "程序"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第1页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.map.004", "courseId": "elder-care-fall", "chapterId": "case-map", "level": "core", "kind": "correction",
+      "prompt": "“上诉请求91450.32元及误工费20000元，就是法院判赔额”错在哪里？",
+      "answer": "这些是家属上诉请求；一审判赔14932.06元，二审维持原判。",
+      "redLine": true, "tags": ["case-result", "请求与判项"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第2页上诉请求及第6页一审判项" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.map.005", "courseId": "elder-care-fall", "chapterId": "case-map", "level": "core", "kind": "comparison",
+      "prompt": "双方各自的上诉目标是什么？",
+      "answer": "家属请求提高赔偿并由机构担全责；机构请求驳回家属全部诉请，双方均不服一审结果。",
+      "tags": ["双方上诉", "争议"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第2页及第5页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.map.006", "courseId": "elder-care-fall", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "一审判决的责任比例和赔偿结果是什么？",
+      "answer": "机构承担20%责任，赔偿周方、周元14932.06元，其他诉讼请求被驳回。",
+      "tags": ["case-result", "一审结果"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第6页及第8页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "fall.map.007", "courseId": "elder-care-fall", "chapterId": "case-map", "level": "core", "kind": "qa",
+      "prompt": "二审结果和裁判日期是什么？",
+      "answer": "2025年12月11日，广州中院驳回双方上诉、维持原判，判决为终审判决。",
+      "tags": ["case-result", "二审结果"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第8—9页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "fall.map.008", "courseId": "elder-care-fall", "chapterId": "case-map", "level": "advanced", "kind": "cloze",
+      "prompt": "二审受理费共____元，家属负担____元，机构负担____元。",
+      "answerPoints": ["2386.3元", "2213元", "173.3元"],
+      "tags": ["二审费用", "数字"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第8页，判决主文后" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.evidence.001", "courseId": "elder-care-fall", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "照护等级评估报告证明了哪些关键情况？",
+      "answer": "老照护等级为2级，有一定自理能力及跌倒、坠床风险，但日常起居无需机构全程陪护。",
+      "tags": ["照护等级", "服务边界"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.evidence.002", "courseId": "elder-care-fall", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "法院用哪些材料还原摔伤前后的经过？",
+      "answer": "综合各方陈述、微信聊天记录、证人证言、照护评估、每日护理清单及机构应对措施。",
+      "tags": ["证据链", "事发经过"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.evidence.003", "courseId": "elder-care-fall", "chapterId": "evidence-contribution", "level": "core", "kind": "evidence-purpose",
+      "prompt": "呼叫装置和扶手等设施的证明作用是什么？",
+      "answer": "用于评价居住环境和安全设施是否符合养老服务安全规范，不能单独证明机构已尽全部义务。",
+      "tags": ["辅助设施", "安全规范"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.evidence.004", "courseId": "elder-care-fall", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "法院查明的老人事发前行为是什么？",
+      "answer": "护理人员询问是否需要帮助时，老人拒绝并强烈要求护理人员离开，之后也未按铃请求协助。",
+      "tags": ["拒绝协助", "未按铃"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7—8页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.evidence.005", "courseId": "elder-care-fall", "chapterId": "evidence-contribution", "level": "advanced", "kind": "comparison",
+      "prompt": "每日护理清单与微信记录的证明侧重有何不同？",
+      "answer": "护理清单侧重服务履行记录，微信等沟通材料可辅助还原老人状态、互动及事后处置，均须结合全案判断。",
+      "tags": ["护理清单", "微信记录"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7页，本院认为" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "fall.evidence.006", "courseId": "elder-care-fall", "chapterId": "evidence-contribution", "level": "advanced", "kind": "qa",
+      "prompt": "二审中双方是否提交了新证据？",
+      "answer": "没有。二审双方均未提交新证据，法院确认一审查明事实无误。",
+      "tags": ["二审证据", "程序"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第6页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "fall.work.001", "courseId": "elder-care-fall", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在客户沟通和证据方面做了什么？",
+      "answer": "参与当事人会见并记录会议纪要，整理证据材料，为事实梳理和争点分析提供基础。",
+      "tags": ["own-work", "会见纪要", "证据整理"], "sourceRefs": [{ "label": "李黎工作情况说明", "path": "实习材料/周元身体全/情况说明-李黎.docx", "locator": "正文，人员参与情况" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.work.002", "courseId": "elder-care-fall", "chapterId": "evidence-contribution", "level": "core", "kind": "qa",
+      "prompt": "李黎在研究和程序事务中做了什么？",
+      "answer": "参与案例研究，并完成打印材料、网上立案、文书寄送等辅助工作。",
+      "tags": ["own-work", "案例研究", "程序辅助"], "sourceRefs": [{ "label": "李黎工作情况说明", "path": "实习材料/周元身体全/情况说明-李黎.docx", "locator": "正文，人员参与情况" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.work.003", "courseId": "elder-care-fall", "chapterId": "evidence-contribution", "level": "core", "kind": "correction",
+      "prompt": "“本案由李黎独立主办，曹莎律师亲自参与”符合材料吗？",
+      "answer": "不符合。蓝清华律师主办，李黎参与辅助工作；情况说明明确曹莎未亲自参与本案。",
+      "redLine": true, "tags": ["own-work", "团队边界"], "sourceRefs": [{ "label": "李黎工作情况说明", "path": "实习材料/周元身体全/情况说明-李黎.docx", "locator": "正文，人员参与情况" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.work.004", "courseId": "elder-care-fall", "chapterId": "evidence-contribution", "level": "advanced", "kind": "qa",
+      "prompt": "判决中的代理人身份能怎样准确介绍？",
+      "answer": "判决列明蓝清华律师和李黎为共同委托诉讼代理人，其中李黎身份为广东广和律师事务所实习人员。",
+      "tags": ["own-work", "代理人身份"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第1页，诉讼代理人" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.law.001", "courseId": "elder-care-fall", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "二审争议焦点是什么？",
+      "answer": "泰康之家公司对方金凤摔伤是否承担责任，以及应承担多少赔偿责任。",
+      "tags": ["二审争点", "责任比例"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第6页，争议焦点" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "fall.law.002", "courseId": "elder-care-fall", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "法院为何认定老人自身行为是摔伤主要原因？",
+      "answer": "老人拒绝护理帮助并要求其离开，之后未按铃求助，法院据此认定其自身行为是主要原因。",
+      "tags": ["自身责任", "主要原因"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7—8页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.law.003", "courseId": "elder-care-fall", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "法院认定机构有哪些具体疏忽？",
+      "answerPoints": ["老人情绪激动时未密切关注其情况", "发现摔伤后未及时与家属沟通是否送医检查或治疗"],
+      "tags": ["机构过错", "谨慎照护"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第8页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.law.004", "courseId": "elder-care-fall", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“老人拒绝协助，所以机构当然无责”错在哪里？",
+      "answer": "老人行为是主要原因，但机构仍负有专业谨慎照护义务，法院认定其关注和家属沟通不足。",
+      "redLine": true, "tags": ["机构责任", "拒绝协助"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第8页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.law.005", "courseId": "elder-care-fall", "chapterId": "legal-issues", "level": "core", "kind": "correction",
+      "prompt": "“老人有跌倒风险，所以机构必须全程陪护”符合判决吗？",
+      "answer": "不符合。判决明确其照护等级为2级，虽有跌倒、坠床风险，但日常起居无需全程陪护。",
+      "tags": ["照护等级", "全程陪护"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.law.006", "courseId": "elder-care-fall", "chapterId": "legal-issues", "level": "advanced", "kind": "comparison",
+      "prompt": "家属对“未按铃”的反驳与法院判断有何差异？",
+      "answer": "家属主张主动照护不能被呼叫系统替代；法院仍把未按铃与拒绝协助作为老人担主责的重要依据。",
+      "tags": ["双方观点", "未按铃"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第3页上诉理由及第7—8页本院认为" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "fall.law.007", "courseId": "elder-care-fall", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "法院如何评价居住环境和辅助设施？",
+      "answer": "法院认为居住环境及设施符合养老服务安全基本规范，家属入住后亦未对此提出异议。",
+      "tags": ["居住环境", "安全设施"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.law.008", "courseId": "elder-care-fall", "chapterId": "legal-issues", "level": "advanced", "kind": "qa",
+      "prompt": "机构上诉主张为何未获支持？",
+      "answer": "其主张摔倒与巡房、通知家属无关且自身无过错，但法院认定关注和沟通不足，事实法律依据不足。",
+      "tags": ["机构上诉", "裁判理由"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第5页机构上诉理由及第8页本院认为" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "fall.law.009", "courseId": "elder-care-fall", "chapterId": "legal-issues", "level": "core", "kind": "qa",
+      "prompt": "本案为何适用侵权责任规则分析？",
+      "answer": "家属明确以侵权为由起诉，一审适用民法典侵权责任规定，二审认可该处理。",
+      "tags": ["请求权基础", "侵权"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7页，本院认为" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "fall.review.001", "courseId": "elder-care-fall", "chapterId": "review-comparison", "level": "core", "kind": "qa",
+      "prompt": "本案复盘为何要把拒绝协助和机构后续义务分开？",
+      "answer": "前者关系老人主要原因力，后者关系机构是否仍尽专业照护；两者可同时成立，不能相互吞没。",
+      "tags": ["复盘", "双方责任"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7—8页，本院认为" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.review.002", "courseId": "elder-care-fall", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "主张事后处置扩大损害，应重点补什么？",
+      "answer": "补足发现时间、伤情信号、通知和送医节点，以及延迟与具体扩大损失之间的医学及法律因果。",
+      "tags": ["复盘", "损害扩大"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第3—4页上诉理由及第8页本院认为" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "fall.review.003", "courseId": "elder-care-fall", "chapterId": "review-comparison", "level": "core", "kind": "comparison",
+      "prompt": "同为机构承担20%，摔伤案与窒息案的主要理由有何不同？",
+      "answer": "摔伤案侧重老人拒绝协助、未按铃及机构关注沟通不足；窒息案侧重食物风险、基础疾病和鉴定边界。",
+      "tags": ["两案比较", "裁判理由"], "sourceRefs": [{ "label": "摔伤案二审判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7—8页" }, { "label": "窒息案二审判决", "path": "实习材料/周元生命权/已打印/（2025）粤01民终24676号民事判决.pdf", "locator": "第10—11页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "fall.review.004", "courseId": "elder-care-fall", "chapterId": "review-comparison", "level": "advanced", "kind": "comparison",
+      "prompt": "两起养老案在损害后果和鉴定问题上有何不同？",
+      "answer": "本案处理摔伤赔偿，重点是行为与照护因果；窒息案涉及死亡，另有鉴定能证明死因但不能确定吸入机制的边界。",
+      "tags": ["两案比较", "证据差异"], "sourceRefs": [{ "label": "摔伤案二审判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第6—8页" }, { "label": "窒息案二审判决", "path": "实习材料/周元生命权/已打印/（2025）粤01民终24676号民事判决.pdf", "locator": "第10页" }], "estimatedSeconds": 30
+    },
+    {
+      "id": "fall.review.005", "courseId": "elder-care-fall", "chapterId": "review-comparison", "level": "advanced", "kind": "qa",
+      "prompt": "本案可复用的证据整理方法是什么？",
+      "answer": "按“风险识别—事前预防—事发行为—发现处置—家属沟通”排时间线，再逐环连接证据和责任。",
+      "tags": ["方法复盘", "时间线"], "sourceRefs": [{ "label": "案件小结", "path": "实习材料/周元身体全/已打印/案件小结.pdf", "locator": "第1页，心得体会" }, { "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7—8页" }], "estimatedSeconds": 25
+    },
+    {
+      "id": "fall.interview.001", "courseId": "elder-care-fall", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用20秒概括本案结果和核心理由。",
+      "checklist": ["老人拒绝协助且未按铃是法院认定的主要原因", "机构未密切关注并及时与家属沟通送医，承担20%责任", "一审判赔14932.06元，二审维持", "不把上诉请求说成判赔额"],
+      "tags": ["20秒", "案件概括"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第6—8页" }], "estimatedSeconds": 20
+    },
+    {
+      "id": "fall.interview.002", "courseId": "elder-care-fall", "chapterId": "interview-performance", "level": "link", "kind": "summary",
+      "prompt": "用90秒陈述本案事实、证据、争点、结果和本人工作。",
+      "checklist": ["交代入住、摔伤及双方上诉", "说明2级照护、风险与无需全程陪护", "讲清拒绝协助、未按铃和机构两项疏忽", "准确说出20%、14932.06元及二审维持", "说出会见纪要、证据整理、案例研究或程序辅助", "明确蓝清华律师主办、本人从事辅助工作"],
+      "tags": ["90秒", "整案表达"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第1—9页" }, { "label": "李黎工作情况说明", "path": "实习材料/周元身体全/情况说明-李黎.docx", "locator": "正文" }], "estimatedSeconds": 90
+    },
+    {
+      "id": "fall.interview.003", "courseId": "elder-care-fall", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：老人明确拒绝帮助，机构为什么还担责？",
+      "answer": "拒绝协助影响老人自身原因力，但专业机构在情绪激动时仍应密切关注，发现后也应及时沟通送医。",
+      "followUps": [{ "prompt": "是否等于机构必须违背老人意愿全程看护？", "answer": "不是。判决明确无需全程陪护，机构责任落在具体关注和沟通疏忽。" }, { "prompt": "为何不是双方各50%？", "answer": "法院认定老人自身行为是主要原因，机构过错为次要，因此确定20%责任。" }],
+      "tags": ["压力追问", "拒绝协助"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7—8页" }], "estimatedSeconds": 50
+    },
+    {
+      "id": "fall.interview.004", "courseId": "elder-care-fall", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：已有按铃和扶手，为什么还不算尽到义务？",
+      "answer": "设施合规只解决部分安全问题，仍须结合老人状态和事后处置评价动态谨慎照护义务。",
+      "followUps": [{ "prompt": "法院是否否定了设施合规？", "answer": "没有。法院认可设施符合规范，但同时认定机构在关注和沟通上存在过错。" }],
+      "tags": ["压力追问", "设施与照护"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7—8页" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "fall.interview.005", "courseId": "elder-care-fall", "chapterId": "interview-performance", "level": "link", "kind": "follow-up",
+      "prompt": "压力追问：同为20%，能否用窒息案理由解释摔伤案？",
+      "answer": "不能。本案核心是拒绝协助、未按铃与关注沟通不足；窒息案核心是食物风险、基础疾病和鉴定边界。",
+      "followUps": [{ "prompt": "两案可提炼的共同方法是什么？", "answer": "都要分别审查专业义务、具体过错、受害人自身原因力及证据限制，而不是先定比例。" }],
+      "tags": ["压力追问", "两案比较"], "sourceRefs": [{ "label": "摔伤案二审判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第7—8页" }, { "label": "窒息案二审判决", "path": "实习材料/周元生命权/已打印/（2025）粤01民终24676号民事判决.pdf", "locator": "第10—11页" }], "estimatedSeconds": 45
+    },
+    {
+      "id": "fall.interview.006", "courseId": "elder-care-fall", "chapterId": "interview-performance", "level": "link", "kind": "correction",
+      "prompt": "“李黎主办摔伤案，机构无责，家属全面胜诉”有哪些错误？",
+      "answerPoints": ["李黎参与辅助工作，蓝清华律师主办", "法院认定机构承担20%责任，并非无责", "一审判赔14932.06元、二审双方上诉均驳回，不能称全面胜诉"],
+      "redLine": true, "tags": ["红线", "own-work", "case-result"], "sourceRefs": [{ "label": "二审民事判决", "path": "实习材料/周元身体全/已打印/（2025）粤01民终24677号民事判决.pdf", "locator": "第6页及第8页" }, { "label": "李黎工作情况说明", "path": "实习材料/周元身体全/情况说明-李黎.docx", "locator": "正文" }], "estimatedSeconds": 35
+    }
+  ]
+}
