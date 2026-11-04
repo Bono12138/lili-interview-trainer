@@ -283,11 +283,12 @@ h1, h2, h3 { color: var(--ink); }
 
 @media (max-width: 720px) {
   .gesture-hint { display: block; margin: 0 0 12px; color: #6f8076; text-align: center; font-size: 11px; }
-  .study-shell.revealed { padding-bottom: 132px; }
-  .study-shell.revealed .rating-area { position: fixed; z-index: 30; right: 0; bottom: 0; left: 0; margin: 0; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid #dce4dd; background: rgb(245 246 242 / 97%); box-shadow: 0 -8px 25px rgb(26 54 41 / 7%); }
-  .study-shell.revealed .rating-area > p { margin-bottom: 8px; }
-  .study-shell.revealed .rating-grid { max-width: 680px; margin: 0 auto; }
-  .study-shell.revealed .rating-grid button { min-height: 62px; }
-  .study-shell.revealed .summary-ratings { grid-template-columns: 1fr 1fr; }
-  .study-shell.revealed .summary-ratings button { padding: 8px; font-size: 12px; }
+  .study-shell { padding-bottom: 132px; }
+  .study-card { touch-action: pan-y; user-select: none; }
+  .study-shell .rating-area { position: fixed; z-index: 30; right: 0; bottom: 0; left: 0; margin: 0; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid #dce4dd; background: rgb(245 246 242 / 97%); box-shadow: 0 -8px 25px rgb(26 54 41 / 7%); }
+  .study-shell .rating-area > p { margin-bottom: 8px; }
+  .study-shell .rating-grid { max-width: 680px; margin: 0 auto; }
+  .study-shell .rating-grid button { min-height: 62px; }
+  .study-shell .summary-ratings { grid-template-columns: 1fr 1fr; }
+  .study-shell .summary-ratings button { padding: 8px; font-size: 12px; }
 }

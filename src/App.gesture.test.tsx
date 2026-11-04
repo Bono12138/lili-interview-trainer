@@ -83,3 +83,28 @@ describe('touch gestures', () => {
     expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts).toHaveLength(0)
   })
 })
+
+
+describe('mobile browser edge cases', () => {
+  it('completes a gesture when the browser fires touchcancel after touchmove', async () => {
+    const { user, storage } = await startStudy()
+    await user.click(screen.getByRole('button', { name: '显示答案' }))
+    const card = screen.getByRole('article')
+    fireEvent.touchStart(card, { touches: [{ clientX: 200, clientY: 200 }] })
+    fireEvent.touchMove(card, { touches: [{ clientX: 65, clientY: 205 }], changedTouches: [{ clientX: 65, clientY: 205 }] })
+    fireEvent.touchCancel(card, { changedTouches: [] })
+    expect(screen.getByText('第二张题面')).toBeInTheDocument()
+    expect(JSON.parse(storage.getItem(STORAGE_KEY)!).attempts[0].rating).toBe('again')
+  })
+
+  it('shows disabled rating controls before reveal and enables them afterwards', async () => {
+    const { user } = await startStudy()
+    expect(screen.getByRole('button', { name: '不会' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: '模糊' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: '会' })).toBeDisabled()
+    await user.click(screen.getByRole('button', { name: '显示答案' }))
+    expect(screen.getByRole('button', { name: '不会' })).toBeEnabled()
+    expect(screen.getByRole('button', { name: '模糊' })).toBeEnabled()
+    expect(screen.getByRole('button', { name: '会' })).toBeEnabled()
+  })
+})

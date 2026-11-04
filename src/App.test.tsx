@@ -52,7 +52,7 @@ describe('study interaction', () => {
 
     await user.keyboard('{ArrowLeft}{ArrowRight}')
     expect(screen.getByText('第一张核心卡')).toBeInTheDocument()
-    expect(screen.queryByRole('button', { name: '会' })).not.toBeInTheDocument()
+    expect(screen.getByRole('button', { name: '会' })).toBeDisabled()
 
     await user.keyboard('{Space}')
     expect(screen.getByText('第一张答案')).toBeInTheDocument()

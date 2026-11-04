@@ -369,15 +369,17 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
   state: LearningState; cards: Card[]; card?: Card; course?: Course; revealed: boolean; notice: string; canUndo: boolean; elapsed: number; timerRunning: boolean; checkedPoints: number[]
   onBack: () => void; onReveal: () => void; onRate: (rating: Rating, checklistPassed?: boolean) => void; onUndo: () => void; onTimer: () => void; onResetTimer: () => void; onCheck: (index: number) => void; onRetry: () => void
 }) {
-  const touchStart = useRef<{ x: number; y: number } | null>(null)
+  const touchStart = useRef<{ clientX: number; clientY: number } | null>(null)
+  const touchCurrent = useRef<{ clientX: number; clientY: number } | null>(null)
 
   function handleTouchEnd(changedTouches: ArrayLike<{ clientX: number; clientY: number }>) {
     const start = touchStart.current
-    const touch = changedTouches[0]
+    const touch = changedTouches[0] ?? touchCurrent.current
     touchStart.current = null
+    touchCurrent.current = null
     if (!start || !touch || !card) return
-    const dx = touch.clientX - start.x
-    const dy = touch.clientY - start.y
+    const dx = touch.clientX - start.clientX
+    const dy = touch.clientY - start.clientY
     if (Math.max(Math.abs(dx), Math.abs(dy)) < 60) return
     if (Math.abs(dx) > Math.abs(dy)) {
       if (revealed && card.kind !== 'summary') onRate(dx < 0 ? 'again' : 'good')
@@ -399,8 +401,23 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
   return <div className={`study-shell${revealed ? ' revealed' : ''}`}>
     <div className="study-topbar"><button className="back-button" onClick={onBack}>← 返回案件地图</button><div><span>{modeLabels[state.activeRun.mode]}</span><button className="text-button" disabled={!canUndo} onClick={onUndo}>撤销评分 ⌘Z</button></div></div>
     <div className="study-context"><span>{course?.title}</span><span>›</span><span>{chapter?.title}</span><span>›</span><span>{kindLabels[card.kind]}</span></div>
-    <p className="gesture-hint">滑动卡片：左滑不会 · 右滑会 · 下滑模糊</p>
-    <article className="study-card" onTouchStart={(event) => { touchStart.current = { x: event.touches[0].clientX, y: event.touches[0].clientY } }} onTouchEnd={(event) => handleTouchEnd(event.changedTouches)}>
+    <p className="gesture-hint">手势版 2：左滑不会 · 右滑会 · 下滑模糊</p>
+    <article
+      className="study-card"
+      onTouchStart={(event) => {
+        const point = { clientX: event.touches[0].clientX, clientY: event.touches[0].clientY }
+        touchStart.current = point
+        touchCurrent.current = point
+      }}
+      onTouchMove={(event) => {
+        const point = { clientX: event.touches[0].clientX, clientY: event.touches[0].clientY }
+        touchCurrent.current = point
+        const start = touchStart.current
+        if (start && Math.max(Math.abs(point.clientX - start.clientX), Math.abs(point.clientY - start.clientY)) >= 60) handleTouchEnd([point])
+      }}
+      onTouchEnd={(event) => handleTouchEnd(event.changedTouches)}
+      onTouchCancel={() => handleTouchEnd([])}
+    >
       <div className="study-card-meta"><span className={`level-badge ${card.level}`}>{card.level === 'core' ? '核心卡' : card.level === 'advanced' ? '进阶检查' : '串联卡'}</span>{card.redLine && <span className="redline-badge">红线纠错</span>}<span>剩余 {state.activeRun.queue.length} 张</span></div>
       <h1>{card.prompt}</h1>
       {!revealed ? <div className="answer-placeholder"><span>先在心里完整回答</span><button className="reveal-button" aria-label={card.kind === 'summary' ? '显示核对点' : '显示答案'} onClick={onReveal}>{card.kind === 'summary' ? '显示核对点' : '显示答案'}<small>Space / ↓</small></button></div> : <div className="answer-content">
@@ -412,7 +429,7 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
       </div>}
     </article>
     {card.kind === 'summary' && <section className="timer-panel"><div><span>目标 {card.estimatedSeconds} 秒</span><strong>{String(Math.floor(elapsed / 60)).padStart(2, '0')}:{String(elapsed % 60).padStart(2, '0')}</strong></div><div className="button-row"><button className="secondary-button" onClick={onTimer}>{timerRunning ? '暂停计时' : '开始计时'}</button><button className="text-button" onClick={onResetTimer}>重置计时</button></div></section>}
-    {revealed && (card.kind === 'summary' ? <div className="rating-area"><p>逐项核对，不用短答案匹配代替口头表达。</p><div className="rating-grid summary-ratings"><button className="rating-again" onClick={() => onRate('again', false)}>未通过，稍后重现</button><button className="rating-good" disabled={!allChecked} onClick={() => onRate('good', true)}>核对通过并完成</button></div></div> : <div className="rating-area"><p>3 秒内能完整说出，才按「会」。</p><div className="rating-grid"><button aria-label="不会" className="rating-again" onClick={() => onRate('again')}><strong>不会</strong><small>← 约 3 张后重现</small></button><button aria-label="模糊" className="rating-fuzzy" onClick={() => onRate('fuzzy')}><strong>模糊</strong><small>↓ 约 10 张后重现</small></button><button aria-label="会" className="rating-good" onClick={() => onRate('good')}><strong>会</strong><small>→ 进入间隔复习</small></button></div></div>)}
+    {card.kind === 'summary' ? <div className={`rating-area${revealed ? '' : ' pending'}`}><p>{revealed ? '逐项核对，不用短答案匹配代替口头表达。' : '先显示核对点，再完成人工评价。'}</p><div className="rating-grid summary-ratings"><button className="rating-again" disabled={!revealed} onClick={() => onRate('again', false)}>未通过，稍后重现</button><button className="rating-good" disabled={!revealed || !allChecked} onClick={() => onRate('good', true)}>核对通过并完成</button></div></div> : <div className={`rating-area${revealed ? '' : ' pending'}`}><p>{revealed ? '3 秒内能完整说出，才按「会」。' : '先显示答案；评分按钮目前不可用。'}</p><div className="rating-grid"><button aria-label="不会" disabled={!revealed} className="rating-again" onClick={() => onRate('again')}><strong>不会</strong><small>← 约 3 张后重现</small></button><button aria-label="模糊" disabled={!revealed} className="rating-fuzzy" onClick={() => onRate('fuzzy')}><strong>模糊</strong><small>↓ 约 10 张后重现</small></button><button aria-label="会" disabled={!revealed} className="rating-good" onClick={() => onRate('good')}><strong>会</strong><small>→ 进入间隔复习</small></button></div></div>}
     {notice && <p className="study-notice" role="status">{notice}</p>}
   </div>
 }
