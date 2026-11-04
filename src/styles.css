@@ -301,3 +301,38 @@ h1, h2, h3 { color: var(--ink); }
   .study-card-meta { flex-wrap: wrap; }
   .source-details { overflow-wrap: anywhere; }
 }
+
+/* Keep the moving card inside its deck, so a swipe cannot widen the page. */
+.study-deck { overflow: clip; border-radius: 18px; background: #edf1eb; }
+.study-deck .study-card { position: relative; transform: translate(var(--swipe-x, 0px), var(--swipe-y, 0px)) rotate(var(--swipe-rotation, 0deg)); transition: transform 180ms ease-out, border-color 120ms ease, background-color 120ms ease; transform-origin: center 70%; }
+.study-card[data-dragging="true"] { transition: none; will-change: transform; user-select: none; }
+.study-card[data-swipe="again"] { border-color: #c27058; background-color: #fff5ef; }
+.study-card[data-swipe="good"] { border-color: #4c9b72; background-color: #effaf2; }
+.swipe-preview { position: absolute; z-index: 2; top: 78px; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 18px; border: 3px solid currentColor; border-radius: 10px; background: rgb(255 255 255 / 96%); opacity: 0; pointer-events: none; }
+.swipe-preview strong { font-size: 26px; }
+.swipe-preview span { font-size: 11px; font-weight: 600; }
+.swipe-again { right: 24px; color: #a4472d; transform: rotate(8deg); }
+.swipe-good { left: 24px; color: #176b47; transform: rotate(-8deg); }
+.study-card[data-swipe="again"] .swipe-again, .study-card[data-swipe="good"] .swipe-good { opacity: 1; }
+.swipe-release { display: none; }
+.study-card[data-swipe-ready="true"] .swipe-release { display: block; }
+.study-card[data-swipe-ready="true"] .swipe-continue { display: none; }
+.study-card[data-arrival="swipe"] { animation: swipe-card-enter 180ms ease-out; }
+@keyframes swipe-card-enter { from { opacity: .35; scale: .97; } to { opacity: 1; scale: 1; } }
+.study-notice { position: fixed; z-index: 60; top: max(20px, env(safe-area-inset-top)); left: 50%; width: max-content; max-width: calc(100vw - 32px); margin: 0; padding: 12px 18px; border: 1px solid #a8c9b6; border-radius: 12px; background: #effaf2; box-shadow: 0 6px 24px rgb(26 54 41 / 14%); color: #176b47; font-size: 14px; line-height: 1.6; text-align: center; transform: translateX(-50%); pointer-events: none; animation: rating-confirmation 2400ms both; }
+.study-notice[data-rating="again"] { border-color: #e5bdb1; background: #fff5ef; color: #a4472d; }
+.study-notice[data-rating="fuzzy"] { border-color: #e2ce9f; background: #fff9e9; color: #8a6b2d; }
+@keyframes rating-confirmation { 0% { opacity: 0; translate: 0 -8px; } 10%, 85% { opacity: 1; translate: 0 0; } 100% { opacity: 0; translate: 0 -8px; } }
+@media (prefers-reduced-motion: reduce) {
+  .study-deck .study-card { transform: none; }
+}
+
+.study-deck .study-card { touch-action: pinch-zoom; }
+.study-deck .study-card[data-summary="true"] { touch-action: pan-y pinch-zoom; }
+.answer-content { max-height: min(42dvh, 380px); overflow-y: auto; overscroll-behavior-y: contain; touch-action: pan-y pinch-zoom; scrollbar-width: thin; padding-right: 6px; }
+.answer-content:focus-visible { outline: 3px solid #87bbaa; outline-offset: 4px; }
+.study-card[data-swipe="fuzzy"] { border-color: #bf953e; background-color: #fff9e9; }
+.swipe-fuzzy { left: 50%; color: #8a6b2d; transform: translateX(-50%); }
+.study-card[data-swipe="fuzzy"] .swipe-fuzzy { opacity: 1; }
+
+.study-shell:has(.study-card[data-dragging="true"]) .study-notice { visibility: hidden; }

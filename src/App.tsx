@@ -101,7 +101,7 @@ export default function App({ content = courseContent, storage = window.localSto
     setElapsed(0)
     setTimerRunning(false)
     setCheckedPoints([])
-    setNotice(rating === 'good' ? '已记录为「会」' : `已记录，队列稍后重现`)
+    setNotice(rating === 'good' ? '已记录为「会」' : `已记录为「${rating === 'again' ? '不会' : '模糊'}」，队列稍后重现`)
   }, [checkedPoints, currentCard, elapsed, now, revealed, revealedAt, state])
 
   const undo = useCallback(() => {
@@ -126,6 +126,7 @@ export default function App({ content = courseContent, storage = window.localSto
         if (!event.repeat) undo()
         return
       }
+      if (target?.closest('.answer-content')) return
       if (!currentCard || event.repeat || event.metaKey || event.ctrlKey || event.altKey) return
       if ((event.code === 'Space' || event.key === ' ') && target?.closest('button, summary, a')) return
       if (event.code === 'Space' || event.key === ' ' || event.key === 'Space' || event.key === 'ArrowDown') {
@@ -406,26 +407,54 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
   state: LearningState; cards: Card[]; card?: Card; course?: Course; revealed: boolean; notice: string; canUndo: boolean; elapsed: number; timerRunning: boolean; checkedPoints: number[]
   onHome: () => void; onBack: () => void; onReveal: () => void; onRate: (rating: Rating, checklistPassed?: boolean) => void; onUndo: () => void; onTimer: () => void; onResetTimer: () => void; onCheck: (index: number) => void; onRetry: () => void
 }) {
-  const gesture = useRef<{ x: number; y: number; direction?: 'horizontal' | 'vertical'; cardId: string } | null>(null)
+  const gesture = useRef<{ x: number; y: number; direction?: 'horizontal' | 'down' | 'vertical'; cardId: string } | null>(null)
   const articleRef = useRef<HTMLElement>(null)
+  const swipeAttempt = useRef<number | null>(null)
+  const resetSwipeVisual = useCallback(() => {
+    const article = articleRef.current
+    if (!article) return
+    delete article.dataset.swipe
+    delete article.dataset.swipeReady
+    delete article.dataset.dragging
+    article.style.setProperty('--swipe-x', '0px')
+    article.style.setProperty('--swipe-y', '0px')
+    article.style.setProperty('--swipe-rotation', '0deg')
+  }, [])
 
-  // A native, non-passive listener only prevents horizontal swipes. Vertical
-  // movement remains browser scrolling; cancellation never records an answer.
+  // The card surface handles rating gestures. Its answer body is a separate
+  // native scroll container and never starts a rating gesture.
   useEffect(() => {
     const article = articleRef.current
     if (!article) return
     const move = (event: TouchEvent) => {
       const start = gesture.current
       if (!start) return
-      if (event.touches.length !== 1) { gesture.current = null; return }
+      if (event.touches.length !== 1) { gesture.current = null; resetSwipeVisual(); return }
       const dx = Math.abs(event.touches[0].clientX - start.x)
       const dy = Math.abs(event.touches[0].clientY - start.y)
-      if (!start.direction && Math.max(dx, dy) >= 10) start.direction = dx > dy * 1.5 ? 'horizontal' : 'vertical'
-      if (start.direction === 'horizontal' && event.cancelable) event.preventDefault()
+      if (!start.direction && Math.max(dx, dy) >= 10) {
+        start.direction = dx > dy * 1.5 ? 'horizontal' : dy > dx * 1.5 && event.touches[0].clientY > start.y ? 'down' : 'vertical'
+      }
+      if (start.direction === 'horizontal') {
+        if (event.cancelable) event.preventDefault()
+        const offset = event.touches[0].clientX - start.x
+        article.dataset.dragging = 'true'
+        article.dataset.swipe = offset < 0 ? 'again' : 'good'
+        article.dataset.swipeReady = String(dx >= 60 && dx > dy * 1.5)
+        article.style.setProperty('--swipe-x', `${Math.max(-220, Math.min(220, offset))}px`)
+        article.style.setProperty('--swipe-rotation', `${Math.max(-12, Math.min(12, offset / 20))}deg`)
+      } else if (start.direction === 'down') {
+        if (event.cancelable) event.preventDefault()
+        const offset = Math.max(0, event.touches[0].clientY - start.y)
+        article.dataset.dragging = 'true'
+        article.dataset.swipe = 'fuzzy'
+        article.dataset.swipeReady = String(offset >= 60 && offset > dx * 1.5)
+        article.style.setProperty('--swipe-y', `${Math.min(180, offset)}px`)
+      }
     }
     article.addEventListener('touchmove', move, { passive: false })
     return () => { article.removeEventListener('touchmove', move); gesture.current = null }
-  }, [card?.id, state.attempts.length])
+  }, [card?.id, state.attempts.length, resetSwipeVisual])
 
   if (!card || !state.activeRun || state.activeRun.endedAt) {
     const empty = !state.activeRun || state.activeRun.queue.length === 0 && state.sessions.at(-1)?.attemptIds.length === 0
@@ -439,32 +468,48 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
   return <div className={`study-shell${revealed ? ' revealed' : ''}`}>
     <div className="study-topbar"><button className="back-button" onClick={onBack}>← {state.activeRun.mode === 'course' ? '返回案件地图' : '返回今日首页'}</button><div><span>{modeLabels[state.activeRun.mode]}</span><button className="text-button" disabled={!canUndo} onClick={onUndo}>撤销评分 ⌘Z</button></div></div>
     <div className="study-context"><span>{course?.title}</span><span>›</span><span>{chapter?.title}</span><span>›</span><span>{kindLabels[card.kind]}</span></div>
-    <p className="gesture-hint">左滑不会 · 右滑会 · 上下滑动浏览内容</p>
+    <p className="gesture-hint">{card.kind === 'summary' ? '在答案区域内滚动核对，逐项完成陈述' : '左滑不会 · 右滑会 · 下滑模糊；答案内可滚动'}</p>
+    <div className="study-deck">
     <article
+      key={`${card.id}:${state.attempts.length}`}
+      data-summary={card.kind === 'summary' ? 'true' : undefined}
+      data-arrival={swipeAttempt.current === state.attempts.length ? 'swipe' : undefined}
       className="study-card"
       ref={articleRef}
       onTouchStart={(event) => {
         const target = event.target as HTMLElement
-        if (event.touches.length !== 1 || card.kind === 'summary' || target.closest('button, input, label, summary, a, details')) {
+        if (event.touches.length !== 1 || card.kind === 'summary' || target.closest('button, input, label, summary, a, details, .answer-content')) {
           gesture.current = null
+          resetSwipeVisual()
           return
         }
+        resetSwipeVisual()
         gesture.current = { x: event.touches[0].clientX, y: event.touches[0].clientY, cardId: card.id }
       }}
       onTouchEnd={(event) => {
         const start = gesture.current
         gesture.current = null
         const touch = event.changedTouches[0]
+        resetSwipeVisual()
         if (!start || !touch || event.touches.length || start.cardId !== card.id || start.direction === 'vertical') return
         const dx = touch.clientX - start.x
         const dy = touch.clientY - start.y
-        if (Math.abs(dx) >= 60 && Math.abs(dx) > Math.abs(dy) * 1.5) onRate(dx < 0 ? 'again' : 'good')
+        if (start.direction !== 'down' && Math.abs(dx) >= 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          swipeAttempt.current = state.attempts.length + 1
+          onRate(dx < 0 ? 'again' : 'good')
+        } else if (dy >= 60 && dy > Math.abs(dx) * 1.5 && start.direction !== 'horizontal') {
+          swipeAttempt.current = state.attempts.length + 1
+          onRate('fuzzy')
+        }
       }}
-      onTouchCancel={() => { gesture.current = null }}
+      onTouchCancel={() => { gesture.current = null; resetSwipeVisual() }}
     >
+      <div className="swipe-preview swipe-again" aria-hidden="true"><strong>不会</strong><span className="swipe-continue">继续左滑</span><span className="swipe-release">松手标记</span></div>
+      <div className="swipe-preview swipe-good" aria-hidden="true"><strong>会</strong><span className="swipe-continue">继续右滑</span><span className="swipe-release">松手标记</span></div>
+      <div className="swipe-preview swipe-fuzzy" aria-hidden="true"><strong>模糊</strong><span className="swipe-continue">继续下滑</span><span className="swipe-release">松手标记</span></div>
       <div className="study-card-meta"><span className={`level-badge ${card.level}`}>{card.level === 'core' ? '核心卡' : card.level === 'advanced' ? '进阶检查' : '串联卡'}</span>{card.redLine && <span className="redline-badge">红线纠错</span>}<span>剩余 {state.activeRun.queue.length} 张</span></div>
       <h1>{card.prompt}</h1>
-      {!revealed ? <div className="answer-placeholder"><span>先在心里完整回答</span><button className="reveal-button" aria-label={card.kind === 'summary' ? '显示核对点' : '显示答案'} onClick={onReveal}>{card.kind === 'summary' ? '显示核对点' : '显示答案'}<small>Space / ↓</small></button></div> : <div className="answer-content">
+      {!revealed ? <div className="answer-placeholder"><span>先在心里完整回答</span><button className="reveal-button" aria-label={card.kind === 'summary' ? '显示核对点' : '显示答案'} onClick={onReveal}>{card.kind === 'summary' ? '显示核对点' : '显示答案'}<small>Space / ↓</small></button></div> : <div className="answer-content" role="region" aria-label="答案与材料，可在区域内滚动" tabIndex={0}>
         {card.answer && <><p className="answer-label">参考答案</p><p className="answer-text">{card.answer}</p></>}
         {card.answerPoints && <ul>{card.answerPoints.map((point) => <li key={point}>{point}</li>)}</ul>}
         {card.followUps?.map((followUp) => <div className="follow-up" key={followUp.prompt}><strong>追问：{followUp.prompt}</strong><p>{followUp.answer}</p></div>)}
@@ -472,9 +517,10 @@ function StudyView({ state, cards, card, course, revealed, notice, canUndo, elap
         <details className="source-details"><summary>查看材料溯源</summary>{card.sourceRefs.map((source) => <p key={`${source.path}${source.locator}`}>{source.label} · {source.path}{source.locator ? ` · ${source.locator}` : ''}</p>)}</details>
       </div>}
     </article>
+    </div>
     {card.kind === 'summary' && <section className="timer-panel"><div><span>目标 {card.estimatedSeconds} 秒</span><strong>{String(Math.floor(elapsed / 60)).padStart(2, '0')}:{String(elapsed % 60).padStart(2, '0')}</strong></div><div className="button-row"><button className="secondary-button" onClick={onTimer}>{timerRunning ? '暂停计时' : '开始计时'}</button><button className="text-button" onClick={onResetTimer}>重置计时</button></div></section>}
     {card.kind === 'summary' ? <div className={`rating-area${revealed ? '' : ' pending'}`}><p>{revealed ? '逐项核对，不用短答案匹配代替口头表达。' : '先显示核对点，再完成人工评价。'}</p><div className="rating-grid summary-ratings"><button className="rating-again" disabled={!revealed} onClick={() => onRate('again', false)}>未通过，稍后重现</button><button className="rating-good" disabled={!revealed || !allChecked} onClick={() => onRate('good', true)}>核对通过并完成</button></div></div> : <div className={`rating-area${revealed ? '' : ' pending'}`}><p>{revealed ? '3 秒内能完整说出，才按「会」。' : '可直接自评，也可先查看答案。'}</p><div className="rating-grid"><button aria-label="不会" className="rating-again" onClick={() => onRate('again')}><strong>不会</strong><small>← 约 3 张后重现</small></button><button aria-label="模糊" className="rating-fuzzy" onClick={() => onRate('fuzzy')}><strong>模糊</strong><small>↓ 约 10 张后重现</small></button><button aria-label="会" className="rating-good" onClick={() => onRate('good')}><strong>会</strong><small>→ 进入间隔复习</small></button></div></div>}
-    {notice && <p className="study-notice" role="status">{notice}</p>}
+    {notice && <p key={state.attempts.length} className="study-notice" data-rating={state.attempts.at(-1)?.rating} role="status">{notice}</p>}
   </div>
 }
 
